@@ -128,7 +128,7 @@ So an extra year of education **predicts** earnings that are 8,054 USD higher (s
 
 ## Application: Regression for Prediction
 
-\center ![]("C:\Users\Claire\Dropbox\MQE_CI_Fall2020\Lecture Notes\scatterintuitioncomic.png"){width=75%}
+\center ![]("images\scatterintuitioncomic.png"){width=75%}
 
 
 ## Application: Regression for Prediction
@@ -184,7 +184,7 @@ The key point: we are not saying that the college degree **caused** higher earni
 
 To get causation, we need to do a lot more work. 
 
-\center ![]("C:\Users\Claire\Dropbox\MQE_CI_Fall2020\Lecture Notes\corcauscomic.png"){width=75%}
+\center ![]("images\corcauscomic.png"){width=75%}
 
 
 ## "No Causation Without Manipulation"
@@ -774,7 +774,7 @@ library(dplyr)
 ## There is no Santa Claus: AGG (2006)
 \tiny
 ```{r repagg1aa, echo=TRUE, results = "asis"}
-agg_data<-read_dta(here("data/IA_MI_merge040504.dta"))
+agg_data<-read_dta("data/IA_MI_merge040504.dta")
 nrow(agg_data)
 
 ##scalling the vote02 variable to remove excess 0's from tables
