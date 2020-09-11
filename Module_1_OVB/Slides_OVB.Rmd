@@ -5,6 +5,7 @@ date: "6/9/2020"
 output:
   beamer_presentation: default
   pdf_document: default
+  slidy_presentation: default
 ---
 
 
