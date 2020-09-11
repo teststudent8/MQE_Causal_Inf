@@ -100,7 +100,7 @@ Make sure you set these to your github user name and the email you used to sign 
 
 ******************
 
-4) Now that GitHub knows who to attribute edits to, you can commit the modified files. Type
+4) Now that GitHub knows who to attribute edits to, you can commit the modified files. Type the following:
 
 `$ git commit -a -m "Jane Doe's changes"`
 
