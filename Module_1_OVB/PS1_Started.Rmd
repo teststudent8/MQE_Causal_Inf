@@ -139,7 +139,7 @@ When there are changes on in the GitHub repository that you want reflected on yo
 
 2) Clone the course Github repository into a folder on your computer. 
 
-3) Because some of the data files are large, some data files are zipped on the github page. Unzip these and place them in the cloned folder (you will need to do this if you wish to compile any of the files that call upon these datasets.
+3) Because some of the data files are large, some data files are zipped on the github page. Unzip these and place them in the cloned folder (you will need to do this if you wish to compile any of the files that call upon these datasets). Do not remove the zipped file.
 
 4) Make the edits and push your edits to the course repository.
 
