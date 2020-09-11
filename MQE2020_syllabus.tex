@@ -1,0 +1,292 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage[left=2.25cm,right=2.25cm,top=2.25cm,bottom=2.25cm]{geometry}
+\usepackage{mathpazo}
+\usepackage{amsfonts, amssymb, amsmath}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{xfrac}
+\usepackage{lscape}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{setspace}
+\usepackage{subfig}
+\usepackage{booktabs}
+\usepackage{blindtext}
+\usepackage{epsfig}
+\usepackage{hyperref}
+\usepackage{booktabs,caption,fixltx2e}
+\usepackage[flushleft]{threeparttable}
+\usepackage{outlines}
+\usepackage{enumitem}
+\setlist{nosep}
+\newcommand{\beqn}{\begin{eqnarray*}}
+	\newcommand{\eeqn}{\end{eqnarray*}}
+\newcommand{\bi}{\begin{itemize}}
+	\newcommand{\ei}{\end{itemize}}
+\newcommand{\bnot}{\hat{\beta}_0}
+\newcommand{\bone}{\hat{\beta}_1}
+
+\newcommand{\claire}[1]{{\color{red} [CD: {#1}]}}
+
+\geometry{ left = 1in, right = 1in, top =1in, bottom =1in }
+\pagestyle{fancy}
+\setlength{\headsep}{.4 in}
+\setlength{\parskip}{0.2 cm}
+\setlength{\parindent}{1cm}
+\renewcommand{\headrulewidth}{.25pt}
+\lhead{MQE: Economic Inference from Data \\Fall 2020 Tue-Thur 8:55-11:25 am}
+\chead{}
+\rhead{Claire Duquennois\\Syllabus 2020}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize \thepage}
+\newenvironment{myindentpar}[1]%
+ {\begin{list}{}%
+         {\setlength{\leftmargin}{#1}}%
+         \item[]%
+ }
+ {\end{list}}
+
+\begin{document}
+
+\begin{center}
+Welcome to Economic Inference from Data!\\
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Intro
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section of the quantitative methods sequence, you will learn the tools economists use to identify causal relationships and test hypotheses \textit{in the wild}. This material is the bridge between theory and estimation. When properly applied to the right dataset, approaches such as instrumental variables, differences-in-differences or regression discontinuity can allow us to test a hypothesis and make causal claims about the relationship between variables. The curriculum for this course will cover the main estimation strategies used today in empirical economics. 
+
+In addition to the official curriculum, there is an equally important hidden curriculum that will primarily be learned through individual and group homework assignments. This hidden curriculum involves acquiring the coding and work flow skills necessary to conduct causal analysis whether you are working solo or as a team. This will primarily involve learning how to work in R, using GitHub and learning how to present your findings clearly and effectively.
+
+
+
+\noindent\textbf{Lecture: \href{ https://pitt.zoom.us/j/93442450604}{ https://pitt.zoom.us/j/93442450604}\\
+Meeting ID:  93442450604\\
+Passcode: mqe\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Contact
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Contact:}
+
+
+\normalsize \noindent Claire Duquennois: Posvar 4912  E-mail: ced87@pitt.edu\\
+Course office hours (for questions about course materials): Thursday from 12:30-2:30pm,  Monday 3:30-5:00pm or by appointment. \\
+``Coffee hour" (for general advising/discussion): Wed 3-4 pm  or by appointment.
+
+\noindent\textbf{All office hours will be held virtually: \href{https://pitt.zoom.us/j/4713885919}{https://pitt.zoom.us/j/4713885919}\\
+Meeting ID: 471 388 5919\\}
+
+
+\section*{Reference Texts:}
+\begin{itemize}
+\item \normalsize Angrist, Joshua D and Pischke, J. \textit{Mostly Harmless Econometrics.} Princeton University Press, 2008. \\
+\item \normalsize Cunningham, Scott. \textit{Causal Inference: The Mixtape.} Available online: \href{www.scunning.com}{www.scunning.com}.\\
+\item \normalsize Wooldridge, Jeffery. Introductory Econometrics: A modern Approach. (Any edition). \\
+\end{itemize}
+
+\noindent Supplemental readings will be assigned each week and are listed in the schedule below. Readings can be found on the course webpage.\\
+
+\section*{Course Requirements:}
+
+This course will move quickly through a significant amount of material. In addition to lectures, you will need to spend a substantial amount of time outside of the classroom on individual and group homework assignment and readings. I expect you to come to class having done the work necessary to actively participate in scheduled class activities. \\
+
+\noindent Each module covered will typically be introduced on Tuesday and related readings will be discussed on Thursday. The module's homework assignment will be due on the following Monday followed by a discussion of the assignment on Tuesday before moving on to the next module. \\
+
+\noindent \textbf{Grades in the course will be determined as follows:}\\
+\noindent Participation and class discussions: \textbf{15 \%} =10 x 1.5 \% each (3 discussion grades dropped)\\
+Homework assignments: \textbf{60\%} = 5 x 12\% each (1 homework grade dropped)\\
+Final Exam: \textbf{25\%}\\
+Visuals Extra Credit: 1\% per win\\ 
+
+\noindent There is no fixed curve for this course dictating what share of students will receive what letter grade. It is theoretically possible for everyone to receive an A or everyone to receive a B. There is no preset or common scale whereby a certain number of points corresponds to a certain letter grade.  
+
+\noindent\textbf{Class Discussions and Visuals Extra Credit:}
+
+\noindent Lectures will be broken up with time set aside each week for two discussion activities:
+ 
+\noindent \textbf{On Thursdays:} Time will be set aside to discuss the module's readings. 
+How to prepare for the discussion? A module's reading list will typically be composed of readings that explain the research design covered in the textbooks. These are reference reading to be read as needed. In addition the reading list will include several academic articles that employ or discuss the research design being studied. Discussions will typically focus on how the authors of the journal articles use the module's research design to answer the research question. Your reading of the articles should focus on answering the following questions unless other questions are specified:
+
+\noindent 1) What is the research question?\\
+2) What research design(s) do the authors use to answer the research question? \\
+3) Why do they choose this (these) research design(s)?\\
+4) What are the key elements of the research design that is used in the article? In which tables/visuals are these elements displayed?\\
+5) Do the authors face any important identifications challenges? What do they do to address these?\\
+6) Are you convinced that the effects identified are causal? Why, why not?\\
+
+\noindent During the discussion, small groups will be assigned in which you will synthesis your answers and communicate them with the entire class. 
+
+\noindent \textbf{On Tuesdays:} Time will be set aside to discuss one of the elements submitted on the homework assignments. The element could be a formatted table or a data visualization that was submitted. When I receive homework assignments, I will collect and anonimyze the particular element and we will discuss and review the submissions as a group. We will also vote on our preferred submission and the winner(s) will receive extra credit on their assignment. 
+
+\noindent If you do not want your individual submission to be discussed, even anonymously, please let me know, though I would encourage you to participate as you will receive good feedback on how to improve your presentation of data. 
+
+\noindent\textbf{Homework Assignments:}
+
+\noindent Each module will be accompanied by a homework assignment. Homework assignments are designed to teach you the hidden curriculum. This is where you will practice working with data  using R, Rmarkdown and GitHub. \\
+Some of these assignments will be group assignments while others will be individual assignments. While you may seek assistance from your peers when stuck, submitted assignments may not be identical to each other and must be primarily the result of your group, or individual, efforts. Identical assignments will receive 0 grades. 
+
+\noindent All individuals must contribute to group assignments. Individual contributions will be checked on GitHub. Individuals who did not make significant contributions to the group assignment as recorded on GitHub will receive a lower grade then their group's grade.
+
+\noindent\textbf{Late Policy:} Problem Sets must be submitted as directed on the problem set by the indicated due \textbf{date and time}. 2 points will be deducted for each day late. Late problem sets will not be eligible to receive extra credit or be discussed in the group discussion. 
+
+\noindent\textbf{Regrade Policy:} If you believe a \textbf{substantial} mistake was made in the grading process (i.e. an entire page was missed), please submit a regrade request via gradescope within a week of having received the graded assignment. Please refrain from requesting regrades for minor point deductions that will not impact your final grade. Remember, if the marginal benefit is 0 because it does not change your final grade, while the marginal cost is my time and mental bandwith, a regrade request is not worth it. Of course, if you are struggling to understand why you may have made a mistake, you are welcome to come to office hours.  
+
+\noindent\textbf{Final Exam:} Will be open book and will be available as a take-home exam and submitted online. You will be given a fixed amount of time in which to complete the exam but there will be a generous window of time  in which you can start your exam clock. Exact instructions are TBD.  The final exam will test your conceptual understanding of the course material. It will be a written, timed, "traditional", exam that does not involve writing code (though you may be asked to interpret it). The final exam is to be your work alone. You may use any notes or materials you have but you may not receive assistance from others. Please plan to be in a quiet location with good internet access for a few hours at some point between the end of classes and the evening of the 24th of November. 
+
+\section*{COVID-19 Accomodations:}
+
+\noindent\textbf{Lecture: \href{ https://pitt.zoom.us/j/93442450604}{ https://pitt.zoom.us/j/93442450604}\\
+Meeting ID: 93442450604\\
+Passcode: mqe\\}
+
+
+This course will follow all university issued guidelines and policies related to COVID-19. Course proceeding will be dictated by the current operational posture of the university. The current operational posture  is announced in the header of the following website which also outlines permitted activities in each posture: \href{ https://www.coronavirus.pitt.edu/operational-postures}{https://www.coronavirus.pitt.edu/operational-postures}. In person classes for this course will only meet when the university is in the \textbf{guarded risk} and \textbf{elevated risk} postures.
+
+\noindent Even when classes are held in person, accommodations will be made for students who cannot be physically present in the classroom due to health or immigration concerns. In the event that classes cannot be held in person (\textbf{under high risk posture}), the accommodations described below will be implemented for all students.
+
+\noindent\textbf{Lectures:} If in-person lectures are permitted (\textbf{under guarded and elevated risk}), please attend lecture if you are able and feel comfortable doing so. If not, please attend via zoom. Students who are unable to be physically present will still be able to attend and participate live via zoom. If in-person lecture is canceled for public health concerns  (under high risk postures), lecture will continue to be held at the scheduled time via zoom.  Lectures will be recorded and these recordings will be made available on the course canvas page. If you cannot regularly attend lectures (in-person or via zoom) during the scheduled times due to conflicting responsibilities or location/time-zone constraints please contact me to discuss your situation. 
+
+
+
+
+\noindent\textbf{Discussions:} Getting to know people in your field and developing a network are an important part of this program. Discussions and group work are designed to foster and encourage such connections. It is important that these occur even in the difficult circumstances we now must work with. 
+
+\noindent When in-person lectures are held, students able to attend will hold their discussions in class. If attending via zoom, students will conduct discussions in breakout rooms during the scheduled time. 
+
+
+\noindent\textbf{Homework and Final Exam:} Will all be available online. 
+
+
+
+
+ 
+
+
+
+\section*{Course Schedule:}
+
+
+\textbf{Thursday Oct 8th}:  Course Introduction and Omitted Variable Bias\\
+\textit{Readings for Discussion:}
+\begin{itemize}
+\item  Spriggs, William. ``Is now a teachable moment for economists?"
+\end{itemize}
+
+\noindent\textbf{Monday Oct 12th 5pm: \underline{Homework 1: Getting started} Due}\\
+
+\noindent \textbf{Tuesday Oct 13th}: Omitted Variable Bias  and  Fixed Effects\\
+
+\noindent\textbf{Thursday Oct 15th}: Fixed Effects\\
+\textit{Readings for Discussion:}
+\begin{itemize}
+\item  Washington, Ebonya L. ``Female socialization: how daughters affect their legislator fathers." American Economic Review 98.1 (2008): 311-32. 
+\item  Arceneaux, Kevin, Alan S. Gerber, and Donald P. Green. "Comparing experimental and matching methods using a large-scale voter mobilization experiment." Political Analysis (2006): 37-62.
+\end{itemize}
+
+\noindent\textbf{Monday Oct 19th 5pm: \underline{Homework 2: Omitted Variable Bias and Fixed Effects} Due}\\
+
+\noindent\textbf{Tuesday Oct 20th}: Fixed Effects and Instrumental Variables\\
+
+\noindent\textbf{Thursday Oct 22nd}: Instrumental Variables\\
+\textit{Readings for Discussion:}
+\begin{itemize}
+\item Ananat, Elizabeth Oltmans. "The wrong side (s) of the tracks: The causal effects of racial segregation on urban poverty and inequality." American economic journal: applied economics 3.2 (2011): 34-66. 
+\item Aizer, Anna, and Joseph J. Doyle Jr. "Juvenile incarceration, human capital, and future crime: Evidence from randomly assigned judges." The Quarterly Journal of Economics 130.2 (2015): 759-803.
+
+\end{itemize}
+
+\noindent\textbf{Monday Oct 26th 5pm: \underline{Homework 3: Instrumental Variables} Due}\\
+
+\noindent\textbf{Tuesday Oct 27th}: Instrumental Variables and Randomized Control Trials\\
+
+\noindent\textbf{Thursday Oct 29th}:  Randomized Control Trials\\
+\textit{Readings for Discussion:}
+\begin{itemize}
+
+\item Bryan, Gharad, Shyamal Chowdhury, and Ahmed Mushfiq Mobarak. "Underinvestment in a profitable technology: The case of seasonal migration in Bangladesh." Econometrica 82.5 (2014): 1671-1748.
+\item Bryan, Kevin "What randomisation can and cannot do: The 2019 Nobel Prize." \href{ https://voxeu.org/article/what-randomisation-can-and-cannot-do-2019-nobel-prize}{ https://voxeu.org/article/what-randomisation-can-and-cannot-do-2019-nobel-prize}
+\item Piper, Kelsey"A charity just admitted that its program wasn't working.That's a big deal." \href{ https://www.vox.com/2018/11/29/18114585/poverty-charity-randomized-controlled-trial-evidence-action}{ https://www.vox.com/2018/11/29/18114585/poverty-charity-randomized-controlled-trial-evidence-action}
+\item Look at the other articles and work related to this project:\href{ https://faculty.som.yale.edu/mushfiqmobarak/the-effect-of-seasonal-migration-on-households-during-food-shortages-in-bangladesh/}{ https://faculty.som.yale.edu/mushfiqmobarak/the-effect-of-seasonal-migration-on-households-during-food-shortages-in-bangladesh/} 
+
+
+\end{itemize}
+
+\noindent\textbf{Monday Nov 2nd 5pm: \underline{Homework 4: Randomized Control Trials}  Due}\\
+
+\noindent\textbf{Tuesday Nov 3rd}:\textbf{ELECTION DAY! GO VOTE! (Absences excused)} Difference-in-Differences\\
+
+\noindent\textbf{Thursday Nov 5th}:  Difference-in-Differences\\
+\textit{Readings for Discussion:}
+\begin{itemize}
+\item Davis, Lucas W. "The effect of health risk on housing values: Evidence from a cancer cluster." American Economic Review 94.5 (2004): 1693-1704. 
+\item Duflo, Esther. "Schooling and labor market consequences of school construction in Indonesia: Evidence from an unusual policy experiment." American economic review 91.4 (2001): 795-813.
+\end{itemize}
+
+\noindent\textbf{Monday Nov 9th 5pm: \underline{Homework 5: Differences-in-Differences} Due}\\
+
+\noindent\textbf{Tuesday Nov 10th}: Regression Discontinuities\\
+
+\noindent\textbf{Thursday 12th}: Regression Discontinuities\\
+\noindent\textit{Readings for Discussion:}
+\begin{itemize}
+\item Manacorda, Marco, Edward Miguel, and Andrea Vigorito. "Government transfers and political support." American Economic Journal: Applied Economics 3.3 (2011): 1-28.
+\item Lucas, Adrienne M., and Isaac M. Mbiti. "Effects of school quality on student achievement: Discontinuity evidence from Kenya." American Economic Journal: Applied Economics 6.3 (2014): 234-63.
+\end{itemize}
+\noindent\textbf{Monday Nov 16th 5pm: \underline{Homework 6: Regression Discontinuities} Due}\\
+
+\noindent\noindent\textbf{Tuesday Nov 17th}: Extra Stuff: Non-standard standard errors and power calculations\\
+
+\noindent\textbf{Thursday Nov 19th}: Catch up and review\\
+
+
+
+\noindent\textbf{Tuesday Nov 24th}: Final Exam\\
+
+\section*{Special Accommodations:}
+If you have a disability for which you are or may be requesting an accommodation, you are encouraged to contact both your instructor and Disability Resources and Services (DRS), 140 William Pitt Union, (412) 648-7890, drsrecep@pitt.edu, (412) 228-5347, as early as possible in the term. DRS will verify your disability and determine reasonable accommodations for this course.
+
+
+\section*{Academic Honesty:}
+As a University of Pittsburgh student, you have agreed to abide by the University's academic integrity code. Take time to read the information on “Academic Integrity” and be sure that you understand your responsibilities under the guidelines set out for The Dietrich School of Arts and Sciences, which are spelled out in full at (\href{https://www.as.pitt.edu/faculty/policies-and-procedures/academic-integrity-code}{https://www.as.pitt.edu/faculty/policies-and-procedures/academic-integrity-code}). All graded work submitted in this course should be representative of your, or your groups, efforts, according to the directions specified for the assignment. Any use of unauthorized assistance, or providing unauthorized assistance will affect your performance in this course and further disciplinary action.
+
+
+
+\section*{Zoom Meeting Room Details:}
+
+
+
+\noindent\textbf{Lecture: \href{ https://pitt.zoom.us/j/93442450604}{ https://pitt.zoom.us/j/93442450604}\\
+Meeting ID:  93442450604\\
+Passcode: mqe\\}
+
+
+
+\noindent\textbf{Office hours: \href{https://pitt.zoom.us/j/4713885919}{https://pitt.zoom.us/j/4713885919}\\
+Meeting ID: 471 388 5919\\}
+
+
+
+
+
+\
+
+
+
+
+
+\end{document}
+
+
+
+\noindent If you are not able to attend the in-person or the live zoom lecture you should participate in a virtual discussion within the following week. To do so, \underline{BEFORE the scheduled lecture} go to this excel sheet:    . Add your name to the column for the scheduled discussion you missed. Click on the when to meet link for that column (all times are in Eastern US Time Zone) and indicate your availability. \underline{AFTER the scheduled lecture},  form groups of 2-4 students (indicate the group you formed on the excel sheet by putting a group number next to your names) and schedule a 20 min discussion session for your group.  Please make sure that no student is left alone. Conduct your discussion following any instructions that were specified in lecture or on handouts. Make sure to record you discussion and share a link to your recorded session with me and type up a short summary of your groups responses to any discussion questions that were provided. 
+
+\noindent Note: Only students attending live sessions will be able to participate in the extra credit voting. 
+
+
+
