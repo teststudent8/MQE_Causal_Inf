@@ -1,0 +1,19 @@
+---
+title: "MQE: Economic Inference from Data:  \nModule 2: Fixed Effects"
+author: "Claire Duquennois"
+date: "6/9/2020"
+output:
+  beamer_presentation: default
+  pdf_document: default
+  slidy_presentation: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(fig.width=9, fig.height=5) 
+library("lfe")
+library("stargazer")
+```
+## Module 2: Fixed Effects
+
