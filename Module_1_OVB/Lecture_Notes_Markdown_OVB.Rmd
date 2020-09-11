@@ -715,11 +715,10 @@ I start by loading the data (which is quite large), and estimating a simple regr
 
 
 library(haven)
-library(here)
 library(lfe)
 library(dplyr)
 
-agg_data<-read_dta(here("data/IA_MI_merge040504.dta"))
+agg_data<-read_dta("data/IA_MI_merge040504.dta")
 nrow(agg_data)
 
 ##scalling the vote02 variable to remove excess 0's from tables

@@ -3,8 +3,8 @@ title: 'Problem Set 1:Getting Started Key'
 author: "Claire Duquennois"
 date: "6/5/2020"
 output:
-  word_document: default
   html_document: default
+  word_document: default
   pdf_document: default
 ---
 
@@ -61,7 +61,7 @@ Note: the directory path will be different for you! To easily get your directory
 
 and you should see the directory path to the folder you want to be using.
 
-5) go to github.com/name1_name2_name3/your_group_project and click on the "Clone or Download" button. In the terminal type `git clone` and copy the url it gives you
+5) go to github.com/name1_name2_name3/your_group_project and click on the "Clone or Download" button. In the terminal type `git clone` and copy the url it gives you. Paste it as follows:
 
 `$ git clone github.com/name1_name2_name3/your_group_project.git `
 
@@ -69,7 +69,7 @@ and you should see the directory path to the folder you want to be using.
  
 You should now find that the folder you created has a copy of the group's R-Markdown file. 
 
-Open the file in RStudio and click on the `Knit` button. You should see the incomplete assignment displayed in an html window. You can now make edits to this document. 
+Open the file in RStudio and click on the `Knit` (to html) button. You should see the incomplete assignment displayed in an html window. You can now make edits to this document. 
 
 **TO DO: Start by adding your name as group member at the top of the document.** 
 
@@ -81,7 +81,7 @@ Once you have made changes to the assignment file and saved them, and viewed the
 2) Check the status of your edits. Type 
 `$git status`
 
-You should see that you have modified files that has not yet commited. 
+You should see that you have modified files that have not yet been commited. 
 
 *********************
 3) **WARNING: ** 
@@ -127,9 +127,26 @@ When there are changes on in the GitHub repository that you want reflected on yo
 
 `$git pull`
 
-**Now you are set up to work cooperatively on an assignment using GitHub. The remainder of this assignment consists of a simple coding and plotting exercise to practice these collaborative skills. **  
+**Now you are set up to work cooperatively on an assignment using GitHub. The remainder of this assignment consists of:**
 
-# Omitted Variable Bias Simulation
+- Using Github to suggest an edit to my lecture note, slides, or problem set. 
+
+- a simple coding and plotting exercise to practice collaborating with Github.
+
+# Suggest an edit (Each person should submit one of these)
+
+1) Find a typo, edit, or improvement in the lecture notes, slides or problem set that you would like to correct (this could be correcting a spelling mistake, adding titles or labels to a graph or table, or clarifying an explanation).
+
+2) Clone the course Github repository into a folder on your computer. 
+
+3) Because some of the data files are large, some data files are zipped on the github page. Unzip these and place them in the cloned folder (you will need to do this if you wish to compile any of the files that call upon these datasets.
+
+4) Make the edits and push your edits to the course repository.
+
+5) I will review your edits and integrate them into my materials. 
+
+
+# Omitted Variable Bias Simulation (Group excercise)
 
 For this problem we are going to generate simulated data, with known characteristics, so that we can explore how the omission of a key variable biases our estimates.
 
