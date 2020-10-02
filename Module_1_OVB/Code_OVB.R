@@ -8,7 +8,13 @@ library(dplyr)
 library(MASS)
 library(ggplot2)
 
-setwd("C://Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/Lecture_Notes_OVB")
+getwd()
+setwd(here())
+getwd()
+setwd("..")
+getwd()
+
+
 
 ##############################################
 #INCOME AND EDUCATION EXCERCISE
@@ -16,7 +22,7 @@ setwd("C://Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/Lecture_Notes_OVB"
 library(haven)
 
 #loading CPS data
-mydata<-read.csv("data/cps_clean.csv")
+mydata<-read.csv("data/data_M1_OVB/cps_clean.csv")
 
 #regressing income on education
 reg1<-lm(inctot~edu,mydata[mydata$age>22,])
@@ -43,7 +49,7 @@ library(haven)
 library(stargazer)
 
 #loading CPS data
-mydata<-read.csv("data/cps_clean.csv")
+mydata<-read.csv("data/data_M1_OVB/cps_clean.csv")
 
 #regressing income on health
 reghealth<-lm(inctot~health,mydata)
@@ -59,11 +65,10 @@ summary(reghealth3)
 
 #presenting results in a formated output table
 stargazer(reghealth,reghealth2, reghealth3, 
-          out = "code_output/tableovb.txt", type="text", header=FALSE, 
+          out = "MQE_Causal_Inf/Module_1_OVB/code_output/tableovb.txt", type="text", header=FALSE, 
           title = "Income and health", omit.stat=c("f", "ser"))
 
 ##############################################
-
 
 ##############################################
 # OVB SIMULATION EXCERCISE
@@ -102,7 +107,7 @@ sim1<-lm(Y~V1+V2, data=out)
 sim2<-lm(Y~V1, data=out)
 
 #reporting results in a table
-stargazer(sim1,sim2,out = "code_output/tableovb_sim.txt", type="text",  header=FALSE, 
+stargazer(sim1,sim2,out = "MQE_Causal_Inf/Module_1_OVB/code_output/tableovb_sim.txt", type="text",  header=FALSE, 
           title="Omitted Variable Bias Simulation", omit.stat=c("f", "ser"))
 
 #generating adjusted oucome variable
@@ -112,7 +117,7 @@ out$adjY<-out$Y-B2*out$V2
 sim3<-lm(adjY~V1, data=out)
 
 #reporting results in a table
-stargazer(sim1,sim2,sim3,out = "code_output/tableovb_sim2.txt",  type="text", header=FALSE, 
+stargazer(sim1,sim2,sim3,out = "MQE_Causal_Inf/Module_1_OVB/code_output/tableovb_sim2.txt",  type="text", header=FALSE, 
           title="Omitted Variable Bias Simulation 2", omit.stat=c("f", "ser"))
 
 #plotting the two sets of outcome variables
@@ -132,7 +137,7 @@ plotted
 ##############################################
 
 #loading the data
-agg_data<-read_dta("data/IA_MI_merge040504.dta")
+agg_data<-read_dta("data/data_M1_OVB/IA_MI_merge040504.dta")
 nrow(agg_data)
 
 ##scalling the vote02 variable to remove excess 0's from tables
@@ -146,7 +151,7 @@ regols1<-felm(vote02~contact+state+comp_mi+comp_ia,agg_data)
 regexp1<-felm(vote02~state+comp_mi+comp_ia|0|(contact~treat_real+state+comp_mi+comp_ia),agg_data)
 
 #presenting results in a table
-stargazer(regols1,regexp1, out = "code_output/agg1.txt",  type="text", se = list(regols1$rse,regexp1$rse),
+stargazer(regols1,regexp1, out = "MQE_Causal_Inf/Module_1_OVB/code_output/agg1.txt",  type="text", se = list(regols1$rse,regexp1$rse),
           header=FALSE,  title="AGG replication 1",omit.stat=c("f", "ser"), single.row = TRUE)
 
 #old regression with controls
@@ -160,7 +165,7 @@ regexp2<-felm(vote02~state+comp_mi+comp_ia+persons+age+
                  +female2+newreg+vote00+vote98+fem_miss),agg_data)
 
 #presenting results in a table
-stargazer(regols2,regexp2, out = "code_output/agg2.txt",  type="text", se = list(regols2$rse,regexp2$rse),
+stargazer(regols2,regexp2, out = "MQE_Causal_Inf/Module_1_OVB/code_output/agg2.txt",  type="text", se = list(regols2$rse,regexp2$rse),
           header=FALSE,  title="AGG replication 2",omit.stat=c("f", "ser"), single.row = TRUE)
 ##############################################
 
