@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  11 SEP 2020 13:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  2 OCT 2020 11:22
 entering extended mode
 **./Slides_OVB.tex
 (Slides_OVB.tex
@@ -1279,19 +1279,15 @@ File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )) [10
 
 ]
-<C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/scatterintuitioncomic.pn
-g, id=88, 480.79625pt x 313.17pt>
-File: C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/scatterintuitioncom
-ic.png Graphic file (type png)
-<use C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/scatterintuitioncomi
-c.png>
-Package pdftex.def Info: C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/
-scatterintuitioncomic.png  used on input line 326.
+<images/scatterintuitioncomic.png, id=88, 480.79625pt x 313.17pt>
+File: images/scatterintuitioncomic.png Graphic file (type png)
+<use images/scatterintuitioncomic.png>
+Package pdftex.def Info: images/scatterintuitioncomic.png  used on input line 3
+26.
 (pdftex.def)             Requested size: 230.47144pt x 150.11919pt.
 [11
 
- <C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/scatterintuitioncomic.p
-ng (PNG copy)>]
+ <./images/scatterintuitioncomic.png (PNG copy)>]
 \openout4 = `Slides_OVB.vrb'.
 
 (Slides_OVB.vrb
@@ -1313,18 +1309,14 @@ input line 12.
 (Slides_OVB.vrb) [15
 
 ]
-<C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/corcauscomic.png, id=127
-, 460.72125pt x 185.69376pt>
-File: C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/corcauscomic.png Gr
-aphic file (type png)
-<use C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/corcauscomic.png>
-Package pdftex.def Info: C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/
-corcauscomic.png  used on input line 420.
+<images/corcauscomic.png, id=127, 460.72125pt x 185.69376pt>
+File: images/corcauscomic.png Graphic file (type png)
+<use images/corcauscomic.png>
+Package pdftex.def Info: images/corcauscomic.png  used on input line 420.
 (pdftex.def)             Requested size: 230.4655pt x 92.88914pt.
 [16
 
- <C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/corcauscomic.png (PNG c
-opy)>] [17
+ <./images/corcauscomic.png (PNG copy)>] [17
 
 ] [18
 
@@ -1523,7 +1515,7 @@ Package hyperref Warning: Ignoring empty anchor on input line 14.
 <images/codecomic2.png, id=446, 414.54875pt x 361.35pt>
 File: images/codecomic2.png Graphic file (type png)
 <use images/codecomic2.png>
-Package pdftex.def Info: images/codecomic2.png  used on input line 1465.
+Package pdftex.def Info: images/codecomic2.png  used on input line 1452.
 (pdftex.def)             Requested size: 153.63997pt x 133.92346pt.
 [63
 
@@ -1548,18 +1540,18 @@ Package hyperref Warning: Ignoring empty anchor on input line 14.
 \tf@snm=\write8
 \openout8 = `Slides_OVB.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1522.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1522.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1509.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1509.
 (Slides_OVB.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1522.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1522.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1509.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1509.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 25543 strings out of 481565
- 470584 string characters out of 2913711
+ 25542 strings out of 481565
+ 469842 string characters out of 2913711
  722127 words of memory out of 3000000
  39929 multiletter control sequences out of 15000+200000
  589862 words of font info for 95 fonts, out of 3000000 for 9000
@@ -1594,7 +1586,7 @@ nts/type1/public/lm/lmtt8.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.
 9/fonts/type1/public/lm/lmtti10.pfb><C:/Users/Claire/AppData/Local/Programs/MiK
 TeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/Claire/AppData
 /Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Slides_OVB.pdf (65 pages, 1283265 bytes).
+Output written on Slides_OVB.pdf (65 pages, 1282947 bytes).
 PDF statistics:
  584 PDF objects out of 1000 (max. 8388607)
  195 named destinations out of 1000 (max. 500000)
