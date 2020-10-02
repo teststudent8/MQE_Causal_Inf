@@ -10,9 +10,11 @@ output:
 
 ```{r setup}
 library(stargazer)
+library(here)
 # Set so that long lines in R will be wrapped:
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
 getwd()
+knitr::opts_knit$set(root.dir = here())
 setwd('..')
 a<-paste(setwd('..'))
 knitr::opts_knit$set(root.dir = a)
