@@ -160,7 +160,7 @@ Finally, I generate the simulated outcomes. The true treatment effect is set to 
 
 ```{r simfe4, results = "asis"}
 
-scores$score<-80+15*scores$treat+85*scores$class_2+ -30*scores$class_3+
+scores$score<-80+15*scores$treat+10*scores$class_2+-30*scores$class_3+
   -35*scores$class_4+scores$error
 ```
 

@@ -12,8 +12,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_chunk$set(fig.width=9, fig.height=5) 
-library("lfe")
-library("stargazer")
 ```
 
 ## Module 2: Fixed Effects
@@ -184,9 +182,14 @@ I will work with a simulated dataset to show how the use of fixed effects can he
 I start by loading the dplyr package and "setting the seed": 
 
 \tiny
-```{r simfe, results = "asis", echo = TRUE}
+```{r simfe, echo = TRUE}
 #install.packages("dplyr")
+#install.packages("lfe")
+#install.packages("stargazer")
+
 library(dplyr)
+library(lfe)
+library(stargazer)
 
 set.seed(1999)
 
@@ -242,4 +245,125 @@ scores <- fastDummies::dummy_cols(scores, select_columns = "class")
 knitr::kable(head(scores))
 ```
 
+## A Simulation:
+
+
+Finally! I simulate the DGP (Data Generating Process):
+
+-The true treatment effect = 15
+
+-students in classrooms 1 and 2 have higher reading scores  
+
+-students in classrooms 3 and 4 have lower reading scores. 
+
+\tiny
+```{r simfe4, results = "asis", echo = TRUE}
+
+scores$score<-80+15*scores$treat+10*scores$class_2+-30*scores$class_3+
+  -35*scores$class_4+scores$error
+
+knitr::kable(head(scores))
+
+```
+
+
+
+## A Simulation:
+
+I estimate three specifications. The first: 
+
+$$
+Score_{ci}=\beta_0+\beta_1 Treat_{ci}+\epsilon
+$$
+\bigskip
+
+```{r simfe5a, results = "asis",echo = TRUE}
+
+nofe<-felm(score~treat,scores)
+
+```
+
+
+## A Simulation:
+
+The second: 
+
+$$
+Score_{ci}=\beta_0+\beta_1Treat_{ci}+\beta_2Class2_c+\beta_3Class3_c+\beta_4Class4_c+\epsilon
+$$
+\bigskip
+
+```{r simfe5b, results = "asis", echo = TRUE}
+
+dummies<-felm(score~treat+class_2+class_3+class_4, scores)
+
+```
+
+
+## A Simulation:
+
+The third: 
+$$
+Score_{ci}=\beta_0+\beta_1Treat_{ci}+\kappa_c+\epsilon
+$$
+where $\kappa_i$ is a classroom fixed effect.
+\bigskip
+
+
+```{r simfe5c, results = "asis",echo = TRUE}
+
+fe<-felm(score~treat|class,scores)
+
+```
+
+## A Simulation:
+
+\tiny
+```{r simfe5d, results = "asis",echo = TRUE}
+
+stargazer(nofe, dummies, fe,header=FALSE, type='latex')
+
+
+```
+
+## A Simulation:
+
+Recall:  $\beta_1=15$ (the true treatment effect) $\Rightarrow$ $\hat{\beta}_1^{nofe}$ is very biased! 
+
+**Why?**
+
+-The classes are an important omitted variable: $cor(Score,Class3/4)<0$ and $cor(Treat,Class3/4)>0$ creating substantial downward bias. 
+
+We can correct for this in two (equivalent) ways: 
+
+-adding the dummy variables for the class to the regression,
+
+-adding a class fixed effect. 
+
+Either approach returns an identical unbiased estimate such that $E[\hat{\beta}_1]=\beta_1$.
+
+## Fixed Effects as Demeaned Data: 
+
+ Fixed effect estimates are also known as the **within estimator**, because it identifies $\beta$ using within-unit variation.
+ 
+ $\Rightarrow$ we only using the  variation that exists __within the classroom__ to estimate the treatment effect.
+ 
+This is the equivalent of "correcting" our data by demeaning each observation using it's classroom mean, so that the corrected data represents deviations from the classroom mean.
+
+## Fixed Effects as Demeaned Data: 
+
+Our fixed effect estimation is 
+
+$$
+y_{ci}=\beta_1x_{ci}+\kappa_c+\epsilon_{ci}
+$$
+For each class, the average across the students is
+
+$$
+\bar{y}_i=\beta_1\bar{x}_i+\kappa_c+\bar{\epsilon}_i
+$$
+Subtracting this from the fixed effect model gives
+$$
+y_{ic}-\bar{y}_i=\beta_1(x_{ic}-\bar{x}_i)+(\epsilon_{ic}-\bar{\epsilon}_i)
+$$
 
