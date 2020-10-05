@@ -30,7 +30,7 @@ library("stargazer")
 
 -Example: Crime and Unemployment
 
-## Controling for unobservables
+## Controlling for unobservables
 
 We saw with AGG(2006) that even with many covariates, unobservables are a problem. 
 
@@ -76,7 +76,7 @@ Each individual is observed multiple times.
 
 ## Data Structures: Panel Data Subscripts
 
-Unique observations must be identified by both the individual and time dimensons... notice the new subscripts: 
+Unique observations must be identified by both the individual and time dimensions... notice the new subscripts: 
 
 $$
 Income_{it}=\beta_0+\beta_1 Schooling_{it}+\epsilon.
@@ -162,4 +162,84 @@ $$
 -What is $\tau_t$?
 
 -What is this estimation equivalent to?
+
+## A Simulation:
+
+You are a principle of a small school composed of four classrooms. You have just implemented a new option available to teachers for students to spend some small group reading time with a para-educator. You would like to know how this reading time is affecting reading scores. 
+
+\bigskip
+**You have data for ten students in each class that tells you:**
+
+-the class the student is in
+
+-whether they participated in small group reading
+
+-their reading score. 
+
+## Generating Simulated Data
+
+
+I will work with a simulated dataset to show how the use of fixed effects can help us recover the true treatment effect. 
+
+I start by loading the dplyr package and "setting the seed": 
+
+\tiny
+```{r simfe, results = "asis", echo = TRUE}
+#install.packages("dplyr")
+library(dplyr)
+
+set.seed(1999)
+
+```
+
+## A Simulation: 
+
+I generate a vector of class identifiers and a random error term.
+
+\tiny
+```{r simfe1a, results = "asis", echo = TRUE}
+
+
+
+class<-c(1,2,3,4)
+scores<-as.data.frame(class)
+scores<-rbind(scores,scores,scores,scores,scores,scores,scores,scores,scores,scores)
+scores$error<-rnorm(40, mean=0, sd=5)
+
+#note: if you are not working in markdown you would just write head(scores)
+knitr::kable(head(scores))
+```
+
+
+## A Simulation: 
+
+I simulate some selection into treatment. The probability of getting treated is 
+
+-0.8 for students in classrooms 3 and 4 
+
+-0.2 in classrooms 1 and 2. 
+
+\tiny
+```{r simfe2, results = "asis", echo = TRUE}
+scores$treat1<-rbinom(40,1,0.2)
+scores$treat2<-rbinom(40,1,0.8)
+scores$treat[scores$class%in%c(1,2)]<-scores$treat1[scores$class%in%c(1,2)]
+scores$treat[scores$class%in%c(3,4)]<-scores$treat2[scores$class%in%c(3,4)]
+
+knitr::kable(head(scores))
+```
+
+## A Simulation:
+
+I drop unneeded variables and generate a dummy variable for each classroom
+
+\tiny
+```{r simfe3, results = "asis", echo = TRUE}
+
+scores<-scores%>%select(class,error,treat)
+scores <- fastDummies::dummy_cols(scores, select_columns = "class")
+
+knitr::kable(head(scores))
+```
+
 
