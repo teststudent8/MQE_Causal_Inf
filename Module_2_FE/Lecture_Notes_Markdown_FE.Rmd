@@ -6,7 +6,6 @@ output:
   pdf_document:
     toc: true
     number_sections: true
-bibliography: notes_cited.bib
 ---
 
 ```{r setup,include=FALSE}
