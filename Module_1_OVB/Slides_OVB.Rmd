@@ -417,7 +417,7 @@ $$
     \underbrace{\tau}_\text{treatment effect} + \underbrace{E[\eta_i|D_i=1]-E[\eta_i|D_i=0]}_\text{?}
 $$
 
-What is the second term?
+What is the second term?  $\Rightarrow$ Top Hat
 
 ## The Conditional Independence Assumption
 
@@ -602,6 +602,7 @@ Interpret.
 
 How might the omission of age be biasing these estimates?
 
+$\Rightarrow$ Top Hat
 
 
 
@@ -631,7 +632,7 @@ summary(reghealth2)
 
 How might the omission of schooling be biasing these estimates?
 
-
+$\Rightarrow$ Top Hat
 
 
 ## Example: Using CPS data
@@ -849,6 +850,8 @@ You data includes information on the following: the mother's age, the mother's e
 the number of prenatal doctor visits, mother's weight gain during pregnancy, and alcohol use during pregnancy. 
 
 Which of these control variables should you consider adding to your specification? 
+
+$\Rightarrow$ Top Hat
 
 
 ## How far do controls get us?
