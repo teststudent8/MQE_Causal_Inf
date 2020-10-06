@@ -239,7 +239,7 @@ I drop unneeded variables and generate a dummy variable for each classroom
 \tiny
 ```{r simfe3, results = "asis", echo = TRUE}
 
-scores<-scores%>%select(class,error,treat)
+scores<-scores%>%dplyr::select(class,error,treat)
 scores <- fastDummies::dummy_cols(scores, select_columns = "class")
 
 knitr::kable(head(scores))
@@ -426,3 +426,230 @@ stargazer( fe, regdemean,header=FALSE, type='latex', omit.stat=c("all" ))
 
 Careful:  the standard errors on the demeaned regression are incorrect because the cases are not independent of each other.
 
+## Variation
+
+What would happen if none of the students in classes 1 and 2 went to the small reading group and all of the students in class 3 and 4 did?
+
+## Variation
+
+Creating a new treatment variable to reflect this: 
+
+\tiny
+```{r simfenovar, results = "asis",echo = TRUE}
+
+scores$treat2[scores$class%in%c(1,2)]<-0
+scores$treat2[scores$class%in%c(3,4)]<-1
+
+scores$score2<-80+15*scores$treat2+10*scores$class_2+ -30*scores$class_3+ -35*scores$class_4+scores$error
+
+nofe2<-felm(score2~treat2,scores)
+dummies2<-felm(score2~treat2+class_2+class_3+class_4, scores)
+#fe2<-felm(score2~treat2|class,scores)
+```
+
+## Variation
+
+\tiny
+```{r simfenovar2, results = "asis",echo = TRUE}
+
+stargazer(nofe2, dummies2, header=FALSE,  type='latex')
+```
+
+
+
+## Example: Crime and Unemployment
+
+You are interested in the relationship between unemployment and crime. 
+
+You have data on the crime and unemployment rates for 46 cities for 1982 and 1987. 
+
+I start by using the data from the 1987 cross section and run the following simple regression of the crime rate on unemployment,
+
+$$
+crimerate_i=\beta_0+\beta_1unemployment_i+\epsilon
+$$
+
+
+## Example: Crime and Unemployment
+
+\tiny
+```{r crime,echo = TRUE}
+#install.packages("wooldridge")
+library(wooldridge)
+
+#note: this dataset comes from the wooldridge textbook. Conveniently there is an R package that 
+#includes all the wooldridge datasets. 
+
+crime<-data('crime2')
+crime<-crime2
+
+```
+
+
+## Example: Crime and Unemployment
+
+\tiny
+```{r crime2,echo = TRUE}
+
+regcrime<-felm(crmrte~unem, crime[crime$year=="87",])
+summary(regcrime)
+
+```
+
+
+## Example: Crime and Unemployment
+
+Wierd. 
+
+The culprit? Probably omitted variables. 
+
+Reflex: lets add controls for more observable city characteristics: the area of the city, if the city is in the west, police officers per square mile, expenditure on law enforcement, per capita income... 
+
+\small
+$$
+crmrte_i=\beta_0+\beta_1unemp_i+\beta_2area_i+\beta_3west_i+\beta_4offarea_i+\beta_5lawexp_i+\beta_6pcinc_i+\epsilon
+$$
+
+## Example: Crime and Unemployment
+
+\tiny
+```{r crime2a,echo = TRUE}
+
+regcrime2<-felm(crmrte~unem+area+west+offarea+lawexpc+pcinc, crime[crime$year=="87",])
+summary(regcrime2)
+
+```
+
+
+## Example: Crime and Unemployment
+
+Even wierder. 
+
+So many potential omitted variables... 
+
+What if we can **capture all unobserved, time invariant factors** about a city that might affect crime rates?
+
+Use data for 1987 and 1982, and add city **fixed effects,**($\alpha_i$).
+
+\small
+$$
+\begin{aligned}
+crmrte_{it}=&\beta_0+\beta_1unemp_{it}\\
+&+\beta_2area_i+\beta_3west_i+\beta_4offarea_{it}+\beta_5lawexp_{it}+\beta_6pcinc_{it}\\
+&+\alpha_i+\epsilon
+\end{aligned}
+$$
+
+
+## Example: Crime and Unemployment
+
+\tiny
+```{r crime3, echo = TRUE}
+#note: the data does not have a unique city identifier. I am assuming the area of the city is 
+#1)time-invariant and 
+#2) uniquely identifies the 46 cities. 
+#The line of code below generates a unique identifier
+
+crime <- transform(crime,city=as.numeric(factor(area)))
+
+#I check that my assumptions were correct by seeing if I have 2 observations for 46 cities.
+table(crime$city)
+```
+
+## Example: Crime and Unemployment
+
+\tiny
+```{r crime3a,echo = TRUE}
+regcrime3<-felm(crmrte~unem+area+west+offarea+lawexpc+pcinc|city, crime)
+summary(regcrime3)
+
+```
+
+
+## Example: Crime and Unemployment
+
+Interpret the coefficient on unemployment.
+
+Why were we not able to estimate a coefficient for $area_i$ and $west_i$?
+
+## Example: Crime and Unemployment
+
+Suppose I am concerned about how national factors could be affecting all cities simultaneously. 
+
+Add a year fixed effect, ($\tau_t$).
+
+$$
+\begin{aligned}
+crmrte_{it}=&\beta_0+\beta_1unemp_{it}\\
+&+\beta_2area_i+\beta_3west_i+\beta_4offarea_{it}+\beta_5lawexp_{it}+\beta_6pcinc_{it}\\
+&+\alpha_i+\tau_t+\epsilon
+\end{aligned}
+$$
+
+## Example: Crime and Unemployment
+
+\tiny
+```{r crime4,echo = TRUE}
+
+regcrime4<-felm(crmrte~unem+area+west+offarea+lawexpc+pcinc|city+year, crime)
+summary(regcrime4)
+
+```
+
+## Example: Crime and Unemployment
+
+Is this estimate causal? 
+
+What we have controlled for?
+
+-The city fixed effects:  controls for any time invariant factors that always affect the crime rates in a city in a similar way. Such as...
+
+-The time fixed effects: controls for any patterns that are common to all cities in a given year. Such as...
+
+-In addition to this we are also controlling for some observable time varying variables: officers in an area, law enforcement expenditures per capita and income per capita.
+
+So are these estimates causal? 
+
+What kind of omitted variables should we still be concerned about? 
+
+## Example: Crime and Unemployment
+
+Any variable that changes within a city across years and that is correlated with both unemployment and crime rates could still be biasing our results.
+
+This could be things like school funding, decriminalization of marijuana, housing costs... to name just a few.
+
+## Example: Crime and Unemployment Variation
+
+
+Suppose I get ambitious and want to control for all these factors as well. 
+
+I decide I am going to generate a city-by-year fixed effect, ($\gamma_{it}$),  to control for these time variant omitted variables. I estimate,  
+
+
+
+$$
+\begin{aligned}
+crmrte_{it}=&\beta_0+\beta_1unemp_{it}\\
+&+\beta_2area_i+\beta_3west_i+\beta_4offarea_{it}+\beta_5lawexp_{it}+\beta_6pcinc_{it}\\
+&+\gamma_{it}+\epsilon
+\end{aligned}
+$$
+
+
+## Example: Crime and Unemployment Variation
+
+\tiny
+```{r crime5,echo = TRUE}
+
+crime$city_year<-paste(crime$city, crime$year, sep="_")
+
+#Note: the following regression will not run!
+#regcrime5<-felm(crmrte~unem+area+west+offarea+lawexpc+pcinc|city_year, crime)
+#summary(regcrime5)
+
+```
+\normalsize
+
+Why?!?
+
+What kind of data would I need to be able to estimate this? 

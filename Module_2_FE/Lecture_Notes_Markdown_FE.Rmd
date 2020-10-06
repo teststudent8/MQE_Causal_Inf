@@ -152,7 +152,7 @@ I then generate a dummy variable for each classroom
 
 ```{r simfe3, results = "asis"}
 
-scores<-scores%>%select(class,error,treat)
+scores<-scores%>%dplyr::select(class,error,treat)
 scores <- fastDummies::dummy_cols(scores, select_columns = "class")
 ```
 
@@ -244,25 +244,15 @@ Below I modify my simulated data to reflect this.
 
 
 ```{r simfenovar, results = "asis"}
-library(dplyr)
-library(lfe)
 
-class2<-c(1,2,3,4)
-scores2<-as.data.frame(class2)
-scores2<-rbind(scores2,scores2,scores2,scores2,scores2,scores2,scores2,scores2,scores2,scores2)
-scores2$error<-rnorm(40, mean=0, sd=5)
+scores$treat2[scores$class%in%c(1,2)]<-0
+scores$treat2[scores$class%in%c(3,4)]<-1
 
-scores2$treat[scores2$class%in%c(1,2)]<-0
-scores2$treat[scores2$class%in%c(3,4)]<-1
+scores$score2<-80+15*scores$treat2+10*scores$class_2+ -30*scores$class_3+ -35*scores$class_4+scores$error
 
-scores2<-scores2%>%select(class2,error,treat)
-scores2 <- fastDummies::dummy_cols(scores2, select_columns = "class2")
-
-scores2$score<-80+15*scores2$treat+85*scores2$class2_2+ -30*scores2$class2_3+ -35*scores2$class2_4+scores2$error
-
-nofe2<-felm(score~treat,scores2)
-dummies2<-felm(score~treat+class2_2+class2_3+class2_4, scores2)
-#fe2<-felm(score~treat|class2,scores2)
+nofe2<-felm(score2~treat2,scores)
+dummies2<-felm(score2~treat2+class_2+class_3+class_4, scores)
+#fe2<-felm(score2~treat2|class,scores)
 
 stargazer(nofe2, dummies2,  type='latex')
 ```
@@ -310,14 +300,16 @@ summary(regcrime2)
 
 ```
 
-We still get this puzzling result. We could continue to add more controls but there are so many variables about a city that could be correlated with both unemployment and crime that it seems unlikely we could observe them all. But what id we can **capture all unobserved, time invariant factors** about a city that might affect crime rates? If I use the data for 1987 and 1982, I can add city **fixed effects,**($\alpha_i$) to the regression I estimated above,
+We still get this puzzling result. We could continue to add more controls but there are so many variables about a city that could be correlated with both unemployment and crime that it seems unlikely we could observe them all. But what if we can **capture all unobserved, time invariant factors** about a city that might affect crime rates? If I use the data for 1987 and 1982, I can add city **fixed effects,**($\alpha_i$) to the regression I estimated above,
 
 $$
 crmrte_{it}=\beta_0+\beta_1unemp_{it}+\beta_2area_i+\beta_3west_i+\beta_4offarea_{it}+\beta_5lawexp_{it}+\beta_6pcinc_{it}+\alpha_i+\epsilon
 $$
 
 ```{r crime3}
-#note: the data does not have a unique city identifier. I am assuming the area of the city is 1)time-invariant and 2) uniquely identifies the 46 cities. The line of code below generates a unique identifier
+#note: the data does not have a unique city identifier. I am assuming the area of the city is #1)time-invariant and 
+#2) uniquely identifies the 46 cities. 
+#The line of code below generates a unique identifier
 crime <- transform(crime,city=as.numeric(factor(area)))
 #I check that my assumptions were correct by seeing if I have 2 observations for 46 cities.
 table(crime$city)
@@ -344,7 +336,7 @@ summary(regcrime4)
 
 So can I interpret the coefficient on this last regression as causal? We need to think carefully about what we have controlled for. The city fixed effects control for any time invariant factors that always affect the crime rates in a city in a similar way. This would be things like geography, street layouts, weather... The time fixed effects controls for any patterns that are common to all cities in a given year. This would be things like national policies such as the war on drugs, national interest rates... In addition to this we are also controlling for some observable time varying variables: officers in an area, law enforcement expenditures per capita and income per capita. So are these estimates causal? What kind of omitted variables should we still be concerned about? Any variable that changes within a city across years and that is correlated with both unemployment and crime rates could still be biasing our results. This could be things like school funding, decriminalization of marijuana, housing costs... to name just a few.
 
-Suppose I get ambition and want to control for all these factors as well. I decide I am going to generate a city-by-year fixed effect, ($\gamma_{it}$),  to control for these time variant omitted variables. I estimate,  
+Suppose I get ambitious and want to control for all these factors as well. I decide I am going to generate a city-by-year fixed effect, ($\gamma_{it}$),  to control for these time variant omitted variables. I estimate,  
 
 
 
