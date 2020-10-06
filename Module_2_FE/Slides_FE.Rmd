@@ -20,13 +20,13 @@ knitr::opts_chunk$set(fig.width=9, fig.height=5)
 
 - Fixed Effects
 
--A simulation
+- A simulation
 
--Fixed effects as demeaned data
+- Fixed effects as demeaned data
 
--Thinking about variation
+- Thinking about variation
 
--Example: Crime and Unemployment
+- Example: Crime and Unemployment
 
 ## Controlling for unobservables
 
@@ -84,9 +84,9 @@ $$
 
 Panel Data can be
 
--**balanced**: same number of observations for each unit 
+- **balanced**: same number of observations for each unit 
 
--**unbalanced**: some units are observed more often then others (probably good to look into why)
+- **unbalanced**: some units are observed more often then others (probably good to look into why)
 
 ## Review: Indicator (Dummy) Variables
 
@@ -124,11 +124,11 @@ What do the $\beta_{ak}$ coefficients tell me?
 \bigskip
 Also: 
 
--Why do the $IndN$ indicators only have an $i$ subscript?
+- Why do the $IndN$ indicators only have an $i$ subscript?
 
--What is the implied assumption if $Fem$ only has an $i$ subscript?
+- What is the implied assumption if $Fem$ only has an $i$ subscript?
 
--Why are there only (N-1) individual dummies? 
+- Why are there only (N-1) individual dummies? 
 
 
 ## Fixed Effects as Individual Indicator Variables
@@ -136,11 +136,11 @@ Also:
 
 **What will these individual controls control for?**
 
--$\beta_{a1}$ will control for the effect of being individual 1 on income that is not explained by that person's gender or schooling.
+- $\beta_{a1}$ will control for the effect of being individual 1 on income that is not explained by that person's gender or schooling.
 
--Any **time invariant** characteristic that affects individual 1's income, such as ability, grit, enthusiasm... will be controlled for by adding this individual dummy variable. 
+- Any **time invariant** characteristic that affects individual 1's income, such as ability, grit, enthusiasm... will be controlled for by adding this individual dummy variable. 
 
--These controls are known as individual **fixed effects**.
+- These controls are known as individual **fixed effects**.
 
 **For notational convenience:** 
 
@@ -157,9 +157,9 @@ $$
 Income_{it}=\beta_0+\beta_1Schooling_{it}+\beta_2Female_i+\gamma_i+\tau_t+\epsilon.
 $$
 
--What is $\tau_t$?
+- What is $\tau_t$?
 
--What is this estimation equivalent to?
+- What is this estimation equivalent to?
 
 ## A Simulation:
 
@@ -168,11 +168,11 @@ You are a principle of a small school composed of four classrooms. You have just
 \bigskip
 **You have data for ten students in each class that tells you:**
 
--the class the student is in
+- the class the student is in
 
--whether they participated in small group reading
+- whether they participated in small group reading
 
--their reading score. 
+- their reading score. 
 
 ## Generating Simulated Data
 
@@ -218,9 +218,9 @@ knitr::kable(head(scores))
 
 I simulate some selection into treatment. The probability of getting treated is 
 
--0.8 for students in classrooms 3 and 4 
+- 0.8 for students in classrooms 3 and 4 
 
--0.2 in classrooms 1 and 2. 
+- 0.2 in classrooms 1 and 2. 
 
 \tiny
 ```{r simfe2, results = "asis", echo = TRUE}
@@ -250,11 +250,11 @@ knitr::kable(head(scores))
 
 Finally! I simulate the DGP (Data Generating Process):
 
--The true treatment effect = 15
+- The true treatment effect = 15
 
--students in classrooms 1 and 2 have higher reading scores  
+- students in classrooms 1 and 2 have higher reading scores  
 
--students in classrooms 3 and 4 have lower reading scores. 
+- students in classrooms 3 and 4 have lower reading scores. 
 
 \tiny
 ```{r simfe4, results = "asis", echo = TRUE}
@@ -332,13 +332,13 @@ Recall:  $\beta_1=15$ (the true treatment effect) $\Rightarrow$ $\hat{\beta}_1^{
 
 **Why?**
 
--The classes are an important omitted variable: $cor(Score,Class3/4)<0$ and $cor(Treat,Class3/4)>0$ creating substantial downward bias. 
+- The classes are an important omitted variable: $cor(Score,Class3/4)<0$ and $cor(Treat,Class3/4)>0$ creating substantial downward bias. 
 
 We can correct for this in two (equivalent) ways: 
 
--adding the dummy variables for the class to the regression,
+- adding the dummy variables for the class to the regression,
 
--adding a class fixed effect. 
+- adding a class fixed effect. 
 
 Either approach returns an identical unbiased estimate such that $E[\hat{\beta}_1]=\beta_1$.
 
@@ -602,11 +602,11 @@ Is this estimate causal?
 
 What we have controlled for?
 
--The city fixed effects:  controls for any time invariant factors that always affect the crime rates in a city in a similar way. Such as...
+- The city fixed effects:  controls for any time invariant factors that always affect the crime rates in a city in a similar way. Such as...
 
--The time fixed effects: controls for any patterns that are common to all cities in a given year. Such as...
+- The time fixed effects: controls for any patterns that are common to all cities in a given year. Such as...
 
--In addition to this we are also controlling for some observable time varying variables: officers in an area, law enforcement expenditures per capita and income per capita.
+- In addition to this we are also controlling for some observable time varying variables: officers in an area, law enforcement expenditures per capita and income per capita.
 
 So are these estimates causal? 
 
