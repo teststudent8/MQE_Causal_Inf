@@ -131,6 +131,13 @@ Also:
 - Why are there only (N-1) individual dummies? 
 
 
+
+## Fixed Effects as Individual Indicator Variables
+
+
+**What will these individual controls control for?**
+
+
 ## Fixed Effects as Individual Indicator Variables
 
 
@@ -332,6 +339,14 @@ Recall:  $\beta_1=15$ (the true treatment effect) $\Rightarrow$ $\hat{\beta}_1^{
 
 **Why?**
 
+$\Rightarrow$ Top Hat 
+
+## A Simulation:
+
+Recall:  $\beta_1=15$ (the true treatment effect) $\Rightarrow$ $\hat{\beta}_1^{nofe}$ is very biased! 
+
+**Why?**
+
 - The classes are an important omitted variable: $cor(Score,Class3/4)<0$ and $cor(Treat,Class3/4)>0$ creating substantial downward bias. 
 
 We can correct for this in two (equivalent) ways: 
@@ -499,7 +514,7 @@ summary(regcrime)
 
 ## Example: Crime and Unemployment
 
-Wierd. 
+Weird. 
 
 The culprit? Probably omitted variables. 
 
@@ -523,7 +538,7 @@ summary(regcrime2)
 
 ## Example: Crime and Unemployment
 
-Even wierder. 
+Even weirder. 
 
 So many potential omitted variables... 
 
@@ -572,6 +587,8 @@ Interpret the coefficient on unemployment.
 
 Why were we not able to estimate a coefficient for $area_i$ and $west_i$?
 
+$\Rightarrow$ Top Hat 
+
 ## Example: Crime and Unemployment
 
 Suppose I am concerned about how national factors could be affecting all cities simultaneously. 
@@ -600,6 +617,13 @@ summary(regcrime4)
 
 Is this estimate causal? 
 
+$\Rightarrow$ Top Hat 
+
+
+## Example: Crime and Unemployment
+
+Is this estimate causal? 
+
 What we have controlled for?
 
 - The city fixed effects:  controls for any time invariant factors that always affect the crime rates in a city in a similar way. Such as...
@@ -610,7 +634,7 @@ What we have controlled for?
 
 So are these estimates causal? 
 
-What kind of omitted variables should we still be concerned about? 
+What kind of omitted variables should we still be concerned about? $\Rightarrow$ Top Hat 
 
 ## Example: Crime and Unemployment
 
