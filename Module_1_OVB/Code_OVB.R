@@ -8,10 +8,7 @@ library(dplyr)
 library(MASS)
 library(ggplot2)
 
-#getwd()
-#setwd(here())
-#getwd()
-#setwd("..")
+
 getwd()
 
 
