@@ -207,7 +207,7 @@ $$
 y_{ic}-\bar{y}_i=\beta_1(x_{ic}-\bar{x}_i)+(\epsilon_{ic}-\bar{\epsilon}_i)
 $$
 
-I do this in the with the following code. I first calculate the mean score, and the mean treatment, in each classroom. I then subtract these from each student's score and treatment indicator. Finally, I estimate my original model on the demeaned scores. 
+I do this with the following code. I first calculate the mean score, and the mean treatment, in each classroom. I then subtract these from each student's score and treatment indicator. Finally, I estimate my original model on the demeaned scores. 
 
 ```{r simfe6, results = "asis"}
 

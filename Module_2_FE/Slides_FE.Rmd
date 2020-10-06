@@ -367,3 +367,62 @@ $$
 y_{ic}-\bar{y}_i=\beta_1(x_{ic}-\bar{x}_i)+(\epsilon_{ic}-\bar{\epsilon}_i)
 $$
 
+
+## Fixed Effects as Demeaned Data: 
+
+1. Calculate the mean score, and the mean treatment, in each classroom
+
+\tiny
+```{r simfe6a, results = "asis",echo = TRUE}
+
+#getting the mean score in each classroom
+cl_mean<-scores %>%
+    group_by(class) %>%
+    dplyr::summarize(Classmean = mean(score, na.rm=TRUE), treatmean=mean(treat, na.rm=TRUE))
+
+knitr::kable(head(cl_mean))
+```
+
+## Fixed Effects as Demeaned Data: 
+
+2. Merging the means into full data
+
+\tiny
+```{r simfe6b, results = "asis",echo = TRUE}
+
+scores<-left_join(scores, cl_mean, by = "class")
+
+knitr::kable(head(scores))
+
+```
+
+
+## Fixed Effects as Demeaned Data: 
+
+3. Calculating the demeaned score
+
+\tiny
+```{r simfe6c, results = "asis",echo = TRUE}
+
+scores$demeansc<-scores$score-scores$Classmean
+scores$demeantrt<-scores$treat-scores$treatmean
+
+knitr::kable(head(scores[,c("class","treat","score","Classmean","treatmean","demeansc","demeantrt")]))
+
+```
+
+
+## Fixed Effects as Demeaned Data: 
+
+4. Running the basic regression on the demeaned scores
+
+\tiny
+```{r simfe6d, results = "asis",echo = TRUE}
+
+regdemean<-felm(demeansc~demeantrt, scores)
+stargazer( fe, regdemean,header=FALSE, type='latex', omit.stat=c("all" ))
+
+```
+
+Careful:  the standard errors on the demeaned regression are incorrect because the cases are not independent of each other.
+

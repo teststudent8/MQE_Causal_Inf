@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  5 OCT 2020 18:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  6 OCT 2020 11:29
 entering extended mode
 **./Lecture_Notes_Markdown_FE.tex
 (Lecture_Notes_Markdown_FE.tex
@@ -717,11 +717,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13746 strings out of 481565
- 205346 string characters out of 2913711
+ 13742 strings out of 481565
+ 205304 string characters out of 2913711
  496553 words of memory out of 3000000
  28616 multiletter control sequences out of 15000+200000
- 596171 words of font info for 114 fonts, out of 3000000 for 9000
+ 596005 words of font info for 112 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,15n,42p,826b,467s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.e
@@ -747,7 +747,7 @@ ire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Users
 Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb
 ><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtti
 10.pfb>
-Output written on Lecture_Notes_Markdown_FE.pdf (12 pages, 365113 bytes).
+Output written on Lecture_Notes_Markdown_FE.pdf (12 pages, 365141 bytes).
 PDF statistics:
  193 PDF objects out of 1000 (max. 8388607)
  35 named destinations out of 1000 (max. 500000)
