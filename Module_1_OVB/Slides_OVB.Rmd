@@ -110,7 +110,7 @@ If you are interested in description or prediction, this is fine and we can end 
 
 Who might be interested in using regressions for prediction?
 
-Suppose you are a bank interested in predicting customer's ability to repay student loans. You have a subset of CPS data on earnings and the number of years spent in education. You have a subset of CPS data that includes earnings and years in education.
+Suppose you are a bank interested in predicting customer's ability to repay student loans. You have a subset of CPS data on earnings and the number of years spent in education. 
 
 You estimate the following on working age adults (22+):
 
@@ -126,6 +126,21 @@ $$
 
 \tiny
 ```{r chunk1, echo = TRUE}
+
+mydata<-read.csv("data/data_M1_OVB/cps_clean.csv")
+
+reg1<-lm(inctot~edu,mydata[mydata$age>22,])
+summary(reg1)
+
+```
+
+**Interpret your results.**
+
+
+## Application: Regression for Prediction
+
+\tiny
+```{r chunk1aa, echo = TRUE}
 
 mydata<-read.csv("data/data_M1_OVB/cps_clean.csv")
 
@@ -185,6 +200,22 @@ summary(reg2)
 ```
 
 \normalsize
+Interpret your results. 
+
+## Application: Regression for Prediction
+
+\tiny
+```{r chunk2aa, echo=TRUE}
+
+mydata$collgrad<-0
+mydata$collgrad[mydata$edu>=16]<-1
+
+reg2<-lm(inctot~collgrad,mydata[mydata$edu>=12 & mydata$age>22,])
+summary(reg2)
+
+```
+
+\normalsize
 $\hat{\beta}_1=44,842$, so having a four year college degree \textbf{predicts} earnings that are \$44,842 higher.
 
 
@@ -212,6 +243,13 @@ $$
 E[Income_i|Schooling_i]=\hat{Income}_i=\hat{\beta}_0+\hat{\beta}_1Schooling_i 
 $$
 BUT this only tells us how income and schooling co-vary. This **DOES NOT** tell us what would happen to income if there was an **"exogenous"** change in schooling. 
+
+
+## What is the difference? 
+
+Here, schooling is **"endogenously"** determined. 
+
+**Who is most likely to select into schooling?**
 
 ## What is the difference? 
 
@@ -286,7 +324,18 @@ The treatment is potentially manipulable: we can imagine a policy or interventio
 
 Can you conceptualize both $Y_i(1)$ and $Y_i(0)$ for the same unit?
 
-**\underline{If no:}** D does not correspond to a potentially manipulable treatment.
+**\underline{If no:}** $D$ does not correspond to a potentially manipulable treatment.
+
+- We need to further define the problem. 
+
+**Example: Does being a woman \underline{cause} lower earnings?**
+
+
+## "No Causation without Manipulation" (2)
+
+Can you conceptualize both $Y_i(1)$ and $Y_i(0)$ for the same unit?
+
+**\underline{If no:}** $D$ does not correspond to a potentially manipulable treatment.
 
 - We need to further define the problem. 
 
@@ -306,6 +355,14 @@ $$
 Note: the treatment effect is relative and specific to observation $i$.
 
 But how can we identify $\tau_i$ if we never observe both $Y_i(1)$ and $Y_i(0)$ for a given unit?
+
+
+## The Fundamental Problem of Causal Inference
+
+It is impossible to observe the value of $Y_i(1)$ and $Y_i(0)$ in the same unit $i$ and, therefore, it is impossible to observe $\tau_i$, the effect for unit $i$ of the treatment on it's outcome, $Y_i$. (Holland 1986)
+
+\centering
+__So, are we doomed?__
 
 ## The Fundamental Problem of Causal Inference
 
@@ -340,6 +397,27 @@ Y_i&=Y_i(0)+(Y_i(1)-Y_i(0))D_i\\
 \end{aligned}
 $$
 where $\alpha=E[Y_i(0)]$, $\tau=Y_i(1)-Y_i(0)$ and $\eta_i$ is the random part of $Y_i(0)$ since $\eta_i=Y_i(0)-E[Y_i(0)]$. 
+
+
+## The Conditional Independence Assumption
+
+The expected outcomes of someone with and someone without treatment is then given by 
+
+$$
+\begin{aligned}
+E[Y_i(1)]&=\alpha+\tau+E[\eta_i|D_i=1]\\
+E[Y_i(0)]&=\alpha+E[\eta_i|D_i=0]
+\end{aligned}
+$$
+
+so that the difference between these outcomes can be broken down into 
+
+$$
+ E[Y_i(1)]-E[Y_i(0)] = 
+    \underbrace{\tau}_\text{treatment effect} + \underbrace{E[\eta_i|D_i=1]-E[\eta_i|D_i=0]}_\text{?}
+$$
+
+What is the second term?
 
 ## The Conditional Independence Assumption
 
@@ -387,12 +465,25 @@ If I want to estimate $\tau$, the **causal** effect of a college degree on earni
 
 Why? 
 
+
+
+## Example
+
+I naively use my observational CPS data and estimate 
+$$
+\begin{split}
+earnings_i=\tilde{\alpha}+\tilde{\tau} college_i+\epsilon_i.
+\end{split}
+$$
+If I want to estimate $\tau$, the **causal** effect of a college degree on earnings, this estimate, $\tilde{\tau}$ will be biased: $E[\tilde{\tau}]\neq \tau$. 
+
+Why? 
+
 \underline{Selection bias:} If people who receive college degrees would have had higher earnings even without the degree,
 
 $$
 E[\eta_i|D_i=1]>E[\eta_i|D_i=0].
 $$
-
 
 ## The Conditional Independence Assumption
 
@@ -436,14 +527,14 @@ and we can interpret $\hat{\tau}$ as the causal effect of interest.
 
 ## Example: 
 
-If I estimate $Income_i=\tilde{\alpha}+\tilde{\tau}college_i+\epsilon_i$ we saw that  $E[\tilde{\tau}]\neq\tau$ due to selection bias. 
+If I estimate $Earnings_i=\tilde{\alpha}+\tilde{\tau}college_i+\epsilon_i$ we saw that  $E[\tilde{\tau}]\neq\tau$ due to selection bias. 
 
 **Suppose CIA holds if I condition on a student's household income.**
 (ie. if I control for student household income, which students complete college is as good as randomly assigned) .
 
 Then
 $$
-earnings_i=\hat{\alpha}+\hat{\tau}+\hat{\gamma}hhinc_i+\epsilon_i
+earnings_i=\hat{\alpha}+\hat{\tau}college_i+\hat{\gamma}hhinc_i+\epsilon_i
 $$
  and $E[\hat{\tau}]=\tau$: a college degree causes earnings to increase by $\hat{\tau}$ USD. 
  
@@ -491,11 +582,11 @@ We can thus sign the bias by signing $\beta_2$, the covariance between $x_{2i}$ 
 
 ## Example: Using CPS data
 
-I am interested in how health related to income. Using my CPS sample of working age adults I estimate
+I am interested in how health relates to income. Using my CPS sample of working age adults I estimate
 $$
 Income_i=\beta_0+\beta_1Health_i+\epsilon, 
 $$
-where heath is an respondents subjective assessment of their health with 1 being very health and 5 being very unhealthy. 
+where heath is a respondents subjective assessment of their health with 1 being very healthy and 5 being very unhealthy. 
 
 ## Example: Using CPS data
 
@@ -505,6 +596,13 @@ reghealth<-lm(inctot~health,mydata)
 summary(reghealth)
 ```
 \normalsize
+Interpret. 
+
+## Example: Using CPS data
+
+How might the omission of age be biasing these estimates?
+
+
 
 
 ## Example: Using CPS data
@@ -517,6 +615,7 @@ How might the omission of age be biasing these estimates?
 
 - $\Rightarrow$ upward bias. 
 
+
 ## Example: Using CPS data
 
 \tiny
@@ -527,6 +626,11 @@ summary(reghealth2)
 
 ```
 \normalsize
+
+## Example: Using CPS data
+
+How might the omission of schooling be biasing these estimates?
+
 
 
 
@@ -816,11 +920,19 @@ Our OLS estimator it not doing so good: $\tilde{\tau}>\tau$.
 
 Why? 
 
+
+## There is no Santa Claus: AGG (2006)
+
+Our OLS estimator it not doing so good: $\tilde{\tau}>\tau$.
+
+Why? 
+
 - the people that are contacted are the type of person who is more likely to vote already
 
 - $cor(Vote,Type)>0$ and $cor(Contact,Type)>0$ biasing our estimates upward. 
 
 Can OLS do better? AGG have lots of controls in their data. 
+
 
 ## There is no Santa Claus: AGG (2006)
 
