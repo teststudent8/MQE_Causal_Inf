@@ -1,11 +1,14 @@
 ---
-title: "Lecture Notes: Causal Inference Fall 2020"
+title: 'Lecture Notes: Causal Inference Fall 2020'
 author: "Claire Duquennois"
 date: "7/28/2020"
 output:
   pdf_document:
-    toc: true
-    number_sections: true
+    number_sections: yes
+    toc: yes
+  html_document:
+    df_print: paged
+    toc: yes
 ---
 
 ```{r setup}
@@ -13,14 +16,7 @@ library(stargazer)
 library(here)
 # Set so that long lines in R will be wrapped:
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
-getwd()
-knitr::opts_knit$set(root.dir = here())
-setwd('..')
-a<-paste(setwd('..'))
-knitr::opts_knit$set(root.dir = a)
-b<-paste(setwd('..'))
-knitr::opts_knit$set(root.dir = b)
-getwd()
+
 ```
 
 
@@ -33,7 +29,7 @@ getwd()
 
 
 
-In this section of the quantitative methods sequence, you will learn the tools economists use to identify causal relationships and test hypotheses \textit{in the wild}. This material is the bridge between theory and estimation. When properly applied to the right dataset, approaches such as instrumental variables, differences-in-differences or regression discontinuity can allow us to test a hypothesis and make causal claims about the relationship between variables. The curriculum for this course will cover the main estimation strategies used today in empirical economics. 
+In this part of the quantitative methods sequence, you will learn the tools economists use to identify causal relationships and test hypotheses \textit{in the wild}. This material is the bridge between theory and estimation. When properly applied to the right dataset, approaches such as instrumental variables, differences-in-differences or regression discontinuity can allow us to test a hypothesis and make causal claims about the relationship between variables. The curriculum for this course will cover the main estimation strategies used today in empirical economics. 
 
 In addition to the official curriculum, there is an equally important hidden curriculum that will primarily be learned through individual and group homework assignments. This hidden curriculum involves acquiring the coding and work flow skills necessary to conduct causal analysis whether you are working solo or as a team. This will primarily involve learning how to work in R, using GitHub and learning how to present your findings clearly and effectively.
 
@@ -138,7 +134,7 @@ In R, you code:
 
 ```{r chunk1}
 
-mydata<-read.csv("data/data_M1_OVB/cps_clean.csv")
+mydata<-read.csv("../../data/data_M1_OVB/cps_clean.csv")
 
 reg1<-lm(inctot~edu,mydata[mydata$age>22,])
 summary(reg1)
@@ -727,7 +723,7 @@ library(haven)
 library(lfe)
 library(dplyr)
 
-agg_data<-read_dta("data/data_M1_OVB/IA_MI_merge040504.dta")
+agg_data<-read_dta("../../data/data_M1_OVB/IA_MI_merge040504.dta")
 nrow(agg_data)
 
 ##scalling the vote02 variable to remove excess 0's from tables

@@ -14,15 +14,7 @@ knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_chunk$set(fig.width=9, fig.height=5) 
 library("lfe")
 library("stargazer")
-library("here")
-getwd()
-knitr::opts_knit$set(root.dir = here())
-setwd('..')
-a<-paste(setwd('..'))
-knitr::opts_knit$set(root.dir = a)
-b<-paste(setwd('..'))
-knitr::opts_knit$set(root.dir = b)
-getwd()
+
 ```
 ## Module 1: Regressions,causality and bias
 
@@ -127,7 +119,7 @@ $$
 \tiny
 ```{r chunk1, echo = TRUE}
 
-mydata<-read.csv("data/data_M1_OVB/cps_clean.csv")
+mydata<-read.csv("../../data/data_M1_OVB/cps_clean.csv")
 
 reg1<-lm(inctot~edu,mydata[mydata$age>22,])
 summary(reg1)
@@ -142,9 +134,6 @@ summary(reg1)
 \tiny
 ```{r chunk1aa, echo = TRUE}
 
-mydata<-read.csv("data/data_M1_OVB/cps_clean.csv")
-
-reg1<-lm(inctot~edu,mydata[mydata$age>22,])
 summary(reg1)
 
 ```
@@ -891,7 +880,7 @@ library(dplyr)
 ## There is no Santa Claus: AGG (2006)
 \tiny
 ```{r repagg1aa, echo=TRUE, results = "asis"}
-agg_data<-read_dta("data/data_M1_OVB/IA_MI_merge040504.dta")
+agg_data<-read_dta("../../data/data_M1_OVB/IA_MI_merge040504.dta")
 nrow(agg_data)
 
 ##scalling the vote02 variable to remove excess 0's from tables
