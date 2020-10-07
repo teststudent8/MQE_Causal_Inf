@@ -152,14 +152,13 @@ Suppose there exists a variable $z$ that satisfies the two conditions outlined a
 
 Our simulated data includes $z$, a variable with these properties 
 
-```{r simiv 5, results = "asis"}
-
-ivdat$nu<-B2*ivdat$x_2+ivdat$error
-
+```{r simiv 5, results = "asis", echo=TRUE}
 cor(ivdat$z, ivdat$x_1)
 
 #note: we can test this correlation because I am working with simulated data and observe x_2.
-#In the wild x_2 would be unobservable and you wouls have to argue that this condition holds.
+#In the wild x_2 would be unobservable and you would have to argue that this condition holds.
+ivdat$nu<-B2*ivdat$x_2+ivdat$error
+
 cor(ivdat$z, ivdat$nu)
 
 ```
@@ -177,7 +176,7 @@ Notice that using the instrumental variable allows me to retrieve an unbiased es
 
 \subsection{2SLS}
 
-To build intuition about how the IV estimator, $\hat{\beta}_{IV}$ uses the instrumental variable to retrieve an unbiased estimate, I introduce another estimator, the two-stage least squares (2SLS) estimator,  $\hat{\beta}_{2SLS}$. When we are working with only one instrument and one endogenous regressor, $\hat{\beta}_{IV}=\hat{\beta}_{2SLS}$.
+To build intuition about how the IV estimator, $\beta_{IV}$ uses the instrumental variable to retrieve an unbiased estimate, I introduce another estimator, the two-stage least squares (2SLS) estimator,  $\beta_{2SLS}$. When we are working with only one instrument and one endogenous regressor, $\beta_{IV}=\beta_{2SLS}$.
 
 2SLS, not surprisingly, proceeds in two (least squares regression) stages. First, we run the "first stage," a regression of our endogenous variable on our instrument:^[if you have other exogenous regressors, you will need to include them in both the first stage and the second stage regressions.]
 $$
