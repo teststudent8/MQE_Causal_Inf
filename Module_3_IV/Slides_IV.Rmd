@@ -156,10 +156,102 @@ Woot Woot! We have an unbiased estimator!
 
 - $z$'s that satisfy the exclusion restriction are rare and we cannot test that  $Cov(z, \nu)= 0$ since we don't observe $\epsilon$. 
 
-, we can never test this assumption. This should make you highly skeptical of anybody doing instrumental variables regressions and wary of trying them yourself. IV is often more art than science and the quality of an IV project will hinge directly on your ability to convince people that the exclusion restriction is satisfied. 
+## Chasing Unicorns
 
-A good IV is not unlike a unicorn. It is quite powerful/magical as it will allow you to recover a consistent estimate of $\hat{\beta}_1$ in a situation that was otherwise hopeless. It is also a rare, (some may argue imaginary) beast, that usually turns out to be a horse with an overly optimistic owner(author).
+A good IV is not unlike a unicorn. It is quite powerful/magical as it will allow you to recover a consistent estimate of $\hat{\beta}_1$ in a situation that was otherwise hopeless.
 
-\center ![]("images\code_quality.png"){width=75%}
+\centering![]("images\real_unicorn.jpg"){width=75%}
 
+
+
+## Chasing Unicorns
+
+It is also a rare, (some may argue imaginary) beast, that usually turns out to be a horse with an overly optimistic rider (author).
+
+\centering![]("images\unicorn.jpg"){width=45%}
+
+\small
+- be skeptical of instrumental variables regressions
+
+- be wary of trying them yourself
+
+- be prepared to convince people the exclusion restriction is satisfied
+
+
+## A simulation
+
+I generate some simulated data, with properties I fully understand:
+
+The DGP: $Y$ depends on two variables, $X_1$ and $X_2$ such that 
+
+$$
+Y_i=\beta_0+\beta_1 x_{1i}+\beta_2 x_{2i}+\epsilon_i
+$$
+
+- $x_1$ and $x_2$ are correlated with $Cor(x_1,x_2)=0.75$
+
+- $z$ is correlated with $x_1$ such that $Cor(x_1,z)=0.25$
+
+- $z$ is not correlated with $x_2$ (so $Cor(x_2,z)=0$). 
+
+## A simulation
+
+\tiny
+```{r simiv1, echo=TRUE}
+library(MASS)
+library(ggplot2)
+library(stargazer)
+
+sigmaMat<-matrix(c(1,0.75,0.25,0.75,1,0,0.25,0,1), nrow=3)
+sigmaMat
+
+
+set.seed(3221)
+ivdat<- as.data.frame(mvrnorm(10000, mu = c(0,0,0), 
+                     Sigma = sigmaMat))
+
+names(ivdat)<-c("x_1","x_2","z")
+cor(ivdat)
+```
+
+## A simulation
+
+\tiny
+```{r simiv1a, echo=TRUE}
+
+ivdat$error<-rnorm(10000, mean=0, sd=1)
+
+#The data generating process
+B1<-10
+B2<-(-20)
+
+ivdat$Y<-ivdat$x_1*B1+ivdat$x_2*B2+ivdat$error
+
+knitr::kable(head(ivdat))
+
+```
+
+
+
+## A simulation:
+\small
+```{r simiv 4,  echo=TRUE}
+simiv1<-lm(Y~x_1+x_2, data=ivdat)
+simiv2<-lm(Y~x_1, data=ivdat)
+```
+\normalsize
+How will our estimate of $\hat{\beta}_1$ in model 2 compare to the true $\beta$? 
+
+$\Rightarrow$ Top Hat
+
+## A simulation:
+\tiny
+```{r simiv 4a, results = "asis", echo=TRUE}
+stargazer(simiv1, simiv2, header=FALSE, type='latex', omit.stat = "all", single.row = TRUE)
+```
+
+\small
+- With the correctly specified model $E[\hat{\beta}_1]=\beta_1$.
+
+- If I do not observe $x_2$, the naive approach is biased.
 

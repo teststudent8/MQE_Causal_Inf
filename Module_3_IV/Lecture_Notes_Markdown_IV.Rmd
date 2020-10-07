@@ -82,9 +82,17 @@ Since the exclusion restriction gives us that $cov(z, \nu)= 0$ by assumption, $\
 
 It turns out that in real life, coming up with $z$'s that satisfy the first condition is trivial-and the good news is that we can easily test the validity of this assumption. Coming up with $z$'s that satisfy the exclusion restriction is extremely difficult. Because we don't observe $\epsilon$, we can never test this assumption. This should make you highly skeptical of anybody doing instrumental variables regressions and wary of trying them yourself. IV is often more art than science and the quality of an IV project will hinge directly on your ability to convince people that the exclusion restriction is satisfied. 
 
-A good IV is not unlike a unicorn. It is quite powerful/magical as it will allow you to recover a consistent estimate of $\hat{\beta}_1$ in a situation that was otherwise hopeless. It is also a rare, (some may argue imaginary) beast, that usually turns out to be a horse with an overly optimistic owner(author).
+A good IV is not unlike a unicorn. It is quite powerful/magical as it will allow you to recover a consistent estimate of $\hat{\beta}_1$ in a situation that was otherwise hopeless. 
 
-![]("images\real_unicorn.jpg"){width=45%}
+
+![]("images/real_unicorn.jpg"){width=50%}
+
+
+It is also a rare, (some may argue imaginary) beast, that usually turns out to be a horse with an overly optimistic rider (author).
+
+![]("images/unicorn.jpg"){width=50%}
+
+
 
 \subsection{IV: A simulation}
 
@@ -122,6 +130,7 @@ B1<-10
 B2<-(-20)
 
 ivdat$Y<-ivdat$x_1*B1+ivdat$x_2*B2+ivdat$error
+
 
 ```
 
