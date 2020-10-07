@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  1 OCT 2020 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  7 OCT 2020 18:37
 entering extended mode
 **./MQE2020_syllabus.tex
 (MQE2020_syllabus.tex
@@ -527,8 +527,7 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@inbox=\box51
 \enit@count@id=\count303
 \enitdp@description=\count304
-)
-No file MQE2020_syllabus.aux.
+) (MQE2020_syllabus.aux)
 \openout1 = `MQE2020_syllabus.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
@@ -549,6 +548,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
 LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 5
 0.
+
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1ppl.fd"
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
@@ -633,6 +633,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 50.
 LaTeX Info: Redefining \pageref on input line 50.
 LaTeX Info: Redefining \nameref on input line 50.
+ (MQE2020_syllabus.out) (MQE2020_syllabus.out)
 \@outlinefile=\write3
 \openout3 = `MQE2020_syllabus.out'.
 
@@ -853,21 +854,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 283.
  (MQE2020_syllabus.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 283.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 283.
-
-
-Package rerunfilecheck Warning: File `MQE2020_syllabus.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `MQE2020_syllabus.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `MQE2020_syllabus.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 283.
  ) 
 Here is how much of TeX's memory you used:
- 10322 strings out of 481565
- 170275 string characters out of 2913711
- 452915 words of memory out of 3000000
+ 10328 strings out of 481565
+ 170587 string characters out of 2913711
+ 453019 words of memory out of 3000000
  25342 multiletter control sequences out of 15000+200000
  545033 words of font info for 57 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -877,7 +871,7 @@ c}<C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/u
 plb8a.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/pa
 latino/uplr8a.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 1/urw/palatino/uplri8a.pfb>
-Output written on MQE2020_syllabus.pdf (5 pages, 84573 bytes).
+Output written on MQE2020_syllabus.pdf (5 pages, 84569 bytes).
 PDF statistics:
  66 PDF objects out of 1000 (max. 8388607)
  14 named destinations out of 1000 (max. 500000)
