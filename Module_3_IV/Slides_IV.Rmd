@@ -1,5 +1,5 @@
 ---
-title: "MQE: Economic Inference from Data:  \nModule 2: Instrumental Variables"
+title: "MQE: Economic Inference from Data:  \nModule 3: Instrumental Variables"
 author: "Claire Duquennois"
 date: "6/9/2020"
 output:
@@ -14,4 +14,138 @@ knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_chunk$set(fig.width=9, fig.height=5) 
 ```
 
-## Module 3: Instrumental Variables
+## You can't always get what you want
+
+Even with fixed effects, certain types of unobservables can still bias our estimates. 
+
+For OVB to not be a problem, we want a treatment variable $x_i$ where we know that there does not exist some omitted variable $x_{ov}$ such that
+
+- $cor(x_i,x_{ov})\neq 0$ 
+
+- and $cor(y_i, x_{ov})\neq 0$.
+
+This is a tall order...
+
+## You can't always get what you want
+
+ But if you try \underline{sometimes},
+ 
+ 
+
+## You can't always get what you want
+
+ But if you try \underline{sometimes},
+ 
+ you just \underline{might} find, 
+ 
+
+
+## You can't always get what you want
+
+ But if you try \underline{sometimes},
+ 
+ you just \underline{might} find, 
+ 
+ you get what you need: a good instrumental variable.
+ 
+ 
+ 
+## An instrument for what? 
+
+I am interested in the relationship between $y$ and $x_1$.
+
+The true data generating process looks like this:
+
+$$
+y_i=\beta_0+\beta_1x_1+\beta_2x_2+\epsilon
+$$
+
+- $x_i$ and $x_2$ are uncorrelated with $\epsilon$ 
+
+- $x_i$ and $x_2$ they are correlated with each other such that $Cov(x_1,x_2)\neq 0$
+
+So whats the problem? 
+
+- you don't actually observe $x_2$. 
+
+Uh oh. 
+
+## The problem: 
+
+The naive approach (but you of course know better then to do this...) 
+
+Regress $y$ on just $x_1$:
+
+$$
+y_i=\beta_0+\beta_1x_1+\nu
+$$
+where 
+
+$$
+\nu=\beta_2x_2+\epsilon.
+$$
+
+## The problem: 
+
+$$
+\begin{aligned}
+\hat{\beta}_{1,OLS}&=\frac{cov(x_1,y)}{var(x_1)}\\
+&=\frac{cov(x_1,\beta_0+\beta_1x_1+\nu)}{var(x_1)}\\
+&=\frac{cov(x_1, \beta_0)+cov(x_1,\beta_1x_1)+cov(x_1,\nu)}{var(x_1)}\\
+&=\frac{\beta_1var(x_1)+cov(x_1,\nu)}{var(x_1)}\\
+&=\beta_1+\frac{cov(x_1,\nu)}{var(x_1)}
+\end{aligned}
+$$
+
+ $cov(x_1,\nu)\neq0\Rightarrow\hat{\beta}_{1,OLS}$ is biased.
+
+## All is not lost!
+ 
+
+An **instrumental variable** (IV) is a variable that 
+
+- is correlated with the "good" or "\textit{exogenous}" variation in $x_1$
+
+- is unrelated to the "bad" or "\textit{endogenous}" or "\textit{related-to-$x_2$}" variation in $x_1$. 
+ 
+ 
+## Formally
+
+
+An IV is a variable, $z$ that satisfies two important properties:
+
+- $Cov(z, x_1)\neq 0$ (the first stage).
+- $Cov(z, \nu)= 0$ (the exclusion restriction). 
+
+## The First Stage
+
+$Cov(z, x_1)\neq 0$ 
+
+- $z$ and $x_1$ are correlated
+
+- the IV is useless without a first stage. 
+
+We are trying to get a $\hat{\beta}_1$ such that $E[\hat{\beta}_1]=\beta_1$. If our instrument is totally unrelated to $x_1$, we won't have any hope of using it to get at $\beta_1$.
+
+## The exclusion restriction
+
+$Cov(z, \nu)= 0$ 
+
+- $z$ has to affect $y$ **only** through $x_1$. 
+
+- $\Rightarrow Cov(z,\epsilon)=0$ (because we've already assumed that $x_2$ is uncorrelated with $\epsilon$).
+
+
+## The IV estimator
+$$
+\begin{aligned}
+\hat{\beta}_{1,IV}&=\frac{cov(z,y)}{cov(z,x)}\\
+&=\frac{cov(z,\beta_0+\beta_1x_1+\nu)}{cov(z,x_1)}\\
+&=\beta_1\frac{cov(z,x_1)}{cov(z,x_1)}+\frac{cov(z,\nu)}{cov(z,x_1)}\\
+&=\beta_1+\frac{cov(z,\nu)}{cov(z,x_1)}.
+\end{aligned}
+$$
+ 
+With the exclusion restriction: $cov(z, \nu)= 0\Rightarrow E[\hat{\beta}_{1,IV}]=\beta_1$ 
+
+Huzzah! We have an unbiased estimator!
