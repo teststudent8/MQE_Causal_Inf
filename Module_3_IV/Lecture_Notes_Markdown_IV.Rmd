@@ -6,7 +6,6 @@ output:
   pdf_document:
     toc: true
     number_sections: true
-bibliography: notes_cited.bib
 ---
 
 ```{r setup,include=FALSE}
@@ -20,7 +19,7 @@ knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
 
 \section{Instrumental Variables}
 
-In the section above we saw that fixed effects can allow us to control for quite a number of different unbservables. However, as the example on crime and unemployment illustrated, there can still be concerns that certain types of unobservable variables coule be biasing our estimates. What we would really like is to have a treatment variable $x_i$ where we know that there does not exist some omitted variable $x_{ov}$ such that $cor(x_i,x_{ov})\neq 0$ and $cor(y_i, x_{ov})\neq 0$. Sadly, you can't always get wat you want. But if you try sometimes, you just might find, you get what you need: a good instrumental variable. 
+In the section above we saw that fixed effects can allow us to control for quite a number of different unobservables. However, as the example on crime and unemployment illustrated, there can still be concerns that certain types of unobservable variables could be biasing our estimates. What we would really like is to have a treatment variable $x_i$ where we know that there does not exist some omitted variable $x_{ov}$ such that $cor(x_i,x_{ov})\neq 0$ and $cor(y_i, x_{ov})\neq 0$. Sadly, you can't always get what you want. But if you try sometimes, you just might find, you get what you need: a good instrumental variable. 
 
 Suppose I am interested in the relationship between $y$ and $x_1$ but the true data generating process looks like this:
 
@@ -67,7 +66,7 @@ Formally, an IV is a variable, $z$ that satisfies two important properties:
 \item $Cov(z, \nu)= 0$ (the exclusion restriction). 
 \end{itemize}
 
-The first condition tells us that $z$ and $x_1$ are correlated- if this wern't true, the IV would be useless and we would be back at square one: in trouble. Remember, we are trying to get a $\hat{\beta}_1$ such that $E[\hat{\beta}_1]=\beta_1$. If our instrument is totally unrelated to $x_1$, we won't have any hope of using it to get at $\beta_1$.^[If we are interested in how unemployment affects crime, I would not recommend using windspeed over the Pacific ocean as an instument.]
+The first condition tells us that $z$ and $x_1$ are correlated- if this weren't true, the IV would be useless and we would be back at square one: in trouble. Remember, we are trying to get a $\hat{\beta}_1$ such that $E[\hat{\beta}_1]=\beta_1$. If our instrument is totally unrelated to $x_1$, we won't have any hope of using it to get at $\beta_1$.^[If we are interested in how unemployment affects crime, I would not recommend using wind speed over the Pacific ocean as an instrument.]
 
 The second condition, commonly called the "exclusion restriction" says that $z$ has to affect $y$ **only** through $x_1$. (This also implies that $Cov(z,\epsilon)=0$, because we've already assumed that $x_2$ is uncorrelated with $\epsilon$).
 
@@ -82,7 +81,7 @@ $$
 $$
 Since the exclusion restriction gives us that $cov(z, \nu)= 0$ by assumption, $\hat{\beta}_{1,IV}=\beta_1$ and we have an unbiased estimate of $\beta_1$. 
 
-It turns out that in real life, coming up with $z$'s that satisfy the first condition is trivial-and the good news is that we can easily test the validity of this assumption. Coming up with $z$'s that satisfy the exclusion restrictionis extremely difficult. Because we don't observe $\epsilon$, we can never test this assumption. This should make you highly skeptical of anybody doing instrumental variables regressions and wary of trying them yourself. IV is often more art than science and the quality of an IV project will hinge directly on your ability to convince people that the exclusion restriction is satisfied. 
+It turns out that in real life, coming up with $z$'s that satisfy the first condition is trivial-and the good news is that we can easily test the validity of this assumption. Coming up with $z$'s that satisfy the exclusion restriction is extremely difficult. Because we don't observe $\epsilon$, we can never test this assumption. This should make you highly skeptical of anybody doing instrumental variables regressions and wary of trying them yourself. IV is often more art than science and the quality of an IV project will hinge directly on your ability to convince people that the exclusion restriction is satisfied. 
 
 A good IV is not unlike a unicorn. It is quite powerful/magical as it will allow you to recover a consistent estimate of $\hat{\beta}_1$ in a situation that was otherwise hopeless. It is also a rare, (some may argue imaginary) beast. 
 
@@ -95,7 +94,7 @@ The data generating process is as follows. My outcome variable, $Y$ depends on t
 $$
 Y_i=\beta_0+\beta_1 x_{1i}+\beta_2 x_{2i}+\epsilon_i
 $$
-where $x_1$ and $x_2$ are correlated with $Cor(x_1,x_2)=0.75$. In additon, I will also generate a variable, $z$, that is correlated with $x_1$ such that $Cor(x_1,z)=0.25$. but not with $x_2$. 
+where $x_1$ and $x_2$ are correlated with $Cor(x_1,x_2)=0.75$. In addition, I will also generate a variable, $z$, that is correlated with $x_1$ such that $Cor(x_1,z)=0.25$. but not with $x_2$. 
 
 
 
@@ -164,11 +163,11 @@ stargazer(simiv1, simiv2, simiv3,  type='latex')
 
 ```
 
-Notice that using the instrumental variable allows me to retreive an unbiased estimate of  $\beta_1$, which is pretty neat.^[$R^2$ values get real funky with IV regressions. They can be negative and should not be used for F-tests]
+Notice that using the instrumental variable allows me to retrieve an unbiased estimate of  $\beta_1$, which is pretty neat.^[$R^2$ values get real funky with IV regressions. They can be negative and should not be used for F-tests]
 
 \subsection{2SLS}
 
-To build intuition about how the IV estimator, $\hat{\beta}_{IV}$ uses the instrumental variable to retrieve an unbiased estimate, I introdue another estimator, the two-stage least squares (2SLS) estimator,  $\hat{\beta}_{2SLS}$. When we are working with only one instrument and one endogenous regressor, $\hat{\beta}_{IV}=\hat{\beta}_{2SLS}$.
+To build intuition about how the IV estimator, $\hat{\beta}_{IV}$ uses the instrumental variable to retrieve an unbiased estimate, I introduce another estimator, the two-stage least squares (2SLS) estimator,  $\hat{\beta}_{2SLS}$. When we are working with only one instrument and one endogenous regressor, $\hat{\beta}_{IV}=\hat{\beta}_{2SLS}$.
 
 2SLS, not surprisingly, proceeds in two (least squares regression) stages. First, we run the "first stage," a regression of our endogenous variable on our instrument:^[if you have other exogenous regressors, you will need to include them in both the first stage and the second stage regressions.]
 $$
@@ -214,7 +213,7 @@ Magical! $\hat{\beta}_{1,2SLS}$ consistently estimates $\beta_1$ and $\hat{\beta
 
 \subsubsection{The Reduced Form and more cool IV intuition}
 
-The **reduced form** equation cuts out the middle variable and regresses the outcome directly on the exgenous instrument (and any other exogenous variables if you have them):
+The **reduced form** equation cuts out the middle variable and regresses the outcome directly on the exogenous instrument (and any other exogenous variables if you have them):
 
 $$
 y_i=\pi_0+\pi_1z+\eta
@@ -233,11 +232,11 @@ $$
 \hat{\beta}_1=\frac{\hat{\pi}_1}{\hat{\gamma}_1}=\frac{2.578}{0.239}=10.786
 $$
 
-Again, we get the righ coefficient on $x_1$. Why does this work? The reduced form is (essentially) the effect of $z$ on $y$. What we are doing is taking the effect of $z$ on $y$ and scalling it by the effect of $z$ on $x_1$ (since $z$ affects $y$ via $x_1$).^[Note: this won't work if you have multiple endogenous variables and multiple instruments or additional exogenous variables.]
+Again, we get the right coefficient on $x_1$. Why does this work? The reduced form is (essentially) the effect of $z$ on $y$. What we are doing is taking the effect of $z$ on $y$ and scaling it by the effect of $z$ on $x_1$ (since $z$ affects $y$ via $x_1$).^[Note: this won't work if you have multiple endogenous variables and multiple instruments or additional exogenous variables.]
 \subsection{Hints and warnings}
 
-\subsubsection{The forbiden regression:}
-Be weary of the **forbiden regression**! People sometimes try to run a logit, probit, Poisson or some other non-linear regression as the first stage of a 2SLS procedure. This is a bad idea. Don't do it.  
+\subsubsection{The forbidden regression:}
+Be weary of the **forbidden regression**! People sometimes try to run a logit, probit, Poisson or some other non-linear regression as the first stage of a 2SLS procedure. This is a bad idea. Don't do it.  
 \subsubsection{Weak Instruments:}
  A weak instrument is an instrument with a weak first stage, meaning that the correlation between $z$, the instrument, and the endogenous variable $x_1$,  $Cov(z, x_1)$,  is small. There are several reasons why weak instruments are a problem. 
  
@@ -245,7 +244,7 @@ First, a weak instrument will amplify any endogeneity that exists in your model.
 $$
 \hat{\beta}_{IV}=\beta+\frac{cov(z,\nu)}{cov(z,x_1)}.
 $$
-For our IV estimator to return an unbiased estimate of $\beta_1$, we need the exclusion restriction, that $cov(z,\nu)=0$ to hold. Suppose this assumption is violated in a small way, meaning that $cov(z,\nu)\neq 0$ but that it was a vary small value. This would nt severely bias our estimates unless we had a weak first stage. If $cov(z,x_1)$ is also small, the violation of the exclusion restriction will get amplified leading to potentially severe bias in our estimator. 
+For our IV estimator to return an unbiased estimate of $\beta_1$, we need the exclusion restriction, that $cov(z,\nu)=0$ to hold. Suppose this assumption is violated in a small way, meaning that $cov(z,\nu)\neq 0$ but that it was a vary small value. This wouldn't severely bias our estimates unless we had a weak first stage. If $cov(z,x_1)$ is also small, the violation of the exclusion restriction will get amplified leading to potentially severe bias in our estimator. 
 
 We can see this in a quick simulated example. Below, I generate a simulated dataset with a week first stage $cov(z,x_1)=0.03$ and a small violation of the exclusion restriction, such that  $cov(z,x_2)=0.01$, and proceed to estimate $\hat{\beta}_{1,IV}$. 
 
@@ -292,7 +291,7 @@ $$
 
 Since it is rare that an instrument would be perfectly independent of all confounding factors, and it is impossible to test the exclusion restriction, this is a major problem. For this reason, you should be very cautious about engaging in a project that has a weak first stage. 
 
-The standard benckmark for a "weak" instrument is a first stage F-test that is less than 10, though this number should not be taken as iron law. It is common to see papers where the first stage F's are numbers like 10.1. This is usually a sign that someone has been running a lot of regressions.^[There is a large econometric litterature on the properties of weak instruments. There are also additional problems that come up when running regressions with many weak instruments that we will not discuss here but consider yourself warned.]
+The standard benchmark for a "weak" instrument is a first stage F-test that is less than 10, though this number should not be taken as iron law. It is common to see papers where the first stage F's are numbers like 10.1. This is usually a sign that someone has been running a lot of regressions.^[There is a large econometric literature on the properties of weak instruments. There are also additional problems that come up when running regressions with many weak instruments that we will not discuss here but consider yourself warned.]
 
 
 \subsection{Dealing with multiples}
@@ -395,7 +394,7 @@ stargazer(simivmifs, simivmi,  type='latex')
 
 \subsubsection{Multiple endogenous variables and multiple instruments}
 
-It is possible to estimate models that include several endogenous variables. For things to go well though, you will want to have at least as many instruments as there are endogenous variables in your model (otherwise the model is \textit{underidentified} and you will not be able to estimate all of your coefficients). 
+It is possible to estimate models that include several endogenous variables. For things to go well though, you will want to have at least as many instruments as there are endogenous variables in your model (otherwise the model is \textit{under identified} and you will not be able to estimate all of your coefficients). 
 
 
 Model: 
@@ -470,7 +469,7 @@ The model for a medical trial is the same simple regression model that we are ac
 $$
 y_i=\beta_0+\beta_1 d_i+\epsilon_i.
 $$
-In this case, $y_i$ represents a medical outcome, which could either be a continuous variable such as blood pressure or a discreet variable such as survival. The variable $d_i$ is generally a dummy variable that is 1 if you recieve the treatment and 0 if you do not. The error term, $\epsilon_i$ represents all other factors that affect the health outcome. Note that this regression model corresponds to the potential outcome model with constant treatment effects
+In this case, $y_i$ represents a medical outcome, which could either be a continuous variable such as blood pressure or a discreet variable such as survival. The variable $d_i$ is generally a dummy variable that is 1 if you receive the treatment and 0 if you do not. The error term, $\epsilon_i$ represents all other factors that affect the health outcome. Note that this regression model corresponds to the potential outcome model with constant treatment effects
 
 $$
 \begin{aligned}
@@ -482,13 +481,13 @@ $$
 
 Let $y_i$ be blood pressure and $d_i$ represent a pill that is designed to lower blood pressure, such that $d_i=1$ if individual $i$ takes the pill and $d_i=0$ if individual $i$ does not take the pill. Our goal is to estimate the effect that the pill has on lowering blood pressure-our hole is that $\beta_1$ is large and negative. 
 
-One way to estimate the effect is to start selling the drug to the general populationand then collect some data and run a regression of blood pressure on whether or not you take the pill. However, this estimate will clearly suffer from a selection issue- people who take the pill are the ones who have high blood pressure to begin with! We will likely get a positive estimate of $\beta_1$ from this procedure, even if the true $\beta_1$ is large and negative. This may be true even if we cndition on ovservable covariates. Therefore in order to accurately estimate $\beta_1$, we design a medical trial in which we randomly assign some patients to the treatment group and others to the control group. The partients in the treatment group are given the pill and told to take it, while the patients in the control group are given a placebo (or nothing at all).   
+One way to estimate the effect is to start selling the drug to the general population and then collect some data and run a regression of blood pressure on whether or not you take the pill. However, this estimate will clearly suffer from a selection issue- people who take the pill are the ones who have high blood pressure to begin with! We will likely get a positive estimate of $\beta_1$ from this procedure, even if the true $\beta_1$ is large and negative. This may be true even if we condition on observable covariates. Therefore in order to accurately estimate $\beta_1$, we design a medical trial in which we randomly assign some patients to the treatment group and others to the control group. The patients in the treatment group are given the pill and told to take it, while the patients in the control group are given a placebo (or nothing at all).   
 
-Back in the old days, people estimated the effect of the drug by simply subtracting the mean of $y_i$ for the control group from the mean of $y_i$ for the treatment group (which is the equivalent to regressing $y_i$ on a variable that is 1 if you are assigned to the treatment groups and 0 if you are in the control group). This is what is known as an **intention to treat** (or ITT) analysis, because you are taking the difference between the group thaat you intended to treat and the group that you do not intend to treat. But there was the problem of **non-compliance**- some people in the treatment group would fail to take the pill and others in the control group would obtain the pill from another source, even though they were not supposed to. This non-compliance can cause bias in the estimate of $\beta_1$ and it was not immediately clear how to fix this bias until it became obvious that what we were looking at was actually a simple IV problem. 
+Back in the old days, people estimated the effect of the drug by simply subtracting the mean of $y_i$ for the control group from the mean of $y_i$ for the treatment group (which is the equivalent to regressing $y_i$ on a variable that is 1 if you are assigned to the treatment groups and 0 if you are in the control group). This is what is known as an **intention to treat** (or ITT) analysis, because you are taking the difference between the group that you intended to treat and the group that you do not intend to treat. But there was the problem of **non-compliance**- some people in the treatment group would fail to take the pill and others in the control group would obtain the pill from another source, even though they were not supposed to. This non-compliance can cause bias in the estimate of $\beta_1$ and it was not immediately clear how to fix this bias until it became obvious that what we were looking at was actually a simple IV problem. 
 
-In this case, the instrument, $z_i$ is the intention to treat, ie $z_i=1$ if you are assigned to the treatment group (we intend to treat you), and $z_i=0$ if you are assigned to the control group (we do not intend to treat you). It is easy to see that $z_i$ satispies the two properties of a good instrument. First, $z_i$ is randomly assigned so by construction will be uncorrelated with $\nu_i$ s $cov(z_i,\nu_i)=0$. Second, $z_i$ is correlated with $d_i$, because you are going to be more likeley to take the pill if you are in the treatment group so $cov(z_i,d-i)\neq0$. Therfore, $z_i$ is a valid instrument for $d_i$ and the IV estimator gives us a consistent estimate of $\beta_1$, the effect of taking the pill on blood pressure. 
+In this case, the instrument, $z_i$ is the intention to treat, ie $z_i=1$ if you are assigned to the treatment group (we intend to treat you), and $z_i=0$ if you are assigned to the control group (we do not intend to treat you). It is easy to see that $z_i$ satisfies the two properties of a good instrument. First, $z_i$ is randomly assigned so by construction will be uncorrelated with $\nu_i$ s $cov(z_i,\nu_i)=0$. Second, $z_i$ is correlated with $d_i$, because you are going to be more likely to take the pill if you are in the treatment group so $cov(z_i,d-i)\neq0$. Therefore, $z_i$ is a valid instrument for $d_i$ and the IV estimator gives us a consistent estimate of $\beta_1$, the effect of taking the pill on blood pressure. 
 
-How does this fix the non-compliance problem? To facilitate understanding, assume the non-compliance problem only exists for the people in the treatment group. That is to say, assume that only half the people in the treatment group take the pill (ie half of the treatment group fails to comply and does not take the pill while the other half takes the pill as they were told to). WHat will the IV look like?
+How does this fix the non-compliance problem? To facilitate understanding, assume the non-compliance problem only exists for the people in the treatment group. That is to say, assume that only half the people in the treatment group take the pill (ie half of the treatment group fails to comply and does not take the pill while the other half takes the pill as they were told to). What will the IV look like?
 
 The first stage will regress whether you took the pill on whether you were in the treatment group $d_i$ on $z_i$:
 
@@ -502,17 +501,17 @@ Now recall that the IV estimate is the reduced form scaled by the first stage. I
 $$
 y_i=\pi_0+\pi_1z_i+v_i
 $$
-Therfore our IV estimate, $\hat{\beta}_{IV}=\frac{\hat{\pi}_1}{\hat{\gamma}_1}=\frac{\hat{\pi}_1}{0.5}$. How is this fixing the non-complier problem? Well, we know that the reduced form estimates the causal effect of the instrument on $y_i$, so in our case the reduced form is estimating the effect that being assigned to the treatment group has on blood pressure. If there were a perfect correlation between being assigned to the treatment group and taking the pill (ie everyone complies with their treatment assignemnt), then the reduced form estimate would be the effect of taking the pill because the first stage would give us $\hat{\gamma}_1=1$ and the IV estimate would be $\hat{\beta}_{IV}=\frac{\hat{\pi}_1}{1}=\hat{\pi}_1$.
+Therefore our IV estimate, $\hat{\beta}_{IV}=\frac{\hat{\pi}_1}{\hat{\gamma}_1}=\frac{\hat{\pi}_1}{0.5}$. How is this fixing the non-complier problem? Well, we know that the reduced form estimates the causal effect of the instrument on $y_i$, so in our case the reduced form is estimating the effect that being assigned to the treatment group has on blood pressure. If there were a perfect correlation between being assigned to the treatment group and taking the pill (ie everyone complies with their treatment assignment), then the reduced form estimate would be the effect of taking the pill because the first stage would give us $\hat{\gamma}_1=1$ and the IV estimate would be $\hat{\beta}_{IV}=\frac{\hat{\pi}_1}{1}=\hat{\pi}_1$.
 
-In our case however, the correlation is not perfect so the reduced form is estimating the effect on your blood pressure of increasing the probabiliyty that you take the pill by 50 percentage points. This means that the reduced form is not estimating the full effect of taking the pill, but rather half of the effect of taking the pill. 
+In our case however, the correlation is not perfect so the reduced form is estimating the effect on your blood pressure of increasing the probability that you take the pill by 50 percentage points. This means that the reduced form is not estimating the full effect of taking the pill, but rather half of the effect of taking the pill. 
 
-For example: suppose there are 10 people in the treatment group. 5 take the pill and 5 do not. Of the 10 people in th control group, no one takes the pill. The (expected) mean blood pressure for the treatment group will be $\frac{5\beta_0+5(\beta_0+\beta_1)}{10}=\beta_0+\frac{\beta_1}{2}$, while the (expected) mean blood pressure for the control group will be just $\beta_0$. So the reduced form coefficient $\hat{\pi}_1$ will be the difference of means between the treatmetn and control groups, or $\frac{\beta_1}{2}$. This, of course, is half the effect of taking the pill. 
+For example: suppose there are 10 people in the treatment group. 5 take the pill and 5 do not. Of the 10 people in the control group, no one takes the pill. The (expected) mean blood pressure for the treatment group will be $\frac{5\beta_0+5(\beta_0+\beta_1)}{10}=\beta_0+\frac{\beta_1}{2}$, while the (expected) mean blood pressure for the control group will be just $\beta_0$. So the reduced form coefficient $\hat{\pi}_1$ will be the difference of means between the treatment and control groups, or $\frac{\beta_1}{2}$. This, of course, is half the effect of taking the pill. 
 
-Therfore, $E[\beta_{1,IV}]=\frac{\pi_1}{\gamma_1}=\frac{0.5\beta_1}{0.5}=\beta_1$ which is exactly what we want. We can see that the IV estimate gives us a consistent estimate precisely because it is rescaling the reduced form by the first stage. In this example what this means in practice is that we are rescaling the reduced form to account for the fact that being in the treatment group only increases your probability of taking the pill by 50 percentage points not by a full 100 percentage points. So the reduced form only represents half of the effect of taking the pill and it must be rescaled by (divided by) 0.5 in order to estimate the full effect of taking the pill. 
+Therefore, $E[\beta_{1,IV}]=\frac{\pi_1}{\gamma_1}=\frac{0.5\beta_1}{0.5}=\beta_1$ which is exactly what we want. We can see that the IV estimate gives us a consistent estimate precisely because it is descaling the reduced form by the first stage. In this example what this means in practice is that we are re scaling the reduced form to account for the fact that being in the treatment group only increases your probability of taking the pill by 50 percentage points not by a full 100 percentage points. So the reduced form only represents half of the effect of taking the pill and it must be re-scaled by (divided by) 0.5 in order to estimate the full effect of taking the pill. 
 
-Another importnat clarifying point. Note how IV is differernt from simply taking the mean of $y_i$ for those in the treatment group who took the pill and subtracting the mean of $y_i$ for those in the control group who did not take the pill. The estimator I just described, ie the naive estimator, is affected by the same selection issues as a simple OLS regression of $y_i$ on $d_i$. Specifically, it may be the case that the people in the treatment group who choose not to take the pill do so because their blood pressure was not very high to begin with. THus the group of people that actually took the pill are the ones that all had high blood pressure to begin with, and we will tend to estimate that the pill does not have much of an effect. 
+Another important clarifying point. Note how IV is different from simply taking the mean of $y_i$ for those in the treatment group who took the pill and subtracting the mean of $y_i$ for those in the control group who did not take the pill. The estimator I just described, ie the naive estimator, is affected by the same selection issues as a simple OLS regression of $y_i$ on $d_i$. Specifically, it may be the case that the people in the treatment group who choose not to take the pill do so because their blood pressure was not very high to begin with. Thus the group of people that actually took the pill are the ones that all had high blood pressure to begin with, and we will tend to estimate that the pill does not have much of an effect. 
 
-The IV estimator does nt suffer from this selection peoblem because it does not release the people in the treatment group who choose not to take the pill. To understand this,
+The IV estimator does not suffer from this selection problem because it does not release the people in the treatment group who choose not to take the pill. To understand this,
 imagine for the moment that there are two types of people in our sample: high blood
 pressure types and low blood pressure types. Assume that they occur with equal frequency,
 so that when we randomly assign our sample to the treatment and control groups, half of the
@@ -525,21 +524,21 @@ comparing a group of high blood pressure people (who took the pill) to a group t
 mix of high blood pressure and low blood pressure people (who did not take the pill). In contrast, what IV does is compare the mean of the treatment group (which is half high blood
 pressure people and half low blood pressure people) to the mean of the control group (which
 is half high blood pressure people and half low blood pressure people) in the reduced form.
-It then rescales this difference in means by the first stage to account for the fact that not all of the treated group took the pill. So unlike the naive estimator, which deceptively compares a high blood pressure group to a half-high/half-low blood pressure group, IV compares two comparable groups, and that is why it gives us a consistent estimate of the effect of the pill.
+It then re scales this difference in means by the first stage to account for the fact that not all of the treated group took the pill. So unlike the naive estimator, which deceptively compares a high blood pressure group to a half-high/half-low blood pressure group, IV compares two comparable groups, and that is why it gives us a consistent estimate of the effect of the pill.
 
 
 
 
 \subsection{Example: IV in practice}
 
-We have actually already encountered an IV estimate in these notes. Recall the section on the Arseneaux, Gerber and Green (2006) paper. In this paper, they used data from a large-scale voter "Get out the Vote" mobilization effort that randomly calls households and encourages them to vote. They generated several different estimates that controled for observable characteristics and compared these estimates to "experimental" estimates in order to gauge bias that was generated by unobservables. These "experimental" estimates were generated using an instrumental variable. They are interested in estimating how getting contacted by the "Get out the Vote" mobilization affect the likelihood of actually voting:
+We have actually already encountered an IV estimate in these notes. Recall the section on the Arseneaux, Gerber and Green (2006) paper. In this paper, they used data from a large-scale voter "Get out the Vote" mobilization effort that randomly calls households and encourages them to vote. They generated several different estimates that controlled for observable characteristics and compared these estimates to "experimental" estimates in order to gauge bias that was generated by unobservables. These "experimental" estimates were generated using an instrumental variable. They are interested in estimating how getting contacted by the "Get out the Vote" mobilization affect the likelihood of actually voting:
 
 $$
 Votes_i=\beta_0+\beta_1Contacted_i+\beta_jX_j+\epsilon_i.
 $$
 where $X_j$ is a vector of exogenous control variables that control for the sampling group the observation is drawn from (which is based on the state and whether they are voting in a competitive race).
 
-Who gets contacted however is not random, as not everyone will pick up the phone. They instrument $Contacted_i$, the endogenous explaitory variable, with whether that household was randomly assigned to receive a call from the campaign. Thus the first stage is
+Who gets contacted however is not random, as not everyone will pick up the phone. They instrument $Contacted_i$, the endogenous explanatory variable, with whether that household was randomly assigned to receive a call from the campaign. Thus the first stage is
 
 $$
 Contacted_i=\gamma_0+\gamma_1Called_i+\gamma_jX_j+u_i
@@ -554,7 +553,7 @@ library(here)
 library(lfe)
 library(dplyr)
 
-agg_data<-read_dta(here("IA_MI_merge040504.dta"))
+agg_data<-read_dta("../../data/data_M3_IV/IA_MI_merge040504.dta")
 nrow(agg_data)
 
 #scalling the vote02 variable to remove excess 0's from tables
