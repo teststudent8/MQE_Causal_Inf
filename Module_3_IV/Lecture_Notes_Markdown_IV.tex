@@ -1,0 +1,1476 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Lecture Notes: Causal Inference Fall 2020},
+  pdfauthor={Claire Duquennois},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+\title{Lecture Notes: Causal Inference Fall 2020}
+\author{Claire Duquennois}
+\date{7/28/2020}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{Instrumental Variables}
+
+In the section above we saw that fixed effects can allow us to control
+for quite a number of different unobservables. However, as the example
+on crime and unemployment illustrated, there can still be concerns that
+certain types of unobservable variables could be biasing our estimates.
+What we would really like is to have a treatment variable \(x_i\) where
+we know that there does not exist some omitted variable \(x_{ov}\) such
+that \(cor(x_i,x_{ov})\neq 0\) and \(cor(y_i, x_{ov})\neq 0\). Sadly,
+you can't always get what you want. But if you try sometimes, you just
+might find, you get what you need: a good instrumental variable.
+
+Suppose I am interested in the relationship between \(y\) and \(x_1\)
+but the true data generating process looks like this:
+
+\[
+y_i=\beta_0+\beta_1x_1+\beta_2x_2+\epsilon
+\] where \(x_i\) and \(x_2\) are uncorrelated with \(\epsilon\) but they
+are correlated with each other such that \(Cov(x_1,x_2)\neq 0\), and,
+drum roll, you don't actually observe \(x_2\). Uh oh. Houston, we have a
+problem! Even though we don't actually see \(x_2\) we really, really
+want to estimate \(\beta_1\)!
+
+The naive approach: regress \(y\) on just \(x_1\)-but you of course know
+better.\footnote{You'd better!} That would look like this:
+
+\[
+y_i=\beta_0+\beta_1x_1+\nu
+\] where
+
+\[
+\nu=\beta_2x_2+\epsilon.
+\] This means that our OLS estimator is biased since \[
+\begin{aligned}
+\hat{\beta}_{1,OLS}&=\frac{cov(x_1,y)}{var(x_1)}\\
+&=\frac{cov(x_1,\beta_0+\beta_1x_1+\nu)}{var(x_1)}\\
+&=\frac{cov(x_1, \beta_0)+cov(x_1,\beta_1x_1)+cov(x_1,\nu)}{var(x_1)}\\
+&=\frac{\beta_1var(x_1)+cov(x_1,\nu)}{var(x_1)}\\
+&=\beta_1+\frac{cov(x_1,\nu)}{var(x_1)}
+\end{aligned}
+\]
+
+\(x_2\) is in our error term since \(\nu=\beta_2x_2+\epsilon\) - and
+since \(x_1\) and \(x_2\) are correlated, we've got a problem:
+\(cov(x_1,\nu)\neq0\). \(x_1\) has become \textit{endogenous} and our
+OLS estimate of \(\hat{\beta}_{1,OLS}\) is biased.
+
+The good news is, you're project is not dead yet. The right IV could get
+you up and running in no time. An \textbf{instrumental variable} (IV) is
+a variable that drives/is correlated with the ``good'' or
+``\textit{exogenous}'' variation in \(x_1\), but is unrelated to the
+``bad'' or ``\textit{endogenous}'' or ``\textit{related-to-$x_2$}''
+variation in \(x_1\).
+
+\subsection{Chasing Unicorns: IV Assumptions}
+
+Formally, an IV is a variable, \(z\) that satisfies two important
+properties:
+
+\begin{itemize}
+\item $Cov(z, x_1)\neq 0$ (the first stage).
+\item $Cov(z, \nu)= 0$ (the exclusion restriction). 
+\end{itemize}
+
+The first condition tells us that \(z\) and \(x_1\) are correlated- if
+this weren't true, the IV would be useless and we would be back at
+square one: in trouble. Remember, we are trying to get a
+\(\hat{\beta}_1\) such that \(E[\hat{\beta}_1]=\beta_1\). If our
+instrument is totally unrelated to \(x_1\), we won't have any hope of
+using it to get at \(\beta_1\).\footnote{If we are interested in how
+  unemployment affects crime, I would not recommend using wind speed
+  over the Pacific ocean as an instrument.}
+
+The second condition, commonly called the ``exclusion restriction'' says
+that \(z\) has to affect \(y\) \textbf{only} through \(x_1\). (This also
+implies that \(Cov(z,\epsilon)=0\), because we've already assumed that
+\(x_2\) is uncorrelated with \(\epsilon\)).
+
+With the IV estimator, \[
+\begin{aligned}
+\hat{\beta}_{1,IV}&=\frac{cov(z,y)}{cov(z,x)}\\
+&=\frac{cov(z,\beta_0+\beta_1x_1+\nu)}{cov(z,x_1)}\\
+&=\beta_1\frac{cov(z,x_1)}{cov(z,x_1)}+\frac{cov(z,\nu)}{cov(z,x_1)}\\
+&=\beta_1+\frac{cov(z,\nu)}{cov(z,x_1)}.
+\end{aligned}
+\] Since the exclusion restriction gives us that \(cov(z, \nu)= 0\) by
+assumption, \(\hat{\beta}_{1,IV}=\beta_1\) and we have an unbiased
+estimate of \(\beta_1\).
+
+It turns out that in real life, coming up with \(z\)'s that satisfy the
+first condition is trivial-and the good news is that we can easily test
+the validity of this assumption. Coming up with \(z\)'s that satisfy the
+exclusion restriction is extremely difficult. Because we don't observe
+\(\epsilon\), we can never test this assumption. This should make you
+highly skeptical of anybody doing instrumental variables regressions and
+wary of trying them yourself. IV is often more art than science and the
+quality of an IV project will hinge directly on your ability to convince
+people that the exclusion restriction is satisfied.
+
+A good IV is not unlike a unicorn. It is quite powerful/magical as it
+will allow you to recover a consistent estimate of \(\hat{\beta}_1\) in
+a situation that was otherwise hopeless. It is also a rare, (some may
+argue imaginary) beast, that usually turns out to be a horse with an
+overly optimistic owner(author).
+
+\includegraphics[width=0.45\textwidth,height=\textheight]{"images/real_unicorn.jpg"}
+
+\subsection{IV: A simulation}
+
+To see how using an IV works in practice, let's generate some simulated
+data, with properties we fully understand as we did in section 1:
+
+The data generating process is as follows. My outcome variable, \(Y\)
+depends on two variables, \(X_1\) and \(X_2\) such that
+
+\[
+Y_i=\beta_0+\beta_1 x_{1i}+\beta_2 x_{2i}+\epsilon_i
+\] where \(x_1\) and \(x_2\) are correlated with \(Cor(x_1,x_2)=0.75\).
+In addition, I will also generate a variable, \(z\), that is correlated
+with \(x_1\) such that \(Cor(x_1,z)=0.25\). but not with \(x_2\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 3.6.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sigmaMat\textless{}{-}}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{3}\NormalTok{)}
+\NormalTok{sigmaMat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,] 1.00 0.75 0.25
+## [2,] 0.75 1.00 0.00
+## [3,] 0.25 0.00 1.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{3221}\NormalTok{)}
+\NormalTok{ivdat\textless{}{-}}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{mvrnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mu =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }
+                     \DataTypeTok{Sigma =}\NormalTok{ sigmaMat))}
+
+\KeywordTok{names}\NormalTok{(ivdat)\textless{}{-}}\KeywordTok{c}\NormalTok{(}\StringTok{"x\_1"}\NormalTok{,}\StringTok{"x\_2"}\NormalTok{,}\StringTok{"z"}\NormalTok{)}
+\KeywordTok{cor}\NormalTok{(ivdat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           x_1          x_2            z
+## x_1 1.0000000  0.753135403  0.237314050
+## x_2 0.7531354  1.000000000 -0.008862925
+## z   0.2373140 -0.008862925  1.000000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ivdat}\OperatorTok{$}\NormalTok{error\textless{}{-}}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mean=}\DecValTok{0}\NormalTok{, }\DataTypeTok{sd=}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\#The data generating process}
+\NormalTok{B1\textless{}{-}}\DecValTok{10}
+\NormalTok{B2\textless{}{-}(}\OperatorTok{{-}}\DecValTok{20}\NormalTok{)}
+
+\NormalTok{ivdat}\OperatorTok{$}\NormalTok{Y\textless{}{-}ivdat}\OperatorTok{$}\NormalTok{x\_}\DecValTok{1}\OperatorTok{*}\NormalTok{B1}\OperatorTok{+}\NormalTok{ivdat}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{*}\NormalTok{B2}\OperatorTok{+}\NormalTok{ivdat}\OperatorTok{$}\NormalTok{error}
+\end{Highlighting}
+\end{Shaded}
+
+I can generate an unbiased estimate such that
+\(E[\hat{\beta}_1]=\beta_1\) by estimating the correctly specified
+model. If I do not observe \(x_2\), my estimate using the naive approach
+is biased.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simiv1\textless{}{-}}\KeywordTok{lm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\NormalTok{x\_}\DecValTok{1}\OperatorTok{+}\NormalTok{x\_}\DecValTok{2}\NormalTok{, }\DataTypeTok{data=}\NormalTok{ivdat)}
+\NormalTok{simiv2\textless{}{-}}\KeywordTok{lm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\NormalTok{x\_}\DecValTok{1}\NormalTok{, }\DataTypeTok{data=}\NormalTok{ivdat)}
+\KeywordTok{stargazer}\NormalTok{(simiv1, simiv2,  }\DataTypeTok{type=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Wed, Oct
+07, 2020 - 3:49:41 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & \multicolumn{2}{c}{Y} \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ x\_1 & 10.011$^{***}$ & $-$5.233$^{***}$ \\ 
+  & (0.015) & (0.134) \\ 
+  & & \\ 
+ x\_2 & $-$20.009$^{***}$ &  \\ 
+  & (0.015) &  \\ 
+  & & \\ 
+ Constant & 0.016 & 0.079 \\ 
+  & (0.010) & (0.134) \\ 
+  & & \\ 
+\hline \\[-1.8ex] 
+Observations & 10,000 & 10,000 \\ 
+R$^{2}$ & 0.995 & 0.133 \\ 
+Adjusted R$^{2}$ & 0.995 & 0.133 \\ 
+Residual Std. Error & 0.995 (df = 9997) & 13.365 (df = 9998) \\ 
+F Statistic & 1,036,462.000$^{***}$ (df = 2; 9997) & 1,535.421$^{***}$ (df = 1; 9998) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+Suppose there exists a variable \(z\) that satisfies the two conditions
+outlined above:
+
+\begin{itemize}
+\item $Cov(z, V_1)\neq 0$ (the first stage).
+\item $Cov(z, \nu)= 0$ (the exclusion restriction). 
+\end{itemize}
+
+Our simulated data includes \(z\), a variable with these properties
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ivdat}\OperatorTok{$}\NormalTok{nu\textless{}{-}B2}\OperatorTok{*}\NormalTok{ivdat}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{+}\NormalTok{ivdat}\OperatorTok{$}\NormalTok{error}
+
+\KeywordTok{cor}\NormalTok{(ivdat}\OperatorTok{$}\NormalTok{z, ivdat}\OperatorTok{$}\NormalTok{x\_}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+{[}1{]} 0.237314
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#note: we can test this correlation because I am working with simulated data and observe x\_2.}
+\CommentTok{\#In the wild x\_2 would be unobservable and you wouls have to argue that this condition holds.}
+\KeywordTok{cor}\NormalTok{(ivdat}\OperatorTok{$}\NormalTok{z, ivdat}\OperatorTok{$}\NormalTok{nu)}
+\end{Highlighting}
+\end{Shaded}
+
+{[}1{]} 0.008973809
+
+I can instrument my endogenous variable,\(x_1\), with my instrumental
+variable \(z\) using the \texttt{felm} function as follows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simiv3\textless{}{-}}\KeywordTok{felm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\DecValTok{1}\OperatorTok{|}\DecValTok{0}\OperatorTok{|}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{\textasciitilde{}}\NormalTok{z),ivdat)}
+\KeywordTok{stargazer}\NormalTok{(simiv1, simiv2, simiv3,  }\DataTypeTok{type=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Wed, Oct
+07, 2020 - 3:49:41 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-4} 
+\\[-1.8ex] & \multicolumn{3}{c}{Y} \\ 
+\\[-1.8ex] & \multicolumn{2}{c}{\textit{OLS}} & \textit{felm} \\ 
+\\[-1.8ex] & (1) & (2) & (3)\\ 
+\hline \\[-1.8ex] 
+ x\_1 & 10.011$^{***}$ & $-$5.233$^{***}$ &  \\ 
+  & (0.015) & (0.134) &  \\ 
+  & & & \\ 
+ x\_2 & $-$20.009$^{***}$ &  &  \\ 
+  & (0.015) &  &  \\ 
+  & & & \\ 
+ `x\_1(fit)` &  &  & 10.766$^{***}$ \\ 
+  &  &  & (0.878) \\ 
+  & & & \\ 
+ Constant & 0.016 & 0.079 & $-$0.036 \\ 
+  & (0.010) & (0.134) & (0.209) \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 10,000 & 10,000 & 10,000 \\ 
+R$^{2}$ & 0.995 & 0.133 & $-$1.111 \\ 
+Adjusted R$^{2}$ & 0.995 & 0.133 & $-$1.112 \\ 
+Residual Std. Error & 0.995 (df = 9997) & 13.365 (df = 9998) & 20.858 (df = 9998) \\ 
+F Statistic & 1,036,462.000$^{***}$ (df = 2; 9997) & 1,535.421$^{***}$ (df = 1; 9998) &  \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+Notice that using the instrumental variable allows me to retrieve an
+unbiased estimate of \(\beta_1\), which is pretty neat.\footnote{\(R^2\)
+  values get real funky with IV regressions. They can be negative and
+  should not be used for F-tests}
+
+\subsection{2SLS}
+
+To build intuition about how the IV estimator, \(\hat{\beta}_{IV}\) uses
+the instrumental variable to retrieve an unbiased estimate, I introduce
+another estimator, the two-stage least squares (2SLS) estimator,
+\(\hat{\beta}_{2SLS}\). When we are working with only one instrument and
+one endogenous regressor, \(\hat{\beta}_{IV}=\hat{\beta}_{2SLS}\).
+
+2SLS, not surprisingly, proceeds in two (least squares regression)
+stages. First, we run the ``first stage,'' a regression of our
+endogenous variable on our instrument:\footnote{if you have other
+  exogenous regressors, you will need to include them in both the first
+  stage and the second stage regressions.} \[
+x_1=\gamma_0+\gamma_1z+u.
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sim2slsfs\textless{}{-}}\KeywordTok{felm}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{\textasciitilde{}}\NormalTok{z,ivdat)}
+\KeywordTok{summary}\NormalTok{(sim2slsfs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+##    felm(formula = x_1 ~ z, data = ivdat) 
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.6955 -0.6508 -0.0001  0.6500  3.7093 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 0.006807   0.009723    0.70    0.484    
+## z           0.239464   0.009803   24.43   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9723 on 9998 degrees of freedom
+## Multiple R-squared(full model): 0.05632   Adjusted R-squared: 0.05622 
+## Multiple R-squared(proj model): 0.05632   Adjusted R-squared: 0.05622 
+## F-statistic(full model):596.7 on 1 and 9998 DF, p-value: < 2.2e-16 
+## F-statistic(proj model): 596.7 on 1 and 9998 DF, p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hatgamma0\textless{}{-}sim2slsfs}\OperatorTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{]}
+\NormalTok{hatgamma1\textless{}{-}sim2slsfs}\OperatorTok{$}\NormalTok{coefficients[}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+We then use the estimated \(\hat{\gamma}\) coefficients to generate
+predicted values, \(\hat{x}_1\):
+
+\[
+\hat{x}_1=\hat{\gamma}_0+\hat{\gamma}_1z
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ivdat}\OperatorTok{$}\NormalTok{hatx\_}\DecValTok{1}\NormalTok{\textless{}{-}hatgamma0}\OperatorTok{+}\NormalTok{hatgamma1}\OperatorTok{*}\NormalTok{ivdat}\OperatorTok{$}\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+Notice that since \(z\) is not correlated with \(\epsilon\), our new
+variable \(\hat{x}_1\) is by construction also not correlated with
+\(\epsilon\). We have basically ``partialed out'' the ``bad variation''
+in \(x_1\) that was \textit{endogenous}, leaving ourselves with only the
+\textit{exogenous} ``good variation'' in \(\hat{x}_1\).
+
+We can now run the ``second stage'' where we regress
+
+\[
+y=\beta_0+\beta_1\hat{x}_1+\epsilon
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sim2slsss\textless{}{-}}\KeywordTok{felm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\NormalTok{hatx\_}\DecValTok{1}\NormalTok{,ivdat)}
+
+\KeywordTok{stargazer}\NormalTok{(simiv1, simiv2, simiv3,sim2slsss,  }\DataTypeTok{type=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Wed, Oct
+07, 2020 - 3:49:41 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lcccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{4}{c}{Y} \\ 
+\\[-1.8ex] & \multicolumn{2}{c}{\textit{OLS}} & \multicolumn{2}{c}{\textit{felm}} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ x\_1 & 10.011$^{***}$ & $-$5.233$^{***}$ &  &  \\ 
+  & (0.015) & (0.134) &  &  \\ 
+  & & & & \\ 
+ x\_2 & $-$20.009$^{***}$ &  &  &  \\ 
+  & (0.015) &  &  &  \\ 
+  & & & & \\ 
+ `x\_1(fit)` &  &  & 10.766$^{***}$ &  \\ 
+  &  &  & (0.878) &  \\ 
+  & & & & \\ 
+ hatx\_1 &  &  &  & 10.766$^{***}$ \\ 
+  &  &  &  & (0.595) \\ 
+  & & & & \\ 
+ Constant & 0.016 & 0.079 & $-$0.036 & $-$0.036 \\ 
+  & (0.010) & (0.134) & (0.209) & (0.141) \\ 
+  & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 10,000 & 10,000 & 10,000 & 10,000 \\ 
+R$^{2}$ & 0.995 & 0.133 & $-$1.111 & 0.032 \\ 
+Adjusted R$^{2}$ & 0.995 & 0.133 & $-$1.112 & 0.032 \\ 
+Residual Std. Error & 0.995 (df = 9997) & 13.365 (df = 9998) & 20.858 (df = 9998) & 14.125 (df = 9998) \\ 
+F Statistic & 1,036,462.000$^{***}$ (df = 2; 9997) & 1,535.421$^{***}$ (df = 1; 9998) &  &  \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+Magical! \(\hat{\beta}_{1,2SLS}\) consistently estimates \(\beta_1\) and
+\(\hat{\beta}_{1,2SLS}=\hat{\beta}_{1,IV}\)!\footnote{Note: The standard
+  errors reported from the second stage of 2SLS will not be correct.
+  This is because they are based on \(\hat{x}_1\) rather than \(x_1\).
+  There are ways to correct this but the math and coding is a bit
+  complicated.}
+
+\subsubsection{The Reduced Form and more cool IV intuition}
+
+The \textbf{reduced form} equation cuts out the middle variable and
+regresses the outcome directly on the exogenous instrument (and any
+other exogenous variables if you have them):
+
+\[
+y_i=\pi_0+\pi_1z+\eta
+\] In our simulated data we get
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sim2slsrf\textless{}{-}}\KeywordTok{felm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\NormalTok{z,ivdat)}
+
+\KeywordTok{stargazer}\NormalTok{(sim2slsfs, sim2slsss, sim2slsrf,  }\DataTypeTok{type=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Wed, Oct
+07, 2020 - 3:49:41 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-4} 
+\\[-1.8ex] & x\_1 & \multicolumn{2}{c}{Y} \\ 
+\\[-1.8ex] & (1) & (2) & (3)\\ 
+\hline \\[-1.8ex] 
+ z & 0.239$^{***}$ &  & 2.578$^{***}$ \\ 
+  & (0.010) &  & (0.142) \\ 
+  & & & \\ 
+ hatx\_1 &  & 10.766$^{***}$ &  \\ 
+  &  & (0.595) &  \\ 
+  & & & \\ 
+ Constant & 0.007 & $-$0.036 & 0.037 \\ 
+  & (0.010) & (0.141) & (0.141) \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 10,000 & 10,000 & 10,000 \\ 
+R$^{2}$ & 0.056 & 0.032 & 0.032 \\ 
+Adjusted R$^{2}$ & 0.056 & 0.032 & 0.032 \\ 
+Residual Std. Error (df = 9998) & 0.972 & 14.125 & 14.125 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+It turns out that we can recover our estimate of \(\hat{\beta}_1\) by
+taking the \(\hat{\pi}_1\)from the reduced form and dividing it by
+\(\hat{\gamma}_1\) from the first stage:
+
+\[
+\hat{\beta}_1=\frac{\hat{\pi}_1}{\hat{\gamma}_1}=\frac{2.578}{0.239}=10.786
+\]
+
+Again, we get the right coefficient on \(x_1\). Why does this work? The
+reduced form is (essentially) the effect of \(z\) on \(y\). What we are
+doing is taking the effect of \(z\) on \(y\) and scaling it by the
+effect of \(z\) on \(x_1\) (since \(z\) affects \(y\) via
+\(x_1\)).\footnote{Note: this won't work if you have multiple endogenous
+  variables and multiple instruments or additional exogenous variables.}
+
+\subsection{Hints and warnings}
+
+\subsubsection{The forbidden regression:}
+
+Be weary of the \textbf{forbidden regression}! People sometimes try to
+run a logit, probit, Poisson or some other non-linear regression as the
+first stage of a 2SLS procedure. This is a bad idea. Don't do it.\\
+
+\subsubsection{Weak Instruments:}
+
+A weak instrument is an instrument with a weak first stage, meaning that
+the correlation between \(z\), the instrument, and the endogenous
+variable \(x_1\), \(Cov(z, x_1)\), is small. There are several reasons
+why weak instruments are a problem.
+
+First, a weak instrument will amplify any endogeneity that exists in
+your model. Recall that \[
+\hat{\beta}_{IV}=\beta+\frac{cov(z,\nu)}{cov(z,x_1)}.
+\] For our IV estimator to return an unbiased estimate of \(\beta_1\),
+we need the exclusion restriction, that \(cov(z,\nu)=0\) to hold.
+Suppose this assumption is violated in a small way, meaning that
+\(cov(z,\nu)\neq 0\) but that it was a vary small value. This wouldn't
+severely bias our estimates unless we had a weak first stage. If
+\(cov(z,x_1)\) is also small, the violation of the exclusion restriction
+will get amplified leading to potentially severe bias in our estimator.
+
+We can see this in a quick simulated example. Below, I generate a
+simulated dataset with a week first stage \(cov(z,x_1)=0.03\) and a
+small violation of the exclusion restriction, such that
+\(cov(z,x_2)=0.01\), and proceed to estimate \(\hat{\beta}_{1,IV}\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{sigmaMat\textless{}{-}}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.03}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.03}\NormalTok{,}\FloatTok{0.01}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{3}\NormalTok{)}
+\NormalTok{sigmaMat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,] 1.00 0.75 0.03
+## [2,] 0.75 1.00 0.01
+## [3,] 0.03 0.01 1.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{5000}\NormalTok{)}
+\NormalTok{ivdatwk\textless{}{-}}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{mvrnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mu =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }
+                     \DataTypeTok{Sigma =}\NormalTok{ sigmaMat))}
+
+\KeywordTok{names}\NormalTok{(ivdatwk)\textless{}{-}}\KeywordTok{c}\NormalTok{(}\StringTok{"x\_1"}\NormalTok{,}\StringTok{"x\_2"}\NormalTok{,}\StringTok{"z"}\NormalTok{)}
+\NormalTok{ivdatwk}\OperatorTok{$}\NormalTok{error\textless{}{-}}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mean=}\DecValTok{0}\NormalTok{, }\DataTypeTok{sd=}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{ivdatwk}\OperatorTok{$}\NormalTok{nu=(}\OperatorTok{{-}}\DecValTok{20}\NormalTok{)}\OperatorTok{*}\NormalTok{ivdatwk}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{+}\NormalTok{ivdatwk}\OperatorTok{$}\NormalTok{error}
+\KeywordTok{cov}\NormalTok{(ivdatwk)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                x_1          x_2            z        error          nu
+## x_1     0.98285285   0.74457303  0.024729361 -0.004001840 -14.8954624
+## x_2     0.74457303   1.00432318  0.012771206 -0.019418031 -20.1058816
+## z       0.02472936   0.01277121  0.988920198 -0.002137254  -0.2575614
+## error  -0.00400184  -0.01941803 -0.002137254  1.003682461   1.3920431
+## nu    -14.89546238 -20.10588160 -0.257561369  1.392043072 403.5096751
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The data generating process}
+\NormalTok{B1\textless{}{-}}\DecValTok{10}
+\NormalTok{B2\textless{}{-}(}\OperatorTok{{-}}\DecValTok{20}\NormalTok{)}
+
+\NormalTok{ivdatwk}\OperatorTok{$}\NormalTok{Y\textless{}{-}ivdatwk}\OperatorTok{$}\NormalTok{x\_}\DecValTok{1}\OperatorTok{*}\NormalTok{B1}\OperatorTok{+}\NormalTok{ivdatwk}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{*}\NormalTok{B2}\OperatorTok{+}\NormalTok{ivdatwk}\OperatorTok{$}\NormalTok{error}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simivweakfs\textless{}{-}}\KeywordTok{lm}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{\textasciitilde{}}\NormalTok{z,ivdatwk)}
+\NormalTok{simivweak\textless{}{-}}\KeywordTok{felm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\DecValTok{1}\OperatorTok{|}\DecValTok{0}\OperatorTok{|}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{\textasciitilde{}}\NormalTok{z),ivdatwk)}
+\KeywordTok{stargazer}\NormalTok{(simivweakfs,simivweak,  }\DataTypeTok{type=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Wed, Oct
+07, 2020 - 3:49:41 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & x\_1 & Y \\ 
+\\[-1.8ex] & \textit{OLS} & \textit{felm} \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ z & 0.025$^{**}$ &  \\ 
+  & (0.010) &  \\ 
+  & & \\ 
+ `x\_1(fit)` &  & $-$0.415 \\ 
+  &  & (5.685) \\ 
+  & & \\ 
+ Constant & 0.007 & 0.137 \\ 
+  & (0.010) & (0.146) \\ 
+  & & \\ 
+\hline \\[-1.8ex] 
+Observations & 10,000 & 10,000 \\ 
+R$^{2}$ & 0.001 & 0.020 \\ 
+Adjusted R$^{2}$ & 0.001 & 0.020 \\ 
+Residual Std. Error (df = 9998) & 0.991 & 14.137 \\ 
+F Statistic & 6.295$^{**}$ (df = 1; 9998) &  \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+We can see that \(cov(z,x_1)= 0.02473\) and \(cov(z,\nu)=-0.25756\) so
+
+\[
+\hat{\beta}_{1,IV}=10+\frac{-0.25756}{0.02473}=-0.415\neq\beta_1=10.
+\]
+
+Since it is rare that an instrument would be perfectly independent of
+all confounding factors, and it is impossible to test the exclusion
+restriction, this is a major problem. For this reason, you should be
+very cautious about engaging in a project that has a weak first stage.
+
+The standard benchmark for a ``weak'' instrument is a first stage F-test
+that is less than 10, though this number should not be taken as iron
+law. It is common to see papers where the first stage F's are numbers
+like 10.1. This is usually a sign that someone has been running a lot of
+regressions.\footnote{There is a large econometric literature on the
+  properties of weak instruments. There are also additional problems
+  that come up when running regressions with many weak instruments that
+  we will not discuss here but consider yourself warned.}
+
+\subsection{Dealing with multiples}
+
+Thus far we have kept things simple, working with one endogenous
+regressor and one instrument. More complicated models can features
+multiple endogenous regressors and multiple instruments and control
+variables.
+
+\subsection{Control variables}
+
+Model
+
+\[
+Y=\beta_0+\beta_1 x_{1}+\beta_2C_1+\nu
+\] First stage: \[
+x_1=\gamma_0+\gamma_1z_1+\gamma_2C_1+u
+\] Estimation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{sigmaMat\textless{}{-}}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.2}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{0.2}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{ ), }\DataTypeTok{nrow=}\DecValTok{4}\NormalTok{)}
+\NormalTok{sigmaMat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,] 1.00 0.75 0.25  0.2
+## [2,] 0.75 1.00 0.00  0.0
+## [3,] 0.25 0.00 1.00  0.0
+## [4,] 0.20 0.00 0.00  1.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{5000}\NormalTok{)}
+\NormalTok{ivc\textless{}{-}}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{mvrnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mu =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }
+                     \DataTypeTok{Sigma =}\NormalTok{ sigmaMat))}
+
+\KeywordTok{names}\NormalTok{(ivc)\textless{}{-}}\KeywordTok{c}\NormalTok{(}\StringTok{"x\_1"}\NormalTok{,}\StringTok{"x\_2"}\NormalTok{,}\StringTok{"z"}\NormalTok{, }\StringTok{"c"}\NormalTok{)}
+\NormalTok{ivc}\OperatorTok{$}\NormalTok{error\textless{}{-}}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mean=}\DecValTok{0}\NormalTok{, }\DataTypeTok{sd=}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{ivc}\OperatorTok{$}\NormalTok{nu=(}\OperatorTok{{-}}\DecValTok{20}\NormalTok{)}\OperatorTok{*}\NormalTok{ivc}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{+}\NormalTok{ivc}\OperatorTok{$}\NormalTok{error}
+
+\CommentTok{\#The data generating process}
+\NormalTok{B1\textless{}{-}}\DecValTok{10}
+\NormalTok{B2\textless{}{-}}\DecValTok{5}
+\NormalTok{B3\textless{}{-}(}\OperatorTok{{-}}\DecValTok{20}\NormalTok{)}
+
+\NormalTok{ivc}\OperatorTok{$}\NormalTok{Y\textless{}{-}ivc}\OperatorTok{$}\NormalTok{x\_}\DecValTok{1}\OperatorTok{*}\NormalTok{B1}\OperatorTok{+}\NormalTok{ivc}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{*}\NormalTok{B3}\OperatorTok{+}\NormalTok{B2}\OperatorTok{*}\NormalTok{ivc}\OperatorTok{$}\NormalTok{c}\OperatorTok{+}\NormalTok{ivc}\OperatorTok{$}\NormalTok{error}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simivc\textless{}{-}}\KeywordTok{felm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\NormalTok{c}\OperatorTok{|}\DecValTok{0}\OperatorTok{|}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{\textasciitilde{}}\NormalTok{z),ivc)}
+\KeywordTok{stargazer}\NormalTok{(simivc,  }\DataTypeTok{type=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Wed, Oct
+07, 2020 - 3:49:41 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-2} 
+\\[-1.8ex] & Y \\ 
+\hline \\[-1.8ex] 
+ c & 4.624$^{***}$ \\ 
+  & (0.271) \\ 
+  & \\ 
+ `x\_1(fit)` & 11.115$^{***}$ \\ 
+  & (0.860) \\ 
+  & \\ 
+ Constant & $-$0.024 \\ 
+  & (0.210) \\ 
+  & \\ 
+\hline \\[-1.8ex] 
+Observations & 10,000 \\ 
+R$^{2}$ & $-$0.772 \\ 
+Adjusted R$^{2}$ & $-$0.773 \\ 
+Residual Std. Error & 20.982 (df = 9997) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+\subsubsection{Multiple instruments}
+
+A word of caution: be cautious about using multiple weak instruments.
+Even if jointly they give you a strong first stage they can still
+generate substantial bias in \(\hat{\beta}_{IV}\).
+
+Model:
+
+\[
+Y=\beta_0+\beta_1 x_{1}+\nu
+\] First stage: \[
+x_1=\gamma_0+\gamma_1z_1+\gamma_2z_2+u
+\] Estimation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{sigmaMat\textless{}{-}}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.3}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{0.3}\NormalTok{,}\DecValTok{1}\NormalTok{ ), }\DataTypeTok{nrow=}\DecValTok{4}\NormalTok{)}
+\NormalTok{sigmaMat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,] 1.00 0.75 0.25  0.5
+## [2,] 0.75 1.00 0.00  0.0
+## [3,] 0.25 0.00 1.00  0.3
+## [4,] 0.50 0.00 0.30  1.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{5000}\NormalTok{)}
+\NormalTok{ivmi\textless{}{-}}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{mvrnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mu =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }
+                     \DataTypeTok{Sigma =}\NormalTok{ sigmaMat))}
+
+\KeywordTok{names}\NormalTok{(ivmi)\textless{}{-}}\KeywordTok{c}\NormalTok{(}\StringTok{"x\_1"}\NormalTok{,}\StringTok{"x\_2"}\NormalTok{,}\StringTok{"z\_1"}\NormalTok{, }\StringTok{"z\_2"}\NormalTok{)}
+\NormalTok{ivmi}\OperatorTok{$}\NormalTok{error\textless{}{-}}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mean=}\DecValTok{0}\NormalTok{, }\DataTypeTok{sd=}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{ivmi}\OperatorTok{$}\NormalTok{nu=(}\OperatorTok{{-}}\DecValTok{20}\NormalTok{)}\OperatorTok{*}\NormalTok{ivmi}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{+}\NormalTok{ivmi}\OperatorTok{$}\NormalTok{error}
+
+\CommentTok{\#The data generating process}
+\NormalTok{B1\textless{}{-}}\DecValTok{10}
+\NormalTok{B2\textless{}{-}(}\OperatorTok{{-}}\DecValTok{20}\NormalTok{)}
+
+\NormalTok{ivmi}\OperatorTok{$}\NormalTok{Y\textless{}{-}ivmi}\OperatorTok{$}\NormalTok{x\_}\DecValTok{1}\OperatorTok{*}\NormalTok{B1}\OperatorTok{+}\NormalTok{ivmi}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{*}\NormalTok{B2}\OperatorTok{+}\NormalTok{ivmi}\OperatorTok{$}\NormalTok{error}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simivmifs\textless{}{-}}\KeywordTok{felm}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{\textasciitilde{}}\NormalTok{z\_}\DecValTok{1}\OperatorTok{+}\NormalTok{z\_}\DecValTok{2}\NormalTok{,ivmi)}
+\NormalTok{simivmi\textless{}{-}}\KeywordTok{felm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\DecValTok{1}\OperatorTok{|}\DecValTok{0}\OperatorTok{|}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{\textasciitilde{}}\NormalTok{z\_}\DecValTok{1}\OperatorTok{+}\NormalTok{z\_}\DecValTok{2}\NormalTok{),ivmi)}
+\KeywordTok{stargazer}\NormalTok{(simivmifs, simivmi,  }\DataTypeTok{type=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Wed, Oct
+07, 2020 - 3:49:42 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & x\_1 & Y \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ z\_1 & 0.101$^{***}$ &  \\ 
+  & (0.009) &  \\ 
+  & & \\ 
+ z\_2 & 0.476$^{***}$ &  \\ 
+  & (0.009) &  \\ 
+  & & \\ 
+ `x\_1(fit)` &  & 10.120$^{***}$ \\ 
+  &  & (0.388) \\ 
+  & & \\ 
+ Constant & $-$0.006 & $-$0.099 \\ 
+  & (0.009) & (0.200) \\ 
+  & & \\ 
+\hline \\[-1.8ex] 
+Observations & 10,000 & 10,000 \\ 
+R$^{2}$ & 0.265 & $-$0.998 \\ 
+Adjusted R$^{2}$ & 0.265 & $-$0.998 \\ 
+Residual Std. Error & 0.858 (df = 9997) & 20.009 (df = 9998) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+\subsubsection{Multiple endogenous variables and multiple instruments}
+
+It is possible to estimate models that include several endogenous
+variables. For things to go well though, you will want to have at least
+as many instruments as there are endogenous variables in your model
+(otherwise the model is \textit{under identified} and you will not be
+able to estimate all of your coefficients).
+
+Model:
+
+\[
+Y=\beta_0+\beta_1 x_{1}+\beta_3x_3+\nu
+\] First stage: \[
+x_1=\gamma_0+\gamma_1z_1+\gamma_2z_2+u\\
+x_3=\lambda_0+\lambda_1z_1+\lambda_2z_2+u
+\] Estimation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{sigmaMat\textless{}{-}}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.2}\NormalTok{,}
+                   \FloatTok{0.75}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{0.4}\NormalTok{,}
+                   \FloatTok{0.25}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.3}\NormalTok{,}\FloatTok{0.15}\NormalTok{,}
+                   \FloatTok{0.1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{0.3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.35}\NormalTok{,}
+                   \FloatTok{0.2}\NormalTok{,}\FloatTok{0.4}\NormalTok{,}\FloatTok{0.15}\NormalTok{,}\FloatTok{0.35}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{5}\NormalTok{)}
+\NormalTok{sigmaMat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,] 1.00 0.75 0.25 0.10 0.20
+## [2,] 0.75 1.00 0.00 0.00 0.40
+## [3,] 0.25 0.00 1.00 0.30 0.15
+## [4,] 0.10 0.00 0.30 1.00 0.35
+## [5,] 0.20 0.40 0.15 0.35 1.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{5500}\NormalTok{)}
+\NormalTok{ivme\textless{}{-}}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{mvrnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mu =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }
+                     \DataTypeTok{Sigma =}\NormalTok{ sigmaMat))}
+
+\KeywordTok{names}\NormalTok{(ivme)\textless{}{-}}\KeywordTok{c}\NormalTok{(}\StringTok{"x\_1"}\NormalTok{,}\StringTok{"x\_2"}\NormalTok{,}\StringTok{"z\_1"}\NormalTok{, }\StringTok{"z\_2"}\NormalTok{,}\StringTok{"x\_3"}\NormalTok{)}
+\NormalTok{ivme}\OperatorTok{$}\NormalTok{error\textless{}{-}}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\DataTypeTok{mean=}\DecValTok{0}\NormalTok{, }\DataTypeTok{sd=}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{ivme}\OperatorTok{$}\NormalTok{nu=(}\OperatorTok{{-}}\DecValTok{20}\NormalTok{)}\OperatorTok{*}\NormalTok{ivme}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{+}\NormalTok{ivme}\OperatorTok{$}\NormalTok{error}
+
+\CommentTok{\#The data generating process}
+\NormalTok{B1\textless{}{-}}\DecValTok{10}
+\NormalTok{B2\textless{}{-}(}\OperatorTok{{-}}\DecValTok{20}\NormalTok{)}
+\NormalTok{B3\textless{}{-}(}\OperatorTok{{-}}\DecValTok{30}\NormalTok{)}
+
+\NormalTok{ivme}\OperatorTok{$}\NormalTok{Y\textless{}{-}ivme}\OperatorTok{$}\NormalTok{x\_}\DecValTok{1}\OperatorTok{*}\NormalTok{B1}\OperatorTok{+}\NormalTok{ivme}\OperatorTok{$}\NormalTok{x\_}\DecValTok{2}\OperatorTok{*}\NormalTok{B2}\OperatorTok{+}\NormalTok{ivme}\OperatorTok{$}\NormalTok{x\_}\DecValTok{3}\OperatorTok{*}\NormalTok{B3}\OperatorTok{+}\NormalTok{ivme}\OperatorTok{$}\NormalTok{error}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simivmefs1\textless{}{-}}\KeywordTok{felm}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{\textasciitilde{}}\NormalTok{z\_}\DecValTok{1}\OperatorTok{+}\NormalTok{z\_}\DecValTok{2}\NormalTok{,ivme)}
+\NormalTok{simivmefs2\textless{}{-}}\KeywordTok{felm}\NormalTok{(x\_}\DecValTok{3}\OperatorTok{\textasciitilde{}}\NormalTok{z\_}\DecValTok{1}\OperatorTok{+}\NormalTok{z\_}\DecValTok{2}\NormalTok{,ivme)}
+\CommentTok{\#Underidentified}
+\NormalTok{simivmeunder1\textless{}{-}}\KeywordTok{felm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\DecValTok{1}\OperatorTok{|}\DecValTok{0}\OperatorTok{|}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{|}\NormalTok{x\_}\DecValTok{3}\OperatorTok{\textasciitilde{}}\NormalTok{z\_}\DecValTok{2}\NormalTok{),ivme)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chol.default(mat, pivot = TRUE, tol = tol): the matrix is either
+## rank-deficient or indefinite
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simivmeunder2\textless{}{-}}\KeywordTok{felm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\DecValTok{1}\OperatorTok{|}\DecValTok{0}\OperatorTok{|}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{|}\NormalTok{x\_}\DecValTok{3}\OperatorTok{\textasciitilde{}}\NormalTok{z\_}\DecValTok{1}\NormalTok{),ivme)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chol.default(mat, pivot = TRUE, tol = tol): the matrix is either
+## rank-deficient or indefinite
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simivme\textless{}{-}}\KeywordTok{felm}\NormalTok{(Y}\OperatorTok{\textasciitilde{}}\DecValTok{1}\OperatorTok{|}\DecValTok{0}\OperatorTok{|}\NormalTok{(x\_}\DecValTok{1}\OperatorTok{|}\NormalTok{x\_}\DecValTok{3}\OperatorTok{\textasciitilde{}}\NormalTok{z\_}\DecValTok{1}\OperatorTok{+}\NormalTok{z\_}\DecValTok{2}\NormalTok{),ivme)}
+\KeywordTok{stargazer}\NormalTok{(simivmefs1,simivmefs2,simivmeunder1,simivmeunder2, simivme,  }\DataTypeTok{type=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Wed, Oct
+07, 2020 - 3:49:42 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{5}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-6} 
+\\[-1.8ex] & x\_1 & x\_3 & \multicolumn{3}{c}{Y} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5)\\ 
+\hline \\[-1.8ex] 
+ z\_1 & 0.239$^{***}$ & 0.048$^{***}$ &  &  &  \\ 
+  & (0.010) & (0.010) &  &  &  \\ 
+  & & & & & \\ 
+ z\_2 & 0.030$^{***}$ & 0.352$^{***}$ &  &  &  \\ 
+  & (0.010) & (0.010) &  &  &  \\ 
+  & & & & & \\ 
+ `x\_1(fit)` &  &  &  & $-$8.304$^{***}$ & 10.162$^{***}$ \\ 
+  &  &  &  & (1.492) & (0.939) \\ 
+  & & & & & \\ 
+ `x\_3(fit)` &  &  & $-$27.630$^{***}$ &  & $-$30.399$^{***}$ \\ 
+  &  &  & (0.420) &  & (0.635) \\ 
+  & & & & & \\ 
+ Constant & $-$0.013 & 0.002 & $-$0.109 & $-$0.037 & 0.045 \\ 
+  & (0.010) & (0.009) & (0.153) & (0.368) & (0.201) \\ 
+  & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 10,000 & 10,000 & 10,000 & 10,000 & 10,000 \\ 
+R$^{2}$ & 0.061 & 0.134 & 0.840 & 0.079 & 0.726 \\ 
+Adjusted R$^{2}$ & 0.061 & 0.134 & 0.840 & 0.079 & 0.726 \\ 
+Residual Std. Error & 0.974 (df = 9997) & 0.933 (df = 9997) & 15.302 (df = 9998) & 36.732 (df = 9998) & 20.021 (df = 9997) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{5}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+As you can see, the under identified models cannot estimate coefficients
+for all of your endogenous variables. To get estimates for all of the
+coefficients in your model, you need to include both instruments.
+
+\subsection{Unicorns and Work-horses}
+
+IV estimations show up in two different types of situations.
+
+There are IV projects. These are projects in which the validity of the
+instrumental variable is central to the identification strategy in the
+paper. These projects can be very interesting because they are often
+looking at an important but highly endogenous variable and then arguing
+that they have a valid instrument to make causal statements about said
+endogenous variable. The validity of the causal claims, however, depends
+\textbf{\underline{heavily}} on the validity of the instrument. And
+valid instruments are hard to find.
+
+IV estimations also make cameo appearances in many other types of
+projects, namely in randomized control trials (RCT) and in regression
+discontinuity (RD) projects. In these scenarios, researchers use the
+random assignment of treatment as an instrument to estimate treatment
+effects on certain groups of subjects.
+
+\subsubsection{IV intuition and medical trials}
+
+This section is a good segway into our section on randomized control
+trials. It is also a good way to see how ``work horse'' IV's are used as
+well as build intuition on what exactly an IV is doing.
+
+For a variety of reasons, medical trials are a fantastic example of an
+application of instrumental variables. First, they are socially
+important (perhaps the most important application of IV to date).
+Furthermore, they are very clean in terms of experimental design, so
+they make a great teaching example for conveying the intuition behind
+what the IV estimator is doing.
+
+The model for a medical trial is the same simple regression model that
+we are accustomed to:
+
+\[
+y_i=\beta_0+\beta_1 d_i+\epsilon_i.
+\] In this case, \(y_i\) represents a medical outcome, which could
+either be a continuous variable such as blood pressure or a discreet
+variable such as survival. The variable \(d_i\) is generally a dummy
+variable that is 1 if you receive the treatment and 0 if you do not. The
+error term, \(\epsilon_i\) represents all other factors that affect the
+health outcome. Note that this regression model corresponds to the
+potential outcome model with constant treatment effects
+
+\[
+\begin{aligned}
+y&=dy_1+(1-d)y_0\\
+y_0&=\beta_0+\epsilon\\
+y_1&=y_0+\beta_1.
+\end{aligned}
+\]
+
+Let \(y_i\) be blood pressure and \(d_i\) represent a pill that is
+designed to lower blood pressure, such that \(d_i=1\) if individual
+\(i\) takes the pill and \(d_i=0\) if individual \(i\) does not take the
+pill. Our goal is to estimate the effect that the pill has on lowering
+blood pressure-our hole is that \(\beta_1\) is large and negative.
+
+One way to estimate the effect is to start selling the drug to the
+general population and then collect some data and run a regression of
+blood pressure on whether or not you take the pill. However, this
+estimate will clearly suffer from a selection issue- people who take the
+pill are the ones who have high blood pressure to begin with! We will
+likely get a positive estimate of \(\beta_1\) from this procedure, even
+if the true \(\beta_1\) is large and negative. This may be true even if
+we condition on observable covariates. Therefore in order to accurately
+estimate \(\beta_1\), we design a medical trial in which we randomly
+assign some patients to the treatment group and others to the control
+group. The patients in the treatment group are given the pill and told
+to take it, while the patients in the control group are given a placebo
+(or nothing at all).
+
+Back in the old days, people estimated the effect of the drug by simply
+subtracting the mean of \(y_i\) for the control group from the mean of
+\(y_i\) for the treatment group (which is the equivalent to regressing
+\(y_i\) on a variable that is 1 if you are assigned to the treatment
+groups and 0 if you are in the control group). This is what is known as
+an \textbf{intention to treat} (or ITT) analysis, because you are taking
+the difference between the group that you intended to treat and the
+group that you do not intend to treat. But there was the problem of
+\textbf{non-compliance}- some people in the treatment group would fail
+to take the pill and others in the control group would obtain the pill
+from another source, even though they were not supposed to. This
+non-compliance can cause bias in the estimate of \(\beta_1\) and it was
+not immediately clear how to fix this bias until it became obvious that
+what we were looking at was actually a simple IV problem.
+
+In this case, the instrument, \(z_i\) is the intention to treat, ie
+\(z_i=1\) if you are assigned to the treatment group (we intend to treat
+you), and \(z_i=0\) if you are assigned to the control group (we do not
+intend to treat you). It is easy to see that \(z_i\) satisfies the two
+properties of a good instrument. First, \(z_i\) is randomly assigned so
+by construction will be uncorrelated with \(\nu_i\) s
+\(cov(z_i,\nu_i)=0\). Second, \(z_i\) is correlated with \(d_i\),
+because you are going to be more likely to take the pill if you are in
+the treatment group so \(cov(z_i,d-i)\neq0\). Therefore, \(z_i\) is a
+valid instrument for \(d_i\) and the IV estimator gives us a consistent
+estimate of \(\beta_1\), the effect of taking the pill on blood
+pressure.
+
+How does this fix the non-compliance problem? To facilitate
+understanding, assume the non-compliance problem only exists for the
+people in the treatment group. That is to say, assume that only half the
+people in the treatment group take the pill (ie half of the treatment
+group fails to comply and does not take the pill while the other half
+takes the pill as they were told to). What will the IV look like?
+
+The first stage will regress whether you took the pill on whether you
+were in the treatment group \(d_i\) on \(z_i\):
+
+\[
+d_i=\gamma_0+\gamma_1z_i+u_i
+\] Since zero people in the control group took the pill while half in
+the treatment group took the pill, it should be intuitive that our
+estimate for \(E[\hat{\gamma}_0]=0\) and \(E[\hat{\gamma}_1]=0.5\).
+
+Now recall that the IV estimate is the reduced form scaled by the first
+stage. In this case, the reduced form is a regression of \(y_i\) (your
+blood pressure) on \(z_i\)(whether you were assigned to the treatment or
+control group). So the reduced form is
+
+\[
+y_i=\pi_0+\pi_1z_i+v_i
+\] Therefore our IV estimate,
+\(\hat{\beta}_{IV}=\frac{\hat{\pi}_1}{\hat{\gamma}_1}=\frac{\hat{\pi}_1}{0.5}\).
+How is this fixing the non-complier problem? Well, we know that the
+reduced form estimates the causal effect of the instrument on \(y_i\),
+so in our case the reduced form is estimating the effect that being
+assigned to the treatment group has on blood pressure. If there were a
+perfect correlation between being assigned to the treatment group and
+taking the pill (ie everyone complies with their treatment assignment),
+then the reduced form estimate would be the effect of taking the pill
+because the first stage would give us \(\hat{\gamma}_1=1\) and the IV
+estimate would be
+\(\hat{\beta}_{IV}=\frac{\hat{\pi}_1}{1}=\hat{\pi}_1\).
+
+In our case however, the correlation is not perfect so the reduced form
+is estimating the effect on your blood pressure of increasing the
+probability that you take the pill by 50 percentage points. This means
+that the reduced form is not estimating the full effect of taking the
+pill, but rather half of the effect of taking the pill.
+
+For example: suppose there are 10 people in the treatment group. 5 take
+the pill and 5 do not. Of the 10 people in the control group, no one
+takes the pill. The (expected) mean blood pressure for the treatment
+group will be
+\(\frac{5\beta_0+5(\beta_0+\beta_1)}{10}=\beta_0+\frac{\beta_1}{2}\),
+while the (expected) mean blood pressure for the control group will be
+just \(\beta_0\). So the reduced form coefficient \(\hat{\pi}_1\) will
+be the difference of means between the treatment and control groups, or
+\(\frac{\beta_1}{2}\). This, of course, is half the effect of taking the
+pill.
+
+Therefore,
+\(E[\beta_{1,IV}]=\frac{\pi_1}{\gamma_1}=\frac{0.5\beta_1}{0.5}=\beta_1\)
+which is exactly what we want. We can see that the IV estimate gives us
+a consistent estimate precisely because it is descaling the reduced form
+by the first stage. In this example what this means in practice is that
+we are re scaling the reduced form to account for the fact that being in
+the treatment group only increases your probability of taking the pill
+by 50 percentage points not by a full 100 percentage points. So the
+reduced form only represents half of the effect of taking the pill and
+it must be re-scaled by (divided by) 0.5 in order to estimate the full
+effect of taking the pill.
+
+Another important clarifying point. Note how IV is different from simply
+taking the mean of \(y_i\) for those in the treatment group who took the
+pill and subtracting the mean of \(y_i\) for those in the control group
+who did not take the pill. The estimator I just described, ie the naive
+estimator, is affected by the same selection issues as a simple OLS
+regression of \(y_i\) on \(d_i\). Specifically, it may be the case that
+the people in the treatment group who choose not to take the pill do so
+because their blood pressure was not very high to begin with. Thus the
+group of people that actually took the pill are the ones that all had
+high blood pressure to begin with, and we will tend to estimate that the
+pill does not have much of an effect.
+
+The IV estimator does not suffer from this selection problem because it
+does not release the people in the treatment group who choose not to
+take the pill. To understand this, imagine for the moment that there are
+two types of people in our sample: high blood pressure types and low
+blood pressure types. Assume that they occur with equal frequency, so
+that when we randomly assign our sample to the treatment and control
+groups, half of the treatment group is high blood pressure, half of the
+treatment group is low blood pressure, half of the control group is high
+blood pressure, and half of the control group is low blood pressure. The
+half of the treatment group that takes the pill all have high blood
+pressure, so when we apply the naive estimator and compare their average
+blood pressure to the average blood pressure of the control group, we
+underestimate the effect of the pill because we are comparing a group of
+high blood pressure people (who took the pill) to a group that is a
+50/50 mix of high blood pressure and low blood pressure people (who did
+not take the pill). In contrast, what IV does is compare the mean of the
+treatment group (which is half high blood pressure people and half low
+blood pressure people) to the mean of the control group (which is half
+high blood pressure people and half low blood pressure people) in the
+reduced form. It then re scales this difference in means by the first
+stage to account for the fact that not all of the treated group took the
+pill. So unlike the naive estimator, which deceptively compares a high
+blood pressure group to a half-high/half-low blood pressure group, IV
+compares two comparable groups, and that is why it gives us a consistent
+estimate of the effect of the pill.
+
+\subsection{Example: IV in practice}
+
+We have actually already encountered an IV estimate in these notes.
+Recall the section on the Arseneaux, Gerber and Green (2006) paper. In
+this paper, they used data from a large-scale voter ``Get out the Vote''
+mobilization effort that randomly calls households and encourages them
+to vote. They generated several different estimates that controlled for
+observable characteristics and compared these estimates to
+``experimental'' estimates in order to gauge bias that was generated by
+unobservables. These ``experimental'' estimates were generated using an
+instrumental variable. They are interested in estimating how getting
+contacted by the ``Get out the Vote'' mobilization affect the likelihood
+of actually voting:
+
+\[
+Votes_i=\beta_0+\beta_1Contacted_i+\beta_jX_j+\epsilon_i.
+\] where \(X_j\) is a vector of exogenous control variables that control
+for the sampling group the observation is drawn from (which is based on
+the state and whether they are voting in a competitive race).
+
+Who gets contacted however is not random, as not everyone will pick up
+the phone. They instrument \(Contacted_i\), the endogenous explanatory
+variable, with whether that household was randomly assigned to receive a
+call from the campaign. Thus the first stage is
+
+\[
+Contacted_i=\gamma_0+\gamma_1Called_i+\gamma_jX_j+u_i
+\] Notice that the way this works is very similar to the hypothetical
+medical trial example described in the previous section.
+
+The code and results are replicated below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(haven)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'haven' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(here)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'here' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## here() starts at C:/Users/Claire/Dropbox/MQE_Causal_Inf/MQE_Causal_Inf
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(lfe)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 3.6.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:MASS':
+## 
+##     select
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{agg\_data\textless{}{-}}\KeywordTok{read\_dta}\NormalTok{(}\StringTok{"../../data/data\_M3\_IV/IA\_MI\_merge040504.dta"}\NormalTok{)}
+\KeywordTok{nrow}\NormalTok{(agg\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+{[}1{]} 2474927
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#scalling the vote02 variable to remove excess 0\textquotesingle{}s from tables}
+\NormalTok{agg\_data}\OperatorTok{$}\NormalTok{vote02\textless{}{-}}\DecValTok{100}\OperatorTok{*}\KeywordTok{as.numeric}\NormalTok{(agg\_data}\OperatorTok{$}\NormalTok{vote02)}
+
+
+\NormalTok{regols1\textless{}{-}}\KeywordTok{felm}\NormalTok{(vote02}\OperatorTok{\textasciitilde{}}\NormalTok{contact}\OperatorTok{+}\NormalTok{state}\OperatorTok{+}\NormalTok{comp\_mi}\OperatorTok{+}\NormalTok{comp\_ia,agg\_data)}
+\NormalTok{regiv1\textless{}{-}}\KeywordTok{felm}\NormalTok{(vote02}\OperatorTok{\textasciitilde{}}\NormalTok{state}\OperatorTok{+}\NormalTok{comp\_mi}\OperatorTok{+}\NormalTok{comp\_ia}\OperatorTok{|}\DecValTok{0}\OperatorTok{|}\NormalTok{(contact}\OperatorTok{\textasciitilde{}}\NormalTok{treat\_real}\OperatorTok{+}\NormalTok{state}\OperatorTok{+}\NormalTok{comp\_mi}\OperatorTok{+}\NormalTok{comp\_ia),agg\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chol.default(mat, pivot = TRUE, tol = tol): the matrix is either
+## rank-deficient or indefinite
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{stargazer}\NormalTok{(regols1,regiv1,}\DataTypeTok{type=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{, }\DataTypeTok{se =} \KeywordTok{list}\NormalTok{( regols1}\OperatorTok{$}\NormalTok{rse, regiv1}\OperatorTok{$}\NormalTok{rse))}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Wed, Oct
+07, 2020 - 3:49:55 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & \multicolumn{2}{c}{vote02} \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ contact & 6.207$^{***}$ &  \\ 
+  & (0.306) &  \\ 
+  & & \\ 
+ state & 6.671$^{***}$ & 7.388$^{***}$ \\ 
+  & (0.347) & (0.350) \\ 
+  & & \\ 
+ comp\_mi & 4.836$^{***}$ & 4.911$^{***}$ \\ 
+  & (0.098) & (0.098) \\ 
+  & & \\ 
+ comp\_ia & 6.353$^{***}$ & 6.083$^{***}$ \\ 
+  & (0.177) & (0.178) \\ 
+  & & \\ 
+ `contact(fit)` &  & 0.360 \\ 
+  &  & (0.498) \\ 
+  & & \\ 
+ Constant & 46.128$^{***}$ & 46.081$^{***}$ \\ 
+  & (0.126) & (0.126) \\ 
+  & & \\ 
+\hline \\[-1.8ex] 
+Observations & 1,905,320 & 1,905,320 \\ 
+R$^{2}$ & 0.012 & 0.012 \\ 
+Adjusted R$^{2}$ & 0.012 & 0.012 \\ 
+Residual Std. Error (df = 1905315) & 49.486 & 49.491 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+It is clear that the OLS estimates are substantially biases due to
+selection of who picks up the phone.
+
+\end{document}
