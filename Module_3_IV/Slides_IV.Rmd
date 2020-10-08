@@ -324,3 +324,420 @@ How does $\beta_{IV}$ uses the instrumental variable to retrieve an unbiased est
 To build intuition, let's look at the two-stage least squares (2SLS) estimator $\beta_{2SLS}$.
 
 When we are working with only one instrument and one endogenous regressor, $\beta_{IV}=\beta_{2SLS}$.
+
+## 2SLS:
+
+
+2SLS proceeds in two (least squares regression) stages:
+
+- the "first stage," a regression of our endogenous variable on our instrument
+$$
+x_1=\gamma_0+\gamma_1z+u.
+$$
+
+- using the estimated $\hat{\gamma}$ coefficients we generate predicted values, $\hat{x}_1$:
+$$
+\hat{x}_1=\hat{\gamma}_0+\hat{\gamma}_1z
+$$
+
+- the "second stage" where we regress our outcome on the predicted values of the endogenous variable
+$$
+y=\beta_0+\beta_1\hat{x}_1+\epsilon
+$$
+
+## The first stage:
+
+\tiny
+```{r sim2sls 1,  echo=TRUE}
+
+sim2slsfs<-felm(x_1~z,ivdat)
+summary(sim2slsfs)
+```
+
+
+
+## The second stage:
+\tiny
+```{r sim2sls 2, echo=TRUE}
+
+hatgamma0<-sim2slsfs$coefficients[1]
+hatgamma1<-sim2slsfs$coefficients[2]
+ivdat$hatx_1<-hatgamma0+hatgamma1*ivdat$z
+
+sim2slsss<-felm(Y~hatx_1,ivdat)
+```
+
+
+
+## The second stage:
+\tiny
+```{r sim2sls 2a,  echo=TRUE}
+
+hatgamma0<-sim2slsfs$coefficients[1]
+hatgamma1<-sim2slsfs$coefficients[2]
+ivdat$hatx_1<-hatgamma0+hatgamma1*ivdat$z
+
+sim2slsss<-felm(Y~hatx_1,ivdat)
+
+```
+
+\centering![]("images\badass-unicorn-emma-sondergaard.jpg"){width=50%}
+
+
+## The second stage:
+\tiny
+```{r sim2sls 2b, results = "asis", echo=TRUE}
+stargazer(simiv1, simiv2, simiv3,sim2slsss, header=FALSE,  type='latex', omit.stat = "all", no.space=TRUE)
+```
+
+\footnotesize
+- Math Magic! $\hat{\beta}_{1,2SLS}$ consistently estimates $\beta_1$ and $\hat{\beta}_{1,2SLS}=\hat{\beta}_{1,IV}$!
+
+- Note: The standard errors reported from the second stage of 2SLS will not be correct (because they are based on $\hat{x}_1$ rather than $x_1$).(There are ways to correct this but the math and coding is a bit complicated.) 
+
+
+
+## The Reduced Form (and more cool IV intuition)
+
+The **reduced form** regresses the outcome directly on the exogenous instrument (and any other exogenous variables if you have them):
+
+$$
+y_i=\pi_0+\pi_1z+\eta
+$$
+\tiny
+```{r sim2sls 4, echo=TRUE, results = "asis"}
+sim2slsrf<-felm(Y~z,ivdat)
+stargazer(sim2slsfs, sim2slsss, sim2slsrf,  type='latex', header=FALSE, omit.stat = "all")
+```
+
+
+## The Reduced Form (and more cool IV intuition)
+
+
+:::::: {.columns}
+
+::: {.column width="70%" data-latex="{0.55\textwidth}"}
+
+We can recover $\hat{\beta}_1$ by taking the $\hat{\pi}_1$from the reduced form and dividing it by $\hat{\gamma}_1$ from the first stage:
+
+$$
+\hat{\beta}_1=\frac{\hat{\pi}_1}{\hat{\gamma}_1}=\frac{2.578}{0.239}=10.786
+$$
+
+- Math Magic!
+
+- Why does this work?
+
+:::
+
+
+::: {.column width="30%" data-latex="{0.4\textwidth}"}
+
+\centering![]("images\images.jpg")
+
+:::
+::::::
+
+## The Reduced Form (and more cool IV intuition)
+
+
+:::::: {.columns}
+
+::: {.column width="70%" data-latex="{0.55\textwidth}"}
+
+We can recover $\hat{\beta}_1$ by taking the $\hat{\pi}_1$from the reduced form and dividing it by $\hat{\gamma}_1$ from the first stage:
+
+$$
+\hat{\beta}_1=\frac{\hat{\pi}_1}{\hat{\gamma}_1}=\frac{2.578}{0.239}=10.786
+$$
+
+- Math Magic!
+
+- Why does this work? We are taking the effect of $z$ on $y$ and scaling it by the effect of $z$ on $x_1$ (since $z$ affects $y$ via $x_1$).
+
+:::
+
+
+::: {.column width="30%" data-latex="{0.4\textwidth}"}
+
+\centering![]("images\images.jpg")
+
+:::
+::::::
+
+## We saw the good. Now for the bad and ugly.
+
+:::::: {.columns}
+
+::: {.column width="50%" data-latex="{0.55\textwidth}"}
+
+- The Forbidden Regression
+
+- Weak Instruments
+:::
+
+
+::: {.column width="50%" data-latex="{0.4\textwidth}"}
+
+\centering![]("images\download.jpg")
+
+:::
+::::::
+
+
+
+## The Bad: The Forbidden Regression
+
+Be weary of the **forbidden regression**!
+
+People sometimes try to run a logit, probit, Poisson or some other non-linear regression as the first stage of a 2SLS procedure. This is a bad idea. Don't do it.  
+
+## The Ugly: Weak Instruments
+
+
+Recall that 
+$$
+\hat{\beta}_{IV}=\beta+\frac{cov(z,\nu)}{cov(z,x_1)}.
+$$
+
+ A weak instrument is an instrument with a weak first stage:  $Cov(z, x_1)$,  is small.
+ 
+ Why is this a problem? 
+ 
+## The Ugly: Weak Instruments
+
+**A weak instrument will amplify any endogeneity that exists in your model.** 
+
+For $E[\hat{\beta}_{IV}]=\beta_1$, we need $cov(z,\nu)=0$ (the exclusion restriction) to hold.
+
+Suppose this assumption is violated in a small way, meaning that $cov(z,\nu)\neq 0$ but that it was a vary small value. 
+
+If $cov(z,x_1)$ is also small, the violation of the exclusion restriction will get amplified leading to potentially severe bias in our estimator. 
+
+## The Ugly: Simulation
+
+I generate a simulated dataset with:
+
+- a week first stage $cov(z,x_1)=0.03$
+
+- a small violation of the exclusion restriction, $cov(z,x_2)=0.01$
+
+\tiny
+```{r simivweak1, echo=TRUE }
+sigmaMat<-matrix(c(1,0.75,0.03,0.75,1,0.01,0.03,0.01,1), nrow=3)
+sigmaMat
+
+set.seed(5000)
+ivdatwk<- as.data.frame(mvrnorm(10000, mu = c(0,0,0), 
+                     Sigma = sigmaMat))
+
+names(ivdatwk)<-c("x_1","x_2","z")
+cov(ivdatwk)
+ivdatwk$error<-rnorm(10000, mean=0, sd=1)
+ivdatwk$nu=(-20)*ivdatwk$x_2+ivdatwk$error
+```
+
+## The Ugly: Simulation
+\tiny
+```{r simivweak2, results = "asis", echo=TRUE}
+
+#The data generating process
+B1<-10
+B2<-(-20)
+ivdatwk$Y<-ivdatwk$x_1*B1+ivdatwk$x_2*B2+ivdatwk$error
+
+simivweakfs<-lm(x_1~z,ivdatwk)
+simivweak<-felm(Y~1|0|(x_1~z),ivdatwk)
+stargazer(simivweakfs,simivweak,  type='latex', omit.stat = c("n", "adj.rsq", "rsq", "ser"), header=FALSE)
+```
+
+## The Ugly: Simulation
+\small
+```{r simivweak2a, results = "asis", echo=TRUE}
+cov(ivdatwk$z,ivdatwk$x_1)
+cov(ivdatwk$z,ivdatwk$nu)
+```
+
+\normalsize
+We can see that $cov(z,x_1)= 0.02473$ and $cov(z,\nu)=-0.25756$ so
+
+$$
+\hat{\beta}_{1,IV}=10+\frac{-0.25756}{0.02473}=-0.415\neq\beta_1=10.
+$$
+\centering![]("images\deaduni.jpg")
+
+## The Ugly: Weak Instruments
+
+This is a major problem because: 
+
+- It is rare that an instrument would be perfectly independent of all confounding factors, and 
+
+- it is impossible to test the exclusion restriction.
+
+$\Rightarrow$ be very cautious about results when there is a weak first stage. 
+
+What constitutes a "weak" instrument? 
+
+The standard benchmark is a first stage F-test that is less than 10. 
+
+## Dealing with Multiples
+
+See the lecture notes for example of how to deal with more complicated specifications:
+
+- Control variables
+
+- Multiple Instruments
+
+- Multiple endogenous variables and multiple instruments
+
+
+## Unicorns and Work-horses
+\centering![]("images\real_sib_unicorn.jpg")
+The real Siberian unicorn, \textit{Elasmotherium sibiricum}, 29,000 BC. 
+
+## Unicorns and Work-horses
+
+IV estimations show up in two different types of situations:
+
+- IV projects:
+
+  - the validity of the instrumental variable is central to the identification strategy 
+
+  - can be very interesting because they are often looking at an important but highly endogenous variable 
+
+  - the validity of the causal claims,  depends **\underline{heavily}** on the validity of the instrument. 
+
+- Cameo appearances in other projects:
+
+  - in randomized control trials (RCT)
+
+  - in regression discontinuity (RD) projects 
+
+  - the random assignment of treatment is used as an instrument to estimate treatment effects
+
+
+## "Work Horse" IV intuition and medical trials (RCT)
+
+
+Medical trials are a fantastic example of an application of instrumental variables:
+
+- socially important (perhaps the most important application of IV to date)
+
+- very clean experimental design
+
+And this is a good segway to the RCT module. 
+
+## Medical trials (RCT)
+
+The model for a medical trial:
+$$
+y_i=\beta_0+\beta_1 d_i+\epsilon_i.
+$$
+
+- $y_i$ represents a medical outcome (continuous or discreet). 
+
+- $d_i$ is generally a dummy variable (1 if treated and 0 if not). 
+
+- The error term, $\epsilon_i$ represents all other factors that affect the health outcome
+
+## Medical trials (RCT)
+
+This regression model corresponds to the potential outcome model with constant treatment effects:
+
+$$
+\begin{aligned}
+y&=dy_1+(1-d)y_0\\
+y_0&=\beta_0+\epsilon\\
+y_1&=y_0+\beta_1.
+\end{aligned}
+$$
+
+Our goal:
+
+- estimate the effect that the treatment (say a pill) has on our outcome (say blood pressure)
+
+- our hope is that $\beta_1$ is large and negative. 
+
+## Medical trials (RCT)
+
+Options: Non-Experimental estimates:
+
+- Selling the drug to the general population.
+  
+- Collect some data
+  
+- Regress blood pressure on whether or not you take the pill
+  
+- Problem: 
+  
+  - people who take the pill are the ones who have high blood pressure to begin with! 
+  
+  - We will likely get a positive estimate of $\beta_1$ (even with controls).
+    
+
+## Medical trials (RCT)
+
+Options: A Medical Trial:
+
+- randomly assign some patients to the treatment group and others to the control group.
+  
+- Treatment group is given the pill and told to take it
+  
+- Control group are given a placebo (or nothing at all).   
+
+
+Back in the old days: the **intention to treat** (or ITT) estimate:
+
+- Calculate  $\bar{y}_{i,treat}-\bar{y}_{i,control}$
+  
+- This is the equivalent to estimating $y_i=\beta_0+\beta_1d_i+\epsilon$ where $d_i=1$ if in the treatment group and 0 if in the control group
+
+- **intention to treat** because you compare the group that you intended to treat and the group that you do not intend to treat. 
+
+**What is the problem with this?**
+
+
+## Medical trials (RCT)
+
+**Non-compliance**:
+
+- some (selected) people in the treatment group would fail to take the pill 
+
+- some (selected) people in the control group would obtain the pill from another source (even though they were not supposed to)
+
+Non-compliance can bias in the estimate of $\beta_1$.
+
+**How can this bias be corrected?**
+
+## The "Work Horse" IV: 
+
+This is actually a simple IV problem:
+
+- The instrument, $z_i$ is the intention to treat:
+
+  - $z_i=1$ if you are assigned to the treatment group (we intend to treat you)
+  
+  - $z_i=0$ if you are assigned to the control group (we do not intend to treat you)
+  
+**Does $z_i$ satisfies the two properties of a good instrument?**
+
+
+
+
+## The "Work Horse" IV: 
+
+**Does $z_i$ satisfies the two properties of a good instrument?**
+
+- $z_i$ is randomly assigned so by construction will be uncorrelated with $\nu_i$ so $cov(z_i,\nu_i)=0$ (the exclusion restriction). 
+
+- $z_i$ is correlated with $d_i$, because you are going to be more likely to take the pill if you are in the treatment group so $cov(z_i,d_i)\neq0$ (the first stage).
+
+
+$\Rightarrow z_i$ is a valid instrument for $d_i$ and the IV estimator gives us a consistent estimate of $\beta_1$, the effect of taking the pill on blood pressure. 
+
+## The "Work Horse" IV: Intuition
+
+**How does this fix the non-compliance problem?**
+
+ assume the non-compliance problem only exists for the people in the treatment group. That is to say, assume that only half the people in the treatment group take the pill (ie half of the treatment group fails to comply and does not take the pill while the other half takes the pill as they were told to). What will the IV look like?
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  7 OCT 2020 17:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  8 OCT 2020 17:32
 entering extended mode
 **./Lecture_Notes_Markdown_IV.tex
 (Lecture_Notes_Markdown_IV.tex
@@ -706,7 +706,7 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  13611 strings out of 481565
- 203205 string characters out of 2913711
+ 203209 string characters out of 2913711
  489673 words of memory out of 3000000
  28437 multiletter control sequences out of 15000+200000
  597936 words of font info for 132 fonts, out of 3000000 for 9000
@@ -737,7 +737,7 @@ ers/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C
 fb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmt
 t10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/l
 m/lmtti10.pfb>
-Output written on Lecture_Notes_Markdown_IV.pdf (19 pages, 586961 bytes).
+Output written on Lecture_Notes_Markdown_IV.pdf (19 pages, 586938 bytes).
 PDF statistics:
  267 PDF objects out of 1000 (max. 8388607)
  52 named destinations out of 1000 (max. 500000)
