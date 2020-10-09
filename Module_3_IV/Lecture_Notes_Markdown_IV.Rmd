@@ -572,10 +572,10 @@ agg_data$vote02<-100*as.numeric(agg_data$vote02)
 regols1<-felm(vote02~contact+state+comp_mi+comp_ia,agg_data)
 regiv1<-felm(vote02~state+comp_mi+comp_ia|0|(contact~treat_real+state+comp_mi+comp_ia),agg_data)
 
-stargazer(regols1,regiv1,type='latex', se = list( regols1$rse, regiv1$rse))
+stargazer(regols1,regiv1,type='latex', se = list( regols1$rse, regiv1$rse), header=FALSE)
 
 ```
 
-It is clear that the OLS estimates are substantially biases due to selection of who picks up the phone.
+It is clear that the OLS estimates are substantially biased due to selection of who picks up the phone.
 
 
