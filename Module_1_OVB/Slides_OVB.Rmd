@@ -855,6 +855,10 @@ You are assuming that if there is any systematic selection into "treatment", it 
 
 ## There is no Santa Claus: Arseneaux, Gerber and Green (2006)
 
+\center ![]("images\santa.jpg"){width=45%}
+
+## There is no Santa Claus: Arseneaux, Gerber and Green (2006)
+
 Evaluate a "Get out the Vote" mobilization:
 
 - Who gets called ($Call_i$) is random
@@ -878,6 +882,7 @@ library(dplyr)
 
 
 ## There is no Santa Claus: AGG (2006)
+Replicating results of columns 1 of p.49 and p.50:
 \tiny
 ```{r repagg1aa, echo=TRUE, results = "asis"}
 agg_data<-read_dta("../../data/data_M1_OVB/IA_MI_merge040504.dta")
@@ -898,7 +903,7 @@ regexp1<-felm(vote02~state+comp_mi+comp_ia|0|(contact~treat_real+state+comp_mi+c
 
 
 ## There is no Santa Claus: AGG (2006)
-
+Replicating results of columns 1 of p.49 and p.50:
 \tiny
 ```{r repagg1a, echo=TRUE, results = "asis"}
 stargazer(regols1,regexp1, type='latex', se = list(regols1$rse,regexp1$rse),
@@ -927,7 +932,7 @@ Can OLS do better? AGG have lots of controls in their data.
 
 
 ## There is no Santa Claus: AGG (2006)
-
+Replicating results of columns 2 of p.49 and p.50:
 \tiny 
 ```{r repagg2, echo=TRUE, results = "asis"}
 
@@ -948,7 +953,7 @@ regexp2<-felm(vote02~state+comp_mi+comp_ia+persons+age+
 
 
 ## There is no Santa Claus: AGG (2006)
-
+Replicating results of columns 2 of p.49 and p.50:
 \tiny
 ```{r repagg2a, echo=TRUE, results = "asis"}
 stargazer(regols2,regexp2, type='latex', se = list(regols2$rse,regexp2$rse),
