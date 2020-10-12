@@ -356,6 +356,10 @@ If you had not modeled the data, would you be concerned?
   
   - should reassure you that they are the result of random chance.
   
+If I change the seed in the simulation (try 5000), some other variables will likely be significant due to random chance. 
+  
+  
+  
 ## The laws of probability
 
  ![]("images\significant_comic1.png")

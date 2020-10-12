@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  9 OCT 2020 17:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  12 OCT 2020 09:43
 entering extended mode
 **./Slides_RCT.tex
 (Slides_RCT.tex
@@ -1378,20 +1378,20 @@ Overfull \hbox (2.81186pt too wide) in paragraph at lines 14--38
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 792.
+(Font)              <10> on input line 795.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 792.
+(Font)              <7> on input line 795.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 792.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 795.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 792.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 795.
 [28
 
 ]
 <images/significant_comic1.png, id=207, 406.51875pt x 237.13594pt>
 File: images/significant_comic1.png Graphic file (type png)
 <use images/significant_comic1.png>
-Package pdftex.def Info: images/significant_comic1.png  used on input line 797.
+Package pdftex.def Info: images/significant_comic1.png  used on input line 800.
 
 (pdftex.def)             Requested size: 307.30125pt x 179.25906pt.
 [29
@@ -1400,7 +1400,7 @@ Package pdftex.def Info: images/significant_comic1.png  used on input line 797.
 <images/significant_comic2.png, id=216, 406.51875pt x 300.3722pt>
 File: images/significant_comic2.png Graphic file (type png)
 <use images/significant_comic2.png>
-Package pdftex.def Info: images/significant_comic2.png  used on input line 802.
+Package pdftex.def Info: images/significant_comic2.png  used on input line 805.
 
 (pdftex.def)             Requested size: 307.30125pt x 227.06148pt.
 [30
@@ -1409,7 +1409,7 @@ Package pdftex.def Info: images/significant_comic2.png  used on input line 802.
 <images/significant_comic3.png, id=224, 406.51875pt x 301.125pt>
 File: images/significant_comic3.png Graphic file (type png)
 <use images/significant_comic3.png>
-Package pdftex.def Info: images/significant_comic3.png  used on input line 807.
+Package pdftex.def Info: images/significant_comic3.png  used on input line 810.
 
 (pdftex.def)             Requested size: 307.30125pt x 227.63055pt.
 [31
@@ -1418,7 +1418,7 @@ Package pdftex.def Info: images/significant_comic3.png  used on input line 807.
 <images/significant_comic4.png, id=233, 406.51875pt x 286.06876pt>
 File: images/significant_comic4.png Graphic file (type png)
 <use images/significant_comic4.png>
-Package pdftex.def Info: images/significant_comic4.png  used on input line 812.
+Package pdftex.def Info: images/significant_comic4.png  used on input line 815.
 
 (pdftex.def)             Requested size: 307.30125pt x 216.24904pt.
 [32
@@ -1433,11 +1433,11 @@ Package pdftex.def Info: images/significant_comic4.png  used on input line 812.
 \tf@snm=\write8
 \openout8 = `Slides_RCT.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 814.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 814.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 817.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 817.
 (Slides_RCT.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 814.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 814.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 817.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 817.
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1478,7 +1478,7 @@ blic/lm/lmsy9.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 /type1/public/lm/lmtt8.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/f
 onts/type1/public/lm/lmtti10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX
  2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on Slides_RCT.pdf (32 pages, 634537 bytes).
+Output written on Slides_RCT.pdf (32 pages, 634656 bytes).
 PDF statistics:
  333 PDF objects out of 1000 (max. 8388607)
  96 named destinations out of 1000 (max. 500000)
