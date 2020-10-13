@@ -3,3 +3,7 @@ First name; GitHub user ID you will be using
 
 Claire; claireduq
 Erica; els204
+Adam; AdamDuvall
+Spencer; STSegal
+Natalee; nsm30
+
