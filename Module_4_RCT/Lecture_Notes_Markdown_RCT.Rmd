@@ -243,7 +243,7 @@ rct3<-felm(read4~treat+read3+female+pe3+math3+hist3|class,scores5)
 stargazer(rct1, rct2, rct3, type="latex")
 ```
  
- Why does adding excoriates add precision? Think about the formula for the variance/standard error of our estimator:
+ Why does adding control variables add precision? Think about the formula for the variance/standard error of our estimator:
  
  $$
  \begin{aligned}

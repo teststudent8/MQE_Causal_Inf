@@ -376,3 +376,75 @@ If I change the seed in the simulation (try 5000), some other variables will lik
 
  ![]("images\significant_comic4.png")
  
+ 
+ 
+## Controls in RCT specifications
+
+Because the treatment was randomized, estimating
+
+$$
+Y_i=\alpha+\tau D_i+\epsilon
+$$
+
+- gives us an unbiased estimate of $\tau$ 
+
+- controlling for omitted variables is not necessary
+
+That said, it is common to see specifications in RCT projects that include a vector of control variables. Why?
+
+- verify that estimated coefficient does not change significantly when controls are added 
+
+- adding controls can make our estimated more precise and shrink the standard errors. 
+
+
+## Controls in RCT specifications
+
+\tiny
+```{r controls, echo=TRUE, results="asis"}
+
+rct1<-felm(read4~treat,scores5)
+rct2<-felm(read4~treat+read3+female+pe3+math3+hist3,scores5)
+rct3<-felm(read4~treat+read3+female+pe3+math3+hist3|class,scores5)
+```
+
+## Controls in RCT specifications
+
+\tiny
+```{r controlsa, echo=TRUE, results="asis"}
+stargazer(rct1, rct2, rct3, type="latex", header=FALSE, omit.stat = "all")
+```
+ 
+## Controls in RCT specifications
+
+ Why does adding control variables add precision? Think about the formula for the variance/standard error of our estimator:
+ 
+ $$
+ \begin{aligned}
+ Var(\hat{\beta_1})&=\frac{\sigma^2}{SST_x(1-R^2_j)}\\
+ se(\beta_1)&=\frac{\hat{\sigma}}{\sqrt{SST_x(1-R^2_j)}}\\
+ \hat{\sigma}^2&=\frac{1}{n-k-1}\sum^n_i\hat{u}^2_i
+ \end{aligned}
+ $$
+ 
+If we include more x's in our regression,
+
+- we can reduce $\hat{u}^2_1$, i.e. the unexplained variation in $Y$ goes down 
+
+- $\Rightarrow se(\hat{\beta_j})$ decreases 
+
+- $\Rightarrow \hat{\beta}$ can be estimated more precisely. 
+
+
+## Heterogeneity
+
+You may believe that the treatment you are investigating may affect certain individuals and subgroups of the population more than others. We can measure heterogeneity of the program effects for individuals with specific characteristics by interacting these characteristics with the treatment variable. 
+
+In the regression framework, we simply add the relevant interaction terms,
+
+$$
+Y_i=\beta_0+\beta_1 D_i+ \beta_2 x_i +\beta_3 D_i\times x_i+\epsilon,
+$$
+
+where $x_i$ could represent an indicator variable for being female, then $\beta_3$ gives us the differential effect of the treatment for females relative to non-females. 
+
+In our simulation, our DGP did not model any heterogenous effects. Below, I start by searching for heterogeneity by gender using our existing simulation data. I then generate two new sets of 4th grade reading scores with a DGP that model heterogenous effects. 
