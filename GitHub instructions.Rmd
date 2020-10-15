@@ -197,6 +197,51 @@ There are two possibilities when you receive a pull request. The edits proposed 
 
 The pull request will now switch to Merged status. If you navigate to the file in your repo, you should see the new edits appear. And of you go to the file's **history** (button on the upper right) you can see the commit that was just made via the merged pull request.
 
+## Making sure your forked repo is up to date with the parent repo
+
+If you are collaborating on a project, before you start working on the files you will want to make sure that you are working on the most up to date version of your group's code. Similarly, if you are referring to the course notes in your repo, you want to make sure that these notes are the most up do date version and reflect any changes or edits I made to them since you forked the course repo. Keeping your repos up to date will reduce the risk of merge conflicts and make your group collaboration much smoother. 
+
+### How do I know if my repo is not up to date?
+
+To check in see if someone made changes to the parent repo you originally forked your repo from that are not reflected in your fork:
+
+- Navigate into your repo 
+
+- You will see a cell above your files with a statement like: 
+
+    `This branch is 16 commits behind claireduq:master`
+
+  this means your repo it not up to date.
+  
+  
+### How to sync your repo if it is not up to date:
+
+1. Navigate to the main page of your forked repository
+
+2. Click on the **pull request** tab
+
+3. Click the green **New pull request** button
+
+4. You will see a cell that specifies the base repository and the head repository. We need to have the base repository be your repository and the head repository be the parent repository. For example, if you are trying to update your fork of the course repo we want 
+
+    `base repository: student/MQE_Causal_Inf` and `head repository: claireduq/MQE_Causal_Inf`
+    
+    to do this you can likely simply click on the highlighted blue text "switching the base" that is in the main window under the cell that specifies the base and the head.
+    
+5. Click the green **Create pull request** button
+
+6. Name your pull request
+
+7. Scroll down and click the green **Create pull request** button
+
+8. Click the green **Merge pull request** button
+
+9. Click the green **Confirm Merge** button
+
+10. Check and see that your files have updated and are now in sync with the parent repo
+  
+  
+**PRACTICE:** Update your forked MQE_Causal_Inf repos so that the reflect my recent edits. 
 
 
 # Basic actions with Git
