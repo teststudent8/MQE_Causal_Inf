@@ -30,7 +30,7 @@ Income_i=\beta_0+\beta_1 Schooling_i+\epsilon
 \end{split}
 \end{equation}
 
-could not be interpreted as causal estimates because of selection and omitted variable bias. We also saw that even if I add lots of controls for the type of demographic characteristics that are often included in datasets, there would still likely remain important omitted variables. Most datasets do not have measures of `ability','enthusiasm', or 'grit' that could be important determinants of both a persons income and their schooling level. But what if I can control for all the unobservable characteristics of an individual, as long as they do not change over time?
+could not be interpreted as causal estimates because of selection and omitted variable bias. We also saw that even if I add lots of controls for the type of demographic characteristics that are often included in datasets, there would still likely remain important omitted variables. Most datasets do not have measures of `ability','enthusiasm', or 'grit' that could be important determinants of both a person's income and their schooling level. But what if I can control for all the unobservable characteristics of an individual, as long as they do not change over time?
 
 \subsection{Data Structures}
 
@@ -117,6 +117,8 @@ Notice that given the data I can add an additional control that may be important
 Income_{it}=\beta_0+\beta_1Schooling_{it}+\beta_2Married_{it}+\gamma_i+\tau_t+\epsilon.
 \end{split}
 \end{equation}
+
+Finally, as with all econometric specifications, it is important to think about where our identifying variation is coming from. For individuals who's schooling does not change between the years in my data, the effect of their schooling will be baked into their individual fixed effect: there is not enough variation to disentangle the two. This means that the $\beta_1$ coefficient on schooling is identified off of "switchers", ie observations that experience a change in their schooling. This is important because it may change how generalizable we think the results are and how we want to interpret this coefficient. If all of the switchers are in their 20's, when people are more likely to experience a change in schooling, it is not clear whether our estimate would apply well to older populations for example.  
 
 \subsection{A Simulation}
 

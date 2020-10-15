@@ -173,6 +173,18 @@ $$
 
 - What is this estimation equivalent to?
 
+## Fixed Effects and variation:
+
+If I estimate 
+
+$$
+Income_{it}=\beta_0+\beta_1Schooling_{it}+\beta_2 Married_{it}+\gamma_i+\tau_t+\epsilon.
+$$
+Where (who?) is my identifying variation coming from for estimating $\beta_1$?
+
+Does this matter? How does it change our interpretation of the estimate?
+
+
 ## A Simulation:
 
 You are a principle of a small school composed of four classrooms. You have just implemented a new option available to teachers for students to spend some small group reading time with a para-educator. You would like to know how this reading time is affecting reading scores. 

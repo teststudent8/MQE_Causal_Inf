@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  15 OCT 2020 14:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  15 OCT 2020 15:06
 entering extended mode
 **./Lecture_Notes_Markdown_FE.tex
 (Lecture_Notes_Markdown_FE.tex
@@ -682,53 +682,53 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-04.
+17.
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 305.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 318.
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-311.
+324.
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [3] [4] [5] [6] [7] [8]
-Overfull \hbox (149.74318pt too wide) in paragraph at lines 742--742
+) [3] [4] [5] [6] [7] [8] [9]
+Overfull \hbox (149.74318pt too wide) in paragraph at lines 755--755
 []\T1/lmtt/m/n/10 ##    felm(formula = crmrte ~ unem + area + west + offarea + 
 lawexpc +      pcinc, data = crime[crime$year == "87", ])[] 
  []
 
-[9]
-Overfull \hbox (70.99341pt too wide) in paragraph at lines 822--822
+[10]
+Overfull \hbox (70.99341pt too wide) in paragraph at lines 835--835
 []\T1/lmtt/m/n/10 ##    felm(formula = crmrte ~ unem + area + west + offarea + 
 lawexpc +      pcinc | city, data = crime)[] 
  []
 
-[10]
-Overfull \hbox (107.7433pt too wide) in paragraph at lines 887--887
+
+Overfull \hbox (107.7433pt too wide) in paragraph at lines 900--900
 []\T1/lmtt/m/n/10 ##    felm(formula = crmrte ~ unem + area + west + offarea + 
 lawexpc +      pcinc | city + year, data = crime)[] 
  []
 
 [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 934.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 947.
 [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 934.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 947.
 (Lecture_Notes_Markdown_FE.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 934.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 934.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 947.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 947.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13740 strings out of 481565
- 205282 string characters out of 2913711
+ 13744 strings out of 481565
+ 205326 string characters out of 2913711
  495568 words of memory out of 3000000
  28616 multiletter control sequences out of 15000+200000
- 595922 words of font info for 111 fonts, out of 3000000 for 9000
+ 596088 words of font info for 113 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,15n,42p,826b,473s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,15n,42p,826b,467s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.e
 nc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1
 .enc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
@@ -752,7 +752,7 @@ ire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Users
 Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb
 ><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtti
 10.pfb>
-Output written on Lecture_Notes_Markdown_FE.pdf (12 pages, 365564 bytes).
+Output written on Lecture_Notes_Markdown_FE.pdf (12 pages, 366248 bytes).
 PDF statistics:
  193 PDF objects out of 1000 (max. 8388607)
  35 named destinations out of 1000 (max. 500000)
