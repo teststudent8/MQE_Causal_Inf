@@ -1,4 +1,3 @@
-
 First name; GitHub user ID you will be using
 
 Claire; claireduq
@@ -7,3 +6,4 @@ Adam; AdamDuvall
 Spencer; STSegal
 Natalee; nsm30
 Mason; MasonPutt
+Tricia; pmm1218
