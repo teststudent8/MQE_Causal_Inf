@@ -440,7 +440,7 @@ Y_i=\tilde{\beta}_0+\tilde{\beta}_1 x_{1i}+\epsilon_i
 
 \begin{equation}\label{ovb1}
 \begin{split}
-x_{2i}=\rho_0+\rho_1x_{1i}+\varepsilon_i, 
+x_{2i}=\rho_1+\rho_2x_{1i}+\varepsilon_i, 
 \end{split}
 \end{equation}
 
@@ -458,7 +458,7 @@ Substituting equation \ref{ovb1} into  \ref{ovb2} and rearanging gives
 
 \begin{equation}\label{ovb2}
 \begin{split}
-Y_i=\underbrace{(\beta_0+\beta_2\rho_0)}_{\tilde{\beta}_0}+\underbrace{(\beta_1+\beta_2 \rho_2)}_{\tilde{\beta}_1} x_{1i}+\underbrace{(\beta_2 \varepsilon_i+\nu_i)}_{\epsilon_i}.
+Y_i=\underbrace{(\beta_0+\beta_2\rho_1)}_{\tilde{\beta}_0}+\underbrace{(\beta_1+\beta_2 \rho_2)}_{\tilde{\beta}_1} x_{1i}+\underbrace{(\beta_2 \varepsilon_i+\nu_i)}_{\epsilon_i}.
 \end{split}
 \end{equation}
 
@@ -504,7 +504,7 @@ Suppose I am interested in thinking about how health relates to income. Using my
 $$
 Income_i=\beta_0+\beta_1Health_i+\epsilon, 
 $$
-where heath is an rspondents subjective assesment of their health with 1 being very health and 5 being very unhealthy. 
+where health is an rspondents subjective assesment of their health with 1 being very health and 5 being very unhealthy. 
 
 
 ```{r chunk3}

@@ -221,7 +221,7 @@ stargazer(allModelsResults[[16]],allModelsResults[[17]],allModelsResults[[18]],a
 
  Notice that some of the variables you included in the balance test are problematic. Math and history scores in 4th grade could have potentially been affected by the treatment as well (and indeed they come out as statistically significant because our simulation modeled that they would be affected). These types of variables should not be included in a balance table since they are themselves outcomes of the treatment. The other variables seem quite balanced. Note that a few come out as statistically significant: class_6 and class_10 at 10\%, and pe_3 at 5\%. This is the result of random chance as discussed above (we know this for certain since we modeled the data). If you had not modeled the data, the fact that pe_3 was determined prior to treatment, and is not generally a variable we would expect to correlated with reading scores, should reassure you that it is the result of random chance. Class_6 and Class_10 would be more concerning since it might signal that some teachers were better able to get their students into the small groups but the coefficients are not large, nor are they highly significant which should reassure you that they are the result of random chance.
  
- ![...]("C:\Users\Claire\Dropbox\MQE_CI_Fall2020\Lecture Notes\significant_comic.png")
+One way to see this, because we are working with simulated data is to change the seed in the simulation. Change the seed in the simulation (try 5000 for example) and you will find that some other variables will likely be significant due to random chance. 
  
  
  
@@ -243,7 +243,7 @@ rct3<-felm(read4~treat+read3+female+pe3+math3+hist3|class,scores5)
 stargazer(rct1, rct2, rct3, type="latex")
 ```
  
- Why does adding excoriates add precision? Think about the formula for the variance/standard error of our estimator:
+ Why does adding control variables add precision? Think about the formula for the variance/standard error of our estimator:
  
  $$
  \begin{aligned}
@@ -310,7 +310,8 @@ So what do we care about? The ITT or the TOT? Well, it really depends. A great e
 
 Thus the CDC website on contraception effectiveness reports typical (ITT) while the manufacturers of contraceptives will likely list effectiveness with perfect use (TOT) on their boxes.
 
- ![...]("C:\Users\Claire\Dropbox\MQE_CI_Fall2020\Lecture Notes\contraceptivefailure.png")
+ ![...]("images\contraceptivefailure.png")
+ 
 
 \subsection{RCT Challenges}
 \subsubsection{ Spillovers! SUTVA}
@@ -371,4 +372,8 @@ For these reasons, it is generally advisable to make sure that the salience of t
 Another important concern with small scale RCT's is that many of the policies we are interested in in economics affect variables that are not determined by a single individual's choices, such as prices. Most RCT's are small enough in scale that they are unlikely to affect market level variables such as prices.  It is conceivable though that if the intervention were implemented at scale, some interventions could affect market level variables which in turn could potentially counteract some of the benefits that were estimated in the small scale experiment. In a small experiment, I may be able to encourage seasonal migration to urban areas with a subsidy and find that migrants are able to find jobs there and earn some returns to migrating. If this was implemented at scale, the outcome might be very different. A national subsidy could increase labor supply in the urban area substantially possibly leading to unemployed migrants and wage adjustments. The effect of the nationally implemented policy could be very different from those estimated with the smaller scale RCT. 
 
 \subsection{Fishing for Stars}
+ ![...]("images\significant_comic.png")
+ 
+  ![...]("images\phackingcomic.png")
+
 

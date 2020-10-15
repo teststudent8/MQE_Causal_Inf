@@ -543,11 +543,11 @@ Y_i=\tilde{\beta}_0+\tilde{\beta}_1 x_{1i}+\epsilon_i.
 $$
 If there is a relationship between $x_{1i}$ and $x_{2i}$ such that 
 $$
-x_{2i}=\rho_0+\rho_1 x_{1i}+\varepsilon_i
+x_{2i}=\rho_1+\rho_2 x_{1i}+\varepsilon_i
 $$
 we can substitute this into the first equation and by rearranging,
 $$
-Y_i=\underbrace{(\beta_0+\beta_2\rho_0)}_{\tilde{\beta}_0}+\underbrace{(\beta_1+\beta_2 \rho_2)}_{\tilde{\beta}_1} x_{1i}+\underbrace{(\beta_2 \varepsilon_i+\nu_i)}_{\epsilon_i},
+Y_i=\underbrace{(\beta_0+\beta_2\rho_1)}_{\tilde{\beta}_0}+\underbrace{(\beta_1+\beta_2 \rho_2)}_{\tilde{\beta}_1} x_{1i}+\underbrace{(\beta_2 \varepsilon_i+\nu_i)}_{\epsilon_i},
 $$
 show that 
 $$

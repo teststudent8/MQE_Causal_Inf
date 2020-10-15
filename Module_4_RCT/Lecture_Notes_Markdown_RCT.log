@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  9 OCT 2020 17:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  12 OCT 2020 09:56
 entering extended mode
 **./Lecture_Notes_Markdown_RCT.tex
 (Lecture_Notes_Markdown_RCT.tex
@@ -659,50 +659,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 372--380
 
  []
 
-[4] [5] [6] [7]
-<C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/significant_comic.png, i
-d=88, 487.8225pt x 1353.25575pt>
-File: C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/significant_comic.p
-ng Graphic file (type png)
-<use C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/significant_comic.pn
-g>
-Package pdftex.def Info: C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/
-significant_comic.png  used on input line 647.
-(pdftex.def)             Requested size: 234.46477pt x 650.42265pt.
-
-LaTeX Warning: Float too large for page by 23.93707pt on input line 649.
-
-[8] [9 <C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/significant_comic
-.png>] [10] [11] [12]
-<C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/contraceptivefailure.png
-, id=114, 529.22719pt x 877.02657pt>
-File: C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/contraceptivefailur
-e.png Graphic file (type png)
-<use C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/contraceptivefailure
-.png>
-Package pdftex.def Info: C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/
-contraceptivefailure.png  used on input line 893.
+[4] [5] [6] [7] [8] [9] [10]
+<images/contraceptivefailure.png, id=103, 529.22719pt x 877.02657pt>
+File: images/contraceptivefailure.png Graphic file (type png)
+<use images/contraceptivefailure.png>
+Package pdftex.def Info: images/contraceptivefailure.png  used on input line 89
+2.
 (pdftex.def)             Requested size: 392.49413pt x 650.4348pt.
 
-LaTeX Warning: Float too large for page by 23.94922pt on input line 895.
+LaTeX Warning: Float too large for page by 23.94922pt on input line 894.
 
-[13] [14 <C:/Users/Claire/Dropbox/MQE_CI_Fall2020/Lecture Notes/contraceptivefa
-ilure.png>] [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1100.
-[16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1100.
+[11] [12] [13 <./images/contraceptivefailure.png>] [14]
+<images/significant_comic.png, id=129, 487.8225pt x 1353.25575pt>
+File: images/significant_comic.png Graphic file (type png)
+<use images/significant_comic.png>
+Package pdftex.def Info: images/significant_comic.png  used on input line 1101.
+
+(pdftex.def)             Requested size: 234.46477pt x 650.42265pt.
+
+LaTeX Warning: Float too large for page by 23.93707pt on input line 1103.
+
+<images/phackingcomic.png, id=130, 259.97125pt x 366.36874pt>
+File: images/phackingcomic.png Graphic file (type png)
+<use images/phackingcomic.png>
+Package pdftex.def Info: images/phackingcomic.png  used on input line 1107.
+(pdftex.def)             Requested size: 259.97061pt x 366.36784pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1111.
+[15] [16 <./images/significant_comic.png>] [17 <./images/phackingcomic.png (PNG
+ copy)>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1111.
 (Lecture_Notes_Markdown_RCT.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1100.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1100.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1111.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1111.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13580 strings out of 481565
- 203126 string characters out of 2913711
+ 13589 strings out of 481565
+ 202710 string characters out of 2913711
  497813 words of memory out of 3000000
- 28412 multiletter control sequences out of 15000+200000
+ 28418 multiletter control sequences out of 15000+200000
  600162 words of font info for 130 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,15n,42p,1765b,469s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -731,9 +728,9 @@ s/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:
 0.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/
 lmtt10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/lm/lmtti10.pfb>
-Output written on Lecture_Notes_Markdown_RCT.pdf (16 pages, 771914 bytes).
+Output written on Lecture_Notes_Markdown_RCT.pdf (17 pages, 820399 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 52 named destinations out of 1000 (max. 500000)
- 14419 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 250 PDF objects out of 1000 (max. 8388607)
+ 54 named destinations out of 1000 (max. 500000)
+ 14424 words of extra memory for PDF output out of 17280 (max. 10000000)
 
