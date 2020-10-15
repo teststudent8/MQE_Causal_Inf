@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  6 OCT 2020 15:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  15 OCT 2020 15:08
 entering extended mode
 **./Slides_FE.tex
 (Slides_FE.tex
@@ -987,24 +987,24 @@ LaTeX Warning: Label `' multiply defined.
 )
 \openout1 = `Slides_FE.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 153.
+LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 153.
+LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 153.
+LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 153.
+LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 153.
+LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 153.
+LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 153.
+LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 153.
+LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 153.
+LaTeX Font Info:    ... okay on input line 153.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1062,7 +1062,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 ) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box81
-Package hyperref Info: Link coloring OFF on input line 140.
+Package hyperref Info: Link coloring OFF on input line 153.
 
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.
 sty"
@@ -1078,55 +1078,55 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count343
 )
-LaTeX Info: Redefining \ref on input line 140.
-LaTeX Info: Redefining \pageref on input line 140.
-LaTeX Info: Redefining \nameref on input line 140.
+LaTeX Info: Redefining \ref on input line 153.
+LaTeX Info: Redefining \pageref on input line 153.
+LaTeX Info: Redefining \nameref on input line 153.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 140.
+(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 153.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 140.
+(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 153.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 140.
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 153.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/lmss/b/n on input line 140.
+(Font)                  OT1/cmss/b/n --> OT1/lmss/b/n on input line 153.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 140.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 140.
+(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 153.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 140.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 140.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 140.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 153.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 140.
+(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 140.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 140.
+(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 153.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 140.
+(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 140.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 140.
+(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 153.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 140.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 140.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 153.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 140.
+(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 153.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 140.
+(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/lmss/b/n --> T1/lmr/b/n on input line 140.
+(Font)                  OT1/lmss/b/n --> T1/lmr/b/n on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/lmss/b/n --> T1/lmss/b/n on input line 140.
+(Font)                  T1/lmss/b/n --> T1/lmss/b/n on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 140.
+(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 140.
+(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 153.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 140.
+(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 153.
 
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/translator\transl
 ator-basic-dictionary-English.dict"
@@ -1152,14 +1152,14 @@ Dictionary: translator-numbers-dictionary, Language: English
 ator-theorem-dictionary-English.dict"
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \microtypecontext on input line 140.
+LaTeX Info: Redefining \microtypecontext on input line 153.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 140.
+LaTeX Info: Redefining \showhyphens on input line 153.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1173,7 +1173,7 @@ Package caption Info: End \AtBeginDocument code.
 
 {C:/Users/Claire/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-159.
+172.
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ot1lmss.fd"
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1182,27 +1182,27 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-59.
+72.
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-159.
+172.
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-159.
+172.
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 159.
+(Font)              <10.95> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 159.
+(Font)              <8> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 159.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 159
+(Font)              <6> on input line 172.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 172
 .
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1211,7 +1211,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 cfg"
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 159
+LaTeX Font Info:    Trying to load font information for U+msb on input line 172
 .
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1221,11 +1221,11 @@ cfg"
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 159.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 172.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 159.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 172.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 159.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 172.
 [2
 
 ] [3
@@ -1242,41 +1242,27 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
 
 ] [9
 
-]
-Overfull \hbox (27.32904pt too wide) in alignment at lines 271--271
- [] [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (27.32904pt too wide) in alignment at lines 271--271
- [] [] [] [] [] [] [] [] [] 
- []
-
-[10
+] [10
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 291.
+(Font)              <9> on input line 313.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 291.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 291.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 291.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 291.
+(Font)              <5> on input line 313.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <9> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 313.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 291.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 313.
 
-Overfull \hbox (19.10547pt too wide) detected at line 291
-\T1/lmss/m/sl/10 Inc[] \OT1/lmss/m/n/10 = \OML/lmm/m/it/10 [] \OT1/lmss/m/n/10
- + \OML/lmm/m/it/10 []\T1/lmss/m/sl/10 School[] \OT1/lmss/m/n/10 + \OML/lmm/m/
-it/10 []\T1/lmss/m/sl/10 Fem[] \OT1/lmss/m/n/10 + \OML/lmm/m/it/10 []\T1/lmss
-/m/sl/10 Ind\T1/lmss/m/n/10 1[] \OT1/lmss/m/n/10 + \OML/lmm/m/it/10 []\T1/lmss
-/m/sl/10 Ind\T1/lmss/m/n/10 2[] \OT1/lmss/m/n/10 + \OML/lmm/m/it/10 ::: \OT1/lm
-ss/m/n/10 + \OML/lmm/m/it/10 []\T1/lmss/m/sl/10 Ind\OT1/lmss/m/n/10 (\T1/lmss/
-m/sl/10 N \OMS/lmsy/m/n/10   \T1/lmss/m/n/10 1\OT1/lmss/m/n/10 )[] + \OML/lmm/m
-/it/10 :
+Overfull \hbox (15.4502pt too wide) detected at line 313
+\T1/lmss/m/sl/9 Inc[] \OT1/lmss/m/n/9 = \OML/lmm/m/it/9 [] \OT1/lmss/m/n/9 + \
+OML/lmm/m/it/9 []\T1/lmss/m/sl/9 Sch[] \OT1/lmss/m/n/9 + \OML/lmm/m/it/9 []\T
+1/lmss/m/sl/9 Fem[] \OT1/lmss/m/n/9 + \OML/lmm/m/it/9 []\T1/lmss/m/sl/9 Mar[] 
+\OT1/lmss/m/n/9 + \OML/lmm/m/it/9 []\T1/lmss/m/sl/9 Ind\T1/lmss/m/n/9 1[] \OT1
+/lmss/m/n/9 + \OML/lmm/m/it/9 []\T1/lmss/m/sl/9 Ind\T1/lmss/m/n/9 2[] \OT1/lms
+s/m/n/9 + \OML/lmm/m/it/9 ::: \OT1/lmss/m/n/9 + \OML/lmm/m/it/9 []\T1/lmss/m/s
+l/9 Ind\OT1/lmss/m/n/9 (\T1/lmss/m/sl/9 N \OMS/lmsy/m/n/9   \T1/lmss/m/n/9 1\OT
+1/lmss/m/n/9 )[] + \OML/lmm/m/it/9 :
  []
 
 [11
@@ -1288,6 +1274,8 @@ m/sl/10 N \OMS/lmsy/m/n/10   \T1/lmss/m/n/10 1\OT1/lmss/m/n/10 )[] + \OML/lmm/m
 ] [14
 
 ] [15
+
+] [16
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1305,15 +1293,10 @@ LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line
 ("C:\Users\Claire\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ))
-Overfull \vbox (36.81355pt too high) detected at line 432
+Overfull \vbox (36.81355pt too high) detected at line 466
  []
 
-[16
-
-]
-\openout4 = `Slides_FE.vrb'.
-
-(Slides_FE.vrb) [17
+[17
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1333,15 +1316,15 @@ Overfull \vbox (36.81355pt too high) detected at line 432
 ]
 \openout4 = `Slides_FE.vrb'.
 
-(Slides_FE.vrb
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 11.
-) [21
+(Slides_FE.vrb) [21
 
 ]
 \openout4 = `Slides_FE.vrb'.
 
-(Slides_FE.vrb) [22
+(Slides_FE.vrb
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 11.
+) [22
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1351,13 +1334,16 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 ]
 \openout4 = `Slides_FE.vrb'.
 
+(Slides_FE.vrb) [24
+
+]
+\openout4 = `Slides_FE.vrb'.
+
 (Slides_FE.vrb
 
 Package hyperref Warning: Ignoring empty anchor on input line 13.
 
-) [24
-
-] [25
+) [25
 
 ] [26
 
@@ -1365,10 +1351,12 @@ Package hyperref Warning: Ignoring empty anchor on input line 13.
 
 ] [28
 
+] [29
+
 ]
 \openout4 = `Slides_FE.vrb'.
 
-(Slides_FE.vrb) [29
+(Slides_FE.vrb) [30
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1383,12 +1371,12 @@ Overfull \hbox (12.86163pt too wide) in alignment at lines 25--39
  [] [] [] [] [] [] [] [] [] [] 
  []
 
-) [30
+) [31
 
 ]
 \openout4 = `Slides_FE.vrb'.
 
-(Slides_FE.vrb) [31
+(Slides_FE.vrb) [32
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1397,14 +1385,14 @@ Overfull \hbox (12.86163pt too wide) in alignment at lines 25--39
 
 Package hyperref Warning: Ignoring empty anchor on input line 21.
 
-) [32
+) [33
 
-] [33
+] [34
 
 ]
 \openout4 = `Slides_FE.vrb'.
 
-(Slides_FE.vrb) [34
+(Slides_FE.vrb) [35
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1413,14 +1401,9 @@ Package hyperref Warning: Ignoring empty anchor on input line 21.
 
 Package hyperref Warning: Ignoring empty anchor on input line 13.
 
-) [35
+) [36
 
-] [36
-
-]
-\openout4 = `Slides_FE.vrb'.
-
-(Slides_FE.vrb) [37
+] [37
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1428,7 +1411,23 @@ Package hyperref Warning: Ignoring empty anchor on input line 13.
 (Slides_FE.vrb) [38
 
 ]
-Overfull \hbox (22.50912pt too wide) detected at line 1079
+\openout4 = `Slides_FE.vrb'.
+
+(Slides_FE.vrb) [39
+
+]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 1113.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 1113.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 1113.
+
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 1113.
+
+
+Overfull \hbox (22.50912pt too wide) detected at line 1113
 \T1/lmss/m/sl/10 crmrte[] \OT1/lmss/m/n/10 = \OML/lmm/m/it/10 [] \OT1/lmss/m/n
 /10 + \OML/lmm/m/it/10 []\T1/lmss/m/sl/10 unemp[] \OT1/lmss/m/n/10 + \OML/lmm/
 m/it/10 []\T1/lmss/m/sl/10 area[] \OT1/lmss/m/n/10 + \OML/lmm/m/it/10 []\T1/l
@@ -1438,7 +1437,7 @@ ea[] \OT1/lmss/m/n/10 + \OML/lmm/m/it/10 []\T1/lmss/m/sl/10 lawexp[] \OT1/lmss
 lmm/m/it/10 
  []
 
-[39
+[40
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1449,14 +1448,14 @@ Overfull \hbox (68.83513pt too wide) in paragraph at lines 38--38
 awexpc +      pcinc, data = crime[crime$year == "87", ])[] 
  []
 
-) [40
+) [41
 
-] [41
+] [42
 
 ]
 \openout4 = `Slides_FE.vrb'.
 
-(Slides_FE.vrb) [42
+(Slides_FE.vrb) [43
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1467,16 +1466,24 @@ Overfull \hbox (21.02263pt too wide) in paragraph at lines 52--52
 awexpc +      pcinc | city, data = crime)[] 
  []
 
-) [43
+) [44
 
-] [44
+] [45
 
 ]
-Overfull \hbox (11.04231pt too wide) detected at line 1249
+<images/Xindep.jpg, id=312, 501.875pt x 376.40625pt>
+File: images/Xindep.jpg Graphic file (type jpg)
+<use images/Xindep.jpg>
+Package pdftex.def Info: images/Xindep.jpg  used on input line 1272.
+(pdftex.def)             Requested size: 230.46707pt x 172.85031pt.
+[46
+
+ <./images/Xindep.jpg>]
+Overfull \hbox (11.04231pt too wide) detected at line 1288
 [][]
  []
 
-[45
+[47
 
 ]
 \openout4 = `Slides_FE.vrb'.
@@ -1487,25 +1494,25 @@ Overfull \hbox (43.33513pt too wide) in paragraph at lines 52--52
 awexpc +      pcinc | city + year, data = crime)[] 
  []
 
-) [46
-
-] [47
-
-] [48
+) [48
 
 ] [49
 
+] [50
+
+] [51
+
 ]
-Overfull \hbox (11.04231pt too wide) detected at line 1364
+Overfull \hbox (11.04231pt too wide) detected at line 1403
 [][]
  []
 
-[50
+[52
 
 ]
 \openout4 = `Slides_FE.vrb'.
 
-(Slides_FE.vrb) [51
+(Slides_FE.vrb) [53
 
 ]
 \tf@nav=\write6
@@ -1517,50 +1524,53 @@ Overfull \hbox (11.04231pt too wide) detected at line 1364
 \tf@snm=\write8
 \openout8 = `Slides_FE.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1387.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1387.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1426.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1426.
 (Slides_FE.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1387.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1387.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1426.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1426.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 25425 strings out of 481565
- 467023 string characters out of 2913711
- 721901 words of memory out of 3000000
- 39875 multiletter control sequences out of 15000+200000
- 601914 words of font info for 99 fonts, out of 3000000 for 9000
+ 25483 strings out of 481565
+ 467835 string characters out of 2913711
+ 721950 words of memory out of 3000000
+ 39907 multiletter control sequences out of 15000+200000
+ 612012 words of font info for 112 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,11n,67p,799b,561s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-math
-it.enc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm
--mathsy.enc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/
+sy.enc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm
+-mathit.enc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/
 lm/lm-ec.enc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
 /lm/lm-ts1.enc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvi
 ps/lm/lm-rm.enc}<C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/lm/lmmi10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/t
 ype1/public/lm/lmmi6.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/lm/lmss10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/lm/lmss12.pfb><C:/Users/Claire/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/public/lm/lmss8.pfb><C:/Users/Claire/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Claire/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/lm/lmsso10.pfb><C:/Users/Claire/AppData/Lo
-cal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsso8.pfb><C:/Users/Claire/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Claire/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:/Users/Cla
-ire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Users
-/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/U
-sers/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtk10.pfb>
-<C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt10
-.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/l
-mtt8.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-lm/lmtti10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/symbols/msam10.pfb>
-Output written on Slides_FE.pdf (51 pages, 358670 bytes).
+ts/type1/public/lm/lmmi9.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/lm/lmss10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/lm/lmss12.pfb><C:/Users/Claire/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/lm/lmss8.pfb><C:/Users/Claire/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/lm/lmss9.pfb><C:/Users/Claire/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Claire/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsso10.pfb><C:/Users/Claire/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsso8.pfb><C:/Users/Clai
+re/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsso9.pfb><C:/Users
+/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/
+Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb>
+<C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.
+pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lm
+sy9.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/l
+m/lmtk10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/lm/lmtt10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/lm/lmtt8.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/lm/lmtti10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on Slides_FE.pdf (53 pages, 448360 bytes).
 PDF statistics:
- 440 PDF objects out of 1000 (max. 8388607)
- 153 named destinations out of 1000 (max. 500000)
- 12331 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 468 PDF objects out of 1000 (max. 8388607)
+ 159 named destinations out of 1000 (max. 500000)
+ 18480 words of extra memory for PDF output out of 20736 (max. 10000000)
 
