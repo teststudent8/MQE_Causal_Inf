@@ -240,6 +240,8 @@ To check in see if someone made changes to the parent repo you originally forked
 
 10. Check and see that your files have updated and are now in sync with the parent repo
   
+Note: this can be set up tobe done with a lot less clicking using git (see below).
+
   
 **PRACTICE:** Update your forked MQE_Causal_Inf repos so that the reflect my recent edits. 
 
@@ -383,7 +385,7 @@ Now that you all have repos with the problem set, you will want to:
 
   - Review your team member's pull requests and merge them into your main project repo 
 
-  7. Rinse and repeat until you are all happy with your .Rmd file.
+  7. Next time you want to work on the assignment, make sure you syncronize your forked repo with the group leaders repo so that you are working on the most up to date version of your groups code (see instructions above).  `$git pull` any updates to your local machine and repeat steps 2-6. 
   8. Once the main group .Rmd file is finalized, you can compile it to html, pdf or word for submission.  
 
 **Hints:** I would recommend only keeping track of the .Rmd file on GitHub, until the very end when you will produce your final html, pdf or word file. This will make it so that when you deal with any conflicts in pull requests, you only need to edit the .Rmd file, and don't have to worry about the other files. 
@@ -494,7 +496,7 @@ Now that you all have repos with the problem set, you will want to:
 
   
   
-  7. Rinse and repeat until you are all happy with your .Rmd file.
+  7. Next time you want to work on the assignment, make sure you syncronize your forked repo with the group leaders repo so that you are working on the most up to date version of your group's code (see instructions above).  `$git pull` any updates to your local machine and repeat steps 2-6. .
   8. Once the main group .Rmd file is finalized, you can compile it to html, pdf or word for submission.  
 
 **Hints:** I would recommend only keeping track of the .Rmd file on GitHub, until the very end when you will produce your final html, pdf or word file. This will make it so that when you deal with any conflicts in pull requests, you only need to edit the .Rmd file, and don't have to worry about the other files. 
