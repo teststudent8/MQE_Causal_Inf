@@ -277,14 +277,20 @@ rcthet1<-felm(read4~treat+female+female*treat,scores5)
 nf<-20
 
 #the data generating process: notice the class does affect a students score
-scores5$read4het1<-alpha+nf*scores5$treat+scores5$error+4*scores5$class_1+(-6)*scores5$class_2+8*scores5$class_3+(-4)*scores5$class_4+7*scores5$class_5+(-2)*scores5$class_6+5*scores5$class_7+(-10)*scores5$class_8+8*scores5$class_9+4*scores5$class_10+(-20)*scores5$female*scores5$treat
+scores5$read4het1<-(alpha+nf*scores5$treat+scores5$error+4*scores5$class_1+(-6)*scores5$class_2
+                    +8*scores5$class_3+(-4)*scores5$class_4+7*scores5$class_5
+                    +(-2)*scores5$class_6+5*scores5$class_7+(-10)*scores5$class_8
+                    +8*scores5$class_9+4*scores5$class_10+(-20)*scores5$female*scores5$treat)
 
 rct2<-felm(read4het1~treat,scores5)
 rcthet2<-felm(read4het1~treat+female+female*treat,scores5)
 
 nf2<-30
 
-scores5$read4het2<-alpha+nf2*scores5$treat+scores5$error+4*scores5$class_1+(-6)*scores5$class_2+8*scores5$class_3+(-4)*scores5$class_4+7*scores5$class_5+(-2)*scores5$class_6+5*scores5$class_7+(-10)*scores5$class_8+8*scores5$class_9+4*scores5$class_10+(-40)*scores5$female*scores5$treat
+scores5$read4het2<-(alpha+nf2*scores5$treat+scores5$error+4*scores5$class_1+(-6)*scores5$class_2
+                    +8*scores5$class_3+(-4)*scores5$class_4+7*scores5$class_5
+                    +(-2)*scores5$class_6+5*scores5$class_7+(-10)*scores5$class_8
+                    +8*scores5$class_9+4*scores5$class_10+(-40)*scores5$female*scores5$treat)
 
 rct3<-felm(read4het2~treat,scores5)
 rcthet3<-felm(read4het2~treat+female+female*treat,scores5)

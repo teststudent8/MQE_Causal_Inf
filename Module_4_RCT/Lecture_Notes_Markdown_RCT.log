@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  12 OCT 2020 09:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.15)  15 OCT 2020 15:53
 entering extended mode
 **./Lecture_Notes_Markdown_RCT.tex
 (Lecture_Notes_Markdown_RCT.tex
@@ -659,38 +659,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 372--380
 
  []
 
-[4] [5] [6] [7] [8] [9] [10]
-<images/contraceptivefailure.png, id=103, 529.22719pt x 877.02657pt>
+[4] [5] [6] [7] [8] [9] [10] [11]
+<images/contraceptivefailure.png, id=108, 529.22719pt x 877.02657pt>
 File: images/contraceptivefailure.png Graphic file (type png)
 <use images/contraceptivefailure.png>
 Package pdftex.def Info: images/contraceptivefailure.png  used on input line 89
-2.
+8.
 (pdftex.def)             Requested size: 392.49413pt x 650.4348pt.
 
-LaTeX Warning: Float too large for page by 23.94922pt on input line 894.
+LaTeX Warning: Float too large for page by 23.94922pt on input line 900.
 
-[11] [12] [13 <./images/contraceptivefailure.png>] [14]
-<images/significant_comic.png, id=129, 487.8225pt x 1353.25575pt>
+[12] [13 <./images/contraceptivefailure.png>] [14]
+<images/significant_comic.png, id=128, 487.8225pt x 1353.25575pt>
 File: images/significant_comic.png Graphic file (type png)
 <use images/significant_comic.png>
-Package pdftex.def Info: images/significant_comic.png  used on input line 1101.
+Package pdftex.def Info: images/significant_comic.png  used on input line 1107.
 
 (pdftex.def)             Requested size: 234.46477pt x 650.42265pt.
 
-LaTeX Warning: Float too large for page by 23.93707pt on input line 1103.
+LaTeX Warning: Float too large for page by 23.93707pt on input line 1109.
 
-<images/phackingcomic.png, id=130, 259.97125pt x 366.36874pt>
+<images/phackingcomic.png, id=129, 259.97125pt x 366.36874pt>
 File: images/phackingcomic.png Graphic file (type png)
 <use images/phackingcomic.png>
-Package pdftex.def Info: images/phackingcomic.png  used on input line 1107.
+Package pdftex.def Info: images/phackingcomic.png  used on input line 1113.
 (pdftex.def)             Requested size: 259.97061pt x 366.36784pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1111.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1117.
 [15] [16 <./images/significant_comic.png>] [17 <./images/phackingcomic.png (PNG
  copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1111.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1117.
 (Lecture_Notes_Markdown_RCT.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1111.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1111.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1117.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1117.
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -702,7 +702,7 @@ Here is how much of TeX's memory you used:
  28418 multiletter control sequences out of 15000+200000
  600162 words of font info for 130 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,15n,42p,1765b,469s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,15n,42p,1556b,469s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.e
 nc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mat
 hsy.enc}{C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/l
@@ -728,7 +728,7 @@ s/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:
 0.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/
 lmtt10.pfb><C:/Users/Claire/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/lm/lmtti10.pfb>
-Output written on Lecture_Notes_Markdown_RCT.pdf (17 pages, 820399 bytes).
+Output written on Lecture_Notes_Markdown_RCT.pdf (17 pages, 820348 bytes).
 PDF statistics:
  250 PDF objects out of 1000 (max. 8388607)
  54 named destinations out of 1000 (max. 500000)

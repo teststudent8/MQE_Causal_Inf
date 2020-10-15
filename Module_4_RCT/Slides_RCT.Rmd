@@ -14,7 +14,26 @@ library(MASS)
 library(lfe)
 library(stargazer)
 knitr::opts_chunk$set(echo = FALSE)
-knitr::opts_chunk$set(fig.width=9, fig.height=5) 
+knitr::opts_chunk$set(fig.width=9, fig.height=5)
+options(width=80)
+knitr::opts_chunk$set(echo = TRUE,out.width = 40, tidy=T, tidy.opts=list(width.cutoff=60))
+
+```
+
+
+```{r wrap-hook}
+library(knitr)
+hook_output = knit_hooks$get('output')
+knit_hooks$set(output = function(x, options) {
+  # this hook is used only when the linewidth option is not NULL
+  if (!is.null(n <- options$linewidth)) {
+    x = knitr:::split_lines(x)
+    # any lines wider than n should be wrapped
+    if (any(nchar(x) > n)) x = strwrap(x, width = n)
+    x = paste(x, collapse = '\n')
+  }
+  hook_output(x, options)
+})
 ```
 
 ## Module 4: Randomized Control Trials
@@ -437,14 +456,78 @@ If we include more x's in our regression,
 
 ## Heterogeneity
 
-You may believe that the treatment you are investigating may affect certain individuals and subgroups of the population more than others. We can measure heterogeneity of the program effects for individuals with specific characteristics by interacting these characteristics with the treatment variable. 
+We can measure heterogeneity of the program effects for individuals with specific characteristics by interacting these characteristics with the treatment variable. 
 
-In the regression framework, we simply add the relevant interaction terms,
 
 $$
 Y_i=\beta_0+\beta_1 D_i+ \beta_2 x_i +\beta_3 D_i\times x_i+\epsilon,
 $$
 
-where $x_i$ could represent an indicator variable for being female, then $\beta_3$ gives us the differential effect of the treatment for females relative to non-females. 
+Example: 
 
-In our simulation, our DGP did not model any heterogenous effects. Below, I start by searching for heterogeneity by gender using our existing simulation data. I then generate two new sets of 4th grade reading scores with a DGP that model heterogenous effects. 
+- $x_i$ could be an indicator variable for being female
+
+- $\beta_3$ gives us the differential effect of the treatment for females relative to non-females. 
+
+## Simulation: 
+
+I start by searching for heterogeneity by gender using our existing simulation data. 
+
+\tiny
+```{r heterogeneity, results="asis", echo=TRUE}
+
+rct1<-felm(read4~treat,scores5)
+rcthet1<-felm(read4~treat+female+female*treat,scores5)
+stargazer(rct1,rcthet1, type="latex", header=FALSE,  omit.stat="ser")
+```
+
+
+## Simulation: 
+I now will simulate a DGP with heterogeneous treatment effects by gender
+
+\tiny
+```{r heterogeneity2, results="asis",echo=TRUE, linewidth=60}
+
+#the second data generating process 
+nf<-20
+scores5$read4het1<-(alpha+nf*scores5$treat+scores5$error+4*scores5$class_1+(-6)*scores5$class_2
+                    +8*scores5$class_3+(-4)*scores5$class_4+7*scores5$class_5
+                    +(-2)*scores5$class_6+5*scores5$class_7+(-10)*scores5$class_8
+                    +8*scores5$class_9+4*scores5$class_10+(-20)*scores5$female*scores5$treat)
+
+rct2<-felm(read4het1~treat,scores5)
+rcthet2<-felm(read4het1~treat+female+female*treat,scores5)
+
+#the third data generating process 
+nf2<-30
+scores5$read4het2<-(alpha+nf2*scores5$treat+scores5$error+4*scores5$class_1+(-6)*scores5$class_2
+                    +8*scores5$class_3+(-4)*scores5$class_4+7*scores5$class_5
+                    +(-2)*scores5$class_6+5*scores5$class_7+(-10)*scores5$class_8
+                    +8*scores5$class_9+4*scores5$class_10+(-40)*scores5$female*scores5$treat)
+
+rct3<-felm(read4het2~treat,scores5)
+rcthet3<-felm(read4het2~treat+female+female*treat,scores5)
+```
+
+## Simulation: 
+
+\tiny
+```{r heterogeneity3, results="asis",echo=TRUE}
+stargazer(rct1,rcthet1,rct2,rcthet2,rct3,rcthet3, type="latex",header=FALSE, omit.stat="ser")
+```
+
+## Simulation: 
+
+DGP 1, 2 and 3 return similar estimates of the ATE (average treatment effect). 
+
+This ATE hides important heterogenety that is quite different for DGP 1, 2 and 3:
+
+- No heterogeneity in DGP 1
+
+- A positive effect on non-females and no effect on females in DGP 2
+
+- A positive effect on non-females and negative effect on females in DGP 3
+
+
+
+
