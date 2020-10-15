@@ -348,7 +348,42 @@ Once you have made changes to the repo file on your computer, and saved them, yo
        which basically tells git to push your changes from your remote "origin" computer to the "master" branch on github. 
 
   7. You can now look at your repository on github and check that the edits you made appear in your files and the files history. 
+  
+  
+## Keeping your local folder in sync with the parent repo through git
 
+To make sure a folder on your computer reflect the most recent changes made in an upstream repo (that you originally forked from) you need  to configure the folder so that you can easily `fetch` any changes in the upstream repo: 
+
+1. Go to the terminal window and navigate to the git  folder by typing
+  
+     `$ cd /c/Users/ *******/filepath`
+
+2. List the current configures remote repository for your folder:
+     `$ git remote -v `
+    
+      `> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)`
+
+      `> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)`
+
+3. We want to change this. Specify a new remote upstream repo that will be synced with the fork
+
+      `$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git`
+
+4. Verify the new upstream repository you've specified for your fork.
+
+    `$ git remote -v `
+    
+      `> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)`
+
+      `> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)`
+      
+      `> upstream  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)`
+
+      `> upstream  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)`
+      
+5. You can now `fetch` changes to that repo and have them reflected on your local machine with the command
+
+    `$ git fetch upstream `
 
 
 
